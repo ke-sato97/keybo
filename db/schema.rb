@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_03_025958) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_06_015750) do
+  create_table "keyboards", force: :cascade do |t|
+    t.string "model"
+    t.string "brand"
+    t.string "image"
+    t.string "os"
+    t.integer "price"
+    t.string "layout"
+    t.string "size"
+    t.string "switch"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false

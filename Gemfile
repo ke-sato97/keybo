@@ -73,3 +73,4 @@ group :test do
 end
 
 gem 'sorcery'
+gem 'rakuten_web_service'

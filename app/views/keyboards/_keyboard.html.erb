@@ -1,0 +1,7 @@
+<% @keyboards.first(10).each do |keyboard| %>
+  <%= keyboard.model %>
+  <%= keyboard.brand %>
+  <%= keyboard.price %>
+  <%= keyboard.size %>
+  <%= keyboard.os %>
+<% end %>
