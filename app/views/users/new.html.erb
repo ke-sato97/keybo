@@ -1,29 +1,40 @@
-<div class="container mx-auto">
-  <div class="flex justify-center">
-    <div class="w-full md:w-10/12 lg:w-8/12 p-4">
-      <h1 class="text-3xl font-bold mb-4">New User</h1>
-      <%= form_with model: @user, local: true do |f| %>
-        <div class="mb-4">
-          <%= f.label :name, class: "block font-semibold" %>
-          <%= f.text_field :name, class: "w-full px-3 py-2 border rounded" %>
+<div class="w-full h-screen bg-grey-lighter">
+  <form class="container flex flex-col lg:flex-row justify-center lg:justify-between font-sans mx-auto py-8">
+    <div class="w-full lg:w-1/3 px-2 mb-6 lg:mb-0">
+      <div class="bg-white shadow rounded-lg">
+        <div class="border-b border-grey-lighter p-4">
+          <h3 class="text-grey-darkest">
+            Get access
+          </h3>
         </div>
-        <div class="mb-4">
-          <%= f.label :email, class: "block font-semibold" %>
-          <%= f.email_field :email, class: "w-full px-3 py-2 border rounded" %>
+        <div class="p-4">
+          <div class="mb-4">
+            <%= label_tag "email_2", "Email", class: "uppercase text-sm tracking-wide font-semibold text-grey-darker px-2" %>
+            <%= text_field_tag "email_2", nil, class: "no-appearance bg-grey-lighter w-full leading-normal py-2 px-3 rounded border-b border-red-light mt-2 focus:outline-none" %>
+          </div>
+          <div class="mb-4">
+            <div class="flex justify-between items-center px-2">
+              <%= label_tag "reason", "Reason", class: "uppercase text-sm tracking-wide font-semibold text-grey-darker" %>
+              <a href="#" class="no-underline text-grey-darker">
+                <i class="fas fa-info-circle"></i>
+              </a>
+            </div>
+            <div class="relative mt-2">
+              <%= select_tag "reason", options_for_select(["Select a reason", "Beta access", "Lorem ipsum"]), class: "block appearance-none w-full bg-grey-lighter border-b border-grey-light text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none" %>
+              <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-between items-center pt-4 mb-4" data-toggle="toggler" data-target="#subscribe">
+            <div id="subscribe" class="bg-grey rounded-full pl-px pr-4 py-px cursor-pointer">
+              <div class="w-4 h-4 bg-white rounded-full"></div>
+            </div>
+            <%= label_tag "subscribe", "Allow to subscribe to our newsletter", class: "text-grey-darker text-sm cursor-pointer select-none" %>
+          </div>
         </div>
-        <div class="mb-4">
-          <%= f.label :password, class: "block font-semibold" %>
-          <%= f.password_field :password, class: "w-full px-3 py-2 border rounded" %>
-        </div>
-        <div class="mb-4">
-          <%= f.label :password_confirmation, class: "block font-semibold" %>
-          <%= f.password_field :password_confirmation, class: "w-full px-3 py-2 border rounded" %>
-        </div>
-        <%= f.submit 'Create User', class: 'w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600' %>
-      <% end %>
-      <div class='text-center'>
-        <%= link_to 'login', login_path, class: 'text-blue-500 underline' %>
+        <%= button_tag "Send request", type: "submit", class: "uppercase font-bold w-full bg-green-light text-lg text-green-lightest rounded-b-lg p-3 cursor-not-allowed opacity-50", disabled: true %>
       </div>
     </div>
-  </div>
+  </form>
 </div>
