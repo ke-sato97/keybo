@@ -39,12 +39,12 @@ end
     size = extract_size_from_caption(caption)
     switch = extract_switch_from_caption(caption)
     layout = extract_layout_from_caption(caption)
-    os = extract_os_from_caption(caption)
+    os = extract_size_os_caption(caption)
     {
       model: model,
       brand: brand,
       price: price,
-      caption: caption,
+      caption: caption
       size: size,
       os: os,
       layout: layout,
@@ -53,16 +53,16 @@ end
   end
 
   def extract_size_from_caption(caption)
-    size_pattern = /(フルサイズ|75%|60%|110キー|108キー|110%)/
+    size_pattern = /(フルサイズ|75%|60%|110キー|108キー)/
     match = caption.match(size_pattern)
     return match[0] if match
     nil
   end
 
   def extract_os_from_caption(caption)
-    os_pattern = /(MacOS|macOS|Windows 10|Windows 11|Chrome OS)/i
-    matches = caption.scan(os_pattern)
-    return matches if matches.any?
+    os_pattern = /(macOS|Windows 10|Windows 11|Chrome OS)/
+    match = caption.match(os_pattern)
+    return match[0] if match
     nil
   end
 
@@ -74,7 +74,7 @@ end
   end
 
   def extract_switch_from_caption(caption)
-    switch_pattern = /(メンブレン|パンタグラフ|メカニカルキーボード|静電容量無接点)/
+    switch_pattern = /(メンブレン方式|パンタグラフ方式|メカニカルキーボード|静電容量無接点方式)/
     match = caption.match(switch_pattern)
     return match[0] if match
     nil
