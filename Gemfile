@@ -72,4 +72,6 @@ group :test do
   gem "webdrivers"
 end
 
+gem 'rails-i18n', '~> 7.0.0' # For 7.0.0
 gem 'sorcery'
+
