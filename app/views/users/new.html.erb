@@ -3,6 +3,7 @@
     <%= form_with model: @user, local: true do |f| %>
       <div class="bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4">
         <div class="text-gray-800 text-2xl flex justify-center border-b-2 py-2 mb-4">
+<<<<<<< HEAD
           <%= t('.title') %>
         </div>
         <div class="mb-4">
@@ -26,5 +27,36 @@
         </div>
       </div>
     <% end %>
+=======
+          会員登録
+        </div>
+        <div class="mb-4">
+          <%= f.label :name, class: "block text-gray-700 text-sm font-normal mb-2" %>
+          <%= f.text_field :name, class: "shadow appearance-none border rounded w-full max-w-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: "Name", required: true, autofocus: true %>
+        </div>
+        <div class="mb-4">
+          <%= f.label :email, class: "block text-gray-700 text-sm font-normal mb-2" %>
+          <%= f.email_field :email, class: "shadow appearance-none border rounded w-full max-w-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: "Email", required: true, autofocus: true %>
+        </div>
+        <div class="mb-4">
+          <%= f.label :password, class: "block text-gray-700 text-sm font-normal mb-2" %>
+          <%= f.password_field :password, class: "shadow appearance-none border rounded w-full max-w-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: "Password", required: true, autofocus: true %>
+        </div>
+        <div class="mb-4">
+          <%= f.label :password_confirmation, class: "block text-gray-700 text-sm font-normal mb-2" %>
+          <%= f.password_field :password_confirmation, class: "shadow appearance-none border rounded w-full max-w-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: "Password_confirmation", required: true, autofocus: true %>
+        </div>
+        <div class="flex items-center justify-between">
+          <button class="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700" type="submit">Sign In</button>
+          <a class="inline-block align-baseline font-normal text-sm text-blue-500 hover:text-blue-800" href="#">
+            Forgot Password?
+          </a>
+        </div>
+      </div>
+    <% end %>
+    <p class="text-center text-gray-500 text-xs">
+      &copy;2020 Gau Corp. All rights reserved.
+    </p>
+>>>>>>> 04_data_processing
   </div>
 </div>
