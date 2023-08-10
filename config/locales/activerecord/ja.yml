@@ -1,0 +1,29 @@
+ja:
+  activerecord:
+    models:
+      user: "ユーザー"
+      comment: 'コメント'
+    attributes:
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+        full_name: '氏名'
+        avatar: 'アバター'
+        role: '権限'
+      keyboard:
+        title: 'タイトル'
+        keyboard_image: 'サムネイル'
+        user: '作成者'
+      comment:
+        body: 'コメント'
+  attributes:
+    id: 'ID'
+
+  enums:
+    user:
+      role:
+        general: '一般'
+        admin: '管理者'
+
