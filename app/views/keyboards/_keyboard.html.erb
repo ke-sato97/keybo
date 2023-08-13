@@ -2,13 +2,13 @@
   <% @keyboards.first(10).each do |keyboard| %>
     <div class="border rounded-md p-4">
       <h2 class="text-lg font-bold"><%= keyboard.model %></h2>
+      <p><%= image_tag keyboard.image %></p>
       <p><%= keyboard.brand %></p>
       <p><%= keyboard.price %></p>
       <p><%= keyboard.size %></p>
       <p><%= keyboard.os %></p>
       <p><%= keyboard.layout %></p>
       <p><%= keyboard.switch %></p>
-      <p><%= keyboard.caption %></p>
     </div>
   <% end %>
 </div>
