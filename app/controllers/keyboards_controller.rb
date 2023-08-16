@@ -83,7 +83,7 @@ class KeyboardsController < ApplicationController
   end
 
   def keyboard_params
-    params.require(:keyboard).permit(:model, :brand, :price, :size, :switch, :layout, :os)
+    params.require(:keyboard).permit(:image, :model, :brand, :price, :size, :switch, :layout, :os)
   end
 
 end
