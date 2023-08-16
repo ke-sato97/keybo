@@ -10,7 +10,7 @@ gem "rails", "~> 7.0.6"
 gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+gem "sqlite3"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -76,3 +76,11 @@ gem 'rails-i18n', '~> 7.0.0' # For 7.0.0
 gem 'sorcery'
 gem 'rakuten_web_service'
 
+
+gem "dockerfile-rails", ">= 1.5", :group => :development
+
+gem "sentry-ruby", "~> 5.10"
+
+gem "sentry-rails", "~> 5.10"
+
+gem "pg", "~> 1.5"
