@@ -277,7 +277,7 @@ DEPENDENCIES
   dockerfile-rails (>= 1.5)
   importmap-rails
   jbuilder
-  pg (~> 1.5)
+  pg (~> 1.1)
   pry-rails
   puma (~> 5.0)
   rails (~> 7.0.6)

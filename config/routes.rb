@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get 'keyboards/search', to: 'keyboards#search'
 
-  resources :users, only: %i[new create]
+  resources :users
   resources :keyboards
   #action
 
