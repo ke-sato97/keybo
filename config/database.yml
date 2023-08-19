@@ -84,4 +84,4 @@ production:
   <<: *default
   database: portfolio01
   username: sato
-  password: <%= ENV["PORTFOLIO_DATABASE_PASSWORD"] %> # sato
+  password: <%= ENV["PORTFOLIO_DATABASE_PASSWORD"] %>
