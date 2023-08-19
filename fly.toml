@@ -1,17 +1,13 @@
-# fly.toml app configuration file generated for portfolio01 on 2023-08-16T17:05:34+09:00
+# fly.toml app configuration file generated for webapp02 on 2023-08-18T16:31:21+09:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "portfolio01"
+app = "webapp02"
 primary_region = "nrt"
 console_command = "/rails/bin/rails console"
 
 [build]
-
-[[mounts]]
-  source = "data"
-  destination = "/data"
 
 [http_service]
   internal_port = 3000
@@ -24,3 +20,9 @@ console_command = "/rails/bin/rails console"
 [[statics]]
   guest_path = "/rails/public"
   url_prefix = "/"
+
+[[dns_records]]
+  type = "CNAME"
+  name = "www"
+  value = "webapp02.fly.dev"
+  ttl = 3600
