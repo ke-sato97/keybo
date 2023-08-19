@@ -1,14 +1,10 @@
 <div class="grid grid-cols-3 gap-4">
-  <% @keyboards.first(10).each do |keyboard| %>
-    <div class="border rounded-md p-4">
+  <% @keyboards.each do |keyboard| %>
+    <div class="p-4 border rounded-md">
       <h2 class="text-lg font-bold"><%= keyboard.model %></h2>
       <p><%= image_tag keyboard.image %></p>
-      <p><%= keyboard.brand %></p>
-      <p><%= keyboard.price %></p>
-      <p><%= keyboard.size %></p>
-      <p><%= keyboard.os %></p>
-      <p><%= keyboard.layout %></p>
-      <p><%= keyboard.switch %></p>
+      <p>価格: <%= keyboard.price %>円</p>
+      <%= link_to "ここをクリックすると詳細に飛ぶ", keyboard_path(keyboard) %>
     </div>
   <% end %>
 </div>

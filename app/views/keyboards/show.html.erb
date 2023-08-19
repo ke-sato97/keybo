@@ -1,2 +1,14 @@
 <h1>Keyboards#show</h1>
-<p>Find me in app/views/keyboards/show.html.erb</p>
+<div class="grid grid-cols-3 gap-4">
+  <div class="p-4 border rounded-md">
+    <h2 class="text-lg font-bold"><%= @keyboard.model %></h2>
+    <p><%= image_tag @keyboard.image %></p>
+    <p>ブランド名: <%= @keyboard.brand %></p>
+    <p>価格: <%= @keyboard.price %>円</p>
+    <p>キーサイズ: <%= @keyboard.size %></p>
+    <p>対応OS: <%= @keyboard.os %></p>
+    <p>キー配列: <%= @keyboard.layout %></p>
+    <p>キースイッチ: <%= @keyboard.switch %>方式</p>
+    <p>説明: <%= @keyboard.caption %></p>
+  </div>
+</div>

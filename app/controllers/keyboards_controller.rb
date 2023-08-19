@@ -1,12 +1,13 @@
 class KeyboardsController < ApplicationController
   def index
-    @keyboards = Keyboard.all(keyboard_params)
+    @keyboards = Keyboard.all# (keyboard_params)
   end
 
   def new
   end
 
   def show
+    @keyboard = Keyboard.find(params[:id])
   end
 
   def edit
