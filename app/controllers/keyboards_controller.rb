@@ -35,7 +35,7 @@ class KeyboardsController < ApplicationController
   def read(result)
     image = result["mediumImageUrls"].first
     model = result["itemName"]
-    brand = result["shopCode"]
+    brand = result["shopCode"] #あとで"makerNameFormal"に変更すること
     price = result["itemPrice"]
     caption = result["itemCaption"]
     size = extract_size_from_caption(caption)
