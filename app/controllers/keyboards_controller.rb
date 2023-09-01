@@ -23,7 +23,7 @@ class KeyboardsController < ApplicationController
     @keyboards = []
     @model = params[:keyword]
     if @model.present?
-      results = RakutenWebService::Ichiba::Item.search(keyword: @model, hits: 1 )
+      results = RakutenWebService::Ichiba::Item.search(keyword: @model, hits: 5 )
       results.each do |result|
         keyboard = Keyboard.new(read(result))
         @keyboards << keyboard
