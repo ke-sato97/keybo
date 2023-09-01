@@ -1,4 +1,7 @@
 class Keyboard < ApplicationRecord
+  has_many :keyboard_tags, dependent: :destroy
+  has_many :tags, dependent: :destroy, through: :keyboard_tags
+
   validates :model, presence: true, uniqueness: true
 
   def extract_size_from_caption(caption)

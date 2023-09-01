@@ -1,7 +1,9 @@
 <h1 class="text-2xl font-bold">Keyboard search</h1>
+<%= link_to "一覧画面", keyboards_path %>
+<%= link_to "取得画面", keyboards_search_path %>
 <%= render 'keyboards/search_box' %>
 <div class="mt-4">
   <% if @keyboards.any? %>
-    <%= render 'keyboards/keyboard' %>
+    <%= link_to "一覧画面", keyboards_path %>
   <% end %>
 </div>

@@ -12,5 +12,9 @@
     <p>キー配列: <%= @keyboard.layout %></p>
     <p>キースイッチ: <%= @keyboard.switch %>方式</p>
     <p>説明: <%= @keyboard.caption %></p>
+    <h4>タグ↓</h4>
+    <% @tags.each do |tag| %>
+      <span><%= link_to tag.name, keyboards_path(tag_id: tag.id) %></span>
+    <% end %>
   </div>
 </div>
