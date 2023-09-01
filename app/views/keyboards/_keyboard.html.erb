@@ -1,10 +1,11 @@
+<%= link_to "取得画面", keyboards_search_path %>
 <div class="grid grid-cols-3 gap-4">
   <% @keyboards.each do |keyboard| %>
     <div class="p-4 border rounded-md">
       <h2 class="text-lg font-bold"><%= keyboard.model %></h2>
       <p><%= image_tag keyboard.image %></p>
       <p>価格: <%= keyboard.price %>円</p>
-      <%= link_to "ここをクリックすると詳細に飛ぶ", keyboard_path(keyboard) %>
+    <p>ブランド名: <%= keyboard.brand %></p>
     </div>
   <% end %>
 </div>

@@ -1,6 +1,6 @@
 class KeyboardsController < ApplicationController
   def index
-    @keyboards = Keyboard.all# (keyboard_params)
+    @keyboards = Keyboard.all
   end
 
   def new
@@ -17,7 +17,7 @@ class KeyboardsController < ApplicationController
     @keyboards = []
     @model = params[:keyword]
     if @model.present?
-      results = RakutenWebService::Ichiba::Item.search(keyword: @model)
+      results = RakutenWebService::Ichiba::Item.search(keyword: @model, hits: 1 )
       results.each do |result|
         keyboard = Keyboard.new(read(result))
         @keyboards << keyboard
@@ -35,7 +35,8 @@ class KeyboardsController < ApplicationController
   def read(result)
     image = result["mediumImageUrls"].first
     model = result["itemName"]
-    brand = result["shopCode"] #あとで"makerNameFormal"に変更すること
+    brand = result["shopCode"] #あとで"makerNameFormal""brandName"に変更すること
+    puts "Brand: #{brand}"
     price = result["itemPrice"]
     caption = result["itemCaption"]
     size = extract_size_from_caption(caption)
