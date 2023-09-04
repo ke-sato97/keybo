@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_011315) do
     t.string "model"
     t.string "brand"
     t.string "image"
-    t.string "os"
+    t.string "os", default: [], array: true
     t.integer "price"
     t.string "layout"
     t.string "size"

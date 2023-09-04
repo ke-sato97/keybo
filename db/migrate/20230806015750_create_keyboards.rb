@@ -4,7 +4,7 @@ class CreateKeyboards < ActiveRecord::Migration[7.0]
       t.string :model
       t.string :brand
       t.string :image
-      t.string :os
+      t.string :os, array: true, default: []
       t.integer :price
       t.string :layout
       t.string :size

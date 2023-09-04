@@ -1,15 +1,13 @@
-<%= link_to "取得画面", keyboards_search_path %>
 <div class="grid grid-cols-3 gap-4">
   <% @keyboards.each do |keyboard| %>
     <div class="p-4 border rounded-md">
-      <h2 class="text-lg font-bold"><%= keyboard.model %></h2>
+      <h2 class="text-lg font-bold"><%= link_to keyboard.model, keyboard_path(keyboard) %></h2>
       <p><%= image_tag keyboard.image %></p>
       <p>価格: <%= keyboard.price %>円</p>
       <p>ブランド名: <%= keyboard.brand %></p>
       <% keyboard.tags.each do |tag| %>
         <span><%= link_to tag.name, keyboards_path(tag_id: tag.id) %></span>
       <% end %>
-      <%= link_to "詳細画面", keyboard_path(keyboard) %>
     </div>
   <% end %>
 </div>
