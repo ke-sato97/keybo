@@ -21,10 +21,15 @@ class KeyboardsController < ApplicationController
 
   def search
     @keyboards = []
-    @model = params[:keyword]
-    if @model.present?
-      results = RakutenWebService::Ichiba::Item.search(keyword: @model, hits: 15 )
+    @name = params[:keyword]
+    if @name.present?
+      results = RakutenWebService::Ichiba::Item.search(keyword: @name, hits: 15 )
+
       results.each do |result|
+        keyboard_info = read(result)
+        name_without_brackets = remove_brackets(keyboard_info[:name]) # 商品名から【】及び【】内の文字列を削除
+        keyboard_info[:name] = name_without_brackets # 更新した商品名を設定
+
         keyboard = Keyboard.new(read(result))
         @keyboards << keyboard
       end
@@ -47,13 +52,9 @@ class KeyboardsController < ApplicationController
 
   private
 
-  def keyboard_params
-    params.require(:keyboard).permit(:image, :model, :brand, :price, :size, :switch, :layout, :os)
-  end
-
   def read(result)
-    image = result["mediumImageUrls"].first
-    model = result["itemName"]
+    medium_image_urls = result["mediumImageUrls"]
+    name = result["itemName"]
     brand = result["shopCode"]
     price = result["itemPrice"]
     caption = result["itemCaption"]
@@ -62,8 +63,8 @@ class KeyboardsController < ApplicationController
     layout = extract_layout_from_caption(caption)
     os = extract_os_from_caption(caption)
     {
-      image: image,
-      model: model,
+      medium_image_urls: medium_image_urls,
+      name: name,
       brand: brand,
       price: price,
       caption: caption,
@@ -74,17 +75,25 @@ class KeyboardsController < ApplicationController
     }
   end
 
+  def remove_brackets(text)
+    text.gsub(/\【.*?\】|＼.*?／|＼.*?／|\b(国内正規品|&限定価格&ポイント2倍&クーポン |正規保証品|正規保証|12ヶ月安心保証|1年間無償保証|2年間無償保証|3年間無償保証|送料無料|新生活)\b/, "")
+  end
+
   def extract_size_from_caption(caption)
-    size_pattern = /(フルサイズ|75%|60%|110キー|108キー|110%)/
+    size_pattern = /(フルサイズ|テンキーレス|75%|60%|110キー|108キー|110%)/
     match = caption.match(size_pattern)
     return match[0] if match
     nil
   end
 
   def extract_os_from_caption(caption)
-    os_pattern = /(MacOS|macOS|Windows 10|Windows 11|Chrome OS)/i
+    os_pattern = /(MacOS|macOS|Windows|windows|Chrome OS|iOS|Android)/i
     matches = caption.scan(os_pattern)
-    return matches.flatten.uniq if matches.any?
+
+    if matches.any?
+      normalized_os = matches.flatten.uniq.map(&:downcase)
+      return normalized_os
+    end
     nil
   end
 
@@ -103,7 +112,7 @@ class KeyboardsController < ApplicationController
   end
 
   def create_tag_from_caption(caption)
-    tag_pattern = /(108キー日本語レイアウト|US配列|日本語配列|英語配列|メンブレン|メカニカル|パンタグラフ|静電容量無接点)/
+    tag_pattern = /(108キー日本語レイアウト|US配列|日本語配列|英語配列|MacOS|macOS|Windows|メンブレン|メカニカル|パンタグラフ|静電容量無接点)/
 
     matches = caption.scan(tag_pattern)
     return matches.flatten.uniq if matches.any?

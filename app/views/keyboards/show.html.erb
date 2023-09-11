@@ -3,8 +3,10 @@
 <%= link_to "取得画面", keyboards_search_path %>
 <div class="grid grid-cols-3 gap-4">
   <div class="p-4 border rounded-md">
-    <h2 class="text-lg font-bold"><%= @keyboard.model %></h2>
-    <p><%= image_tag @keyboard.image %></p>
+    <h2 class="text-lg font-bold"><%= @keyboard.name %></h2>
+    <% @keyboard.medium_image_urls.each do |image| %>
+      <%= image_tag image %>
+    <% end %>
     <p>ブランド名: <%= @keyboard.brand %></p>
     <p>価格: <%= @keyboard.price %>円</p>
     <p>キーサイズ: <%= @keyboard.size %></p>

@@ -24,9 +24,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_011315) do
   end
 
   create_table "keyboards", force: :cascade do |t|
-    t.string "model"
+    t.string "name"
     t.string "brand"
-    t.string "image"
+    t.string "medium_image_urls", default: [], array: true
     t.string "os", default: [], array: true
     t.integer "price"
     t.string "layout"

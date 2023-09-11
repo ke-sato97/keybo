@@ -7,10 +7,11 @@
     <div class="grid grid-cols-3 gap-4">
       <% @keyboards.each do |keyboard| %>
         <div class="p-4 border rounded-md">
-          <h2 class="text-lg font-bold"><%= keyboard.brand %></h2>
-          <p><%= image_tag keyboard.image %></p>
+          <h2 class="text-lg font-bold"><%= keyboard.name %></h2>
+          <% keyboard.medium_image_urls.each do |image| %>
+            <%= image_tag image %>
+          <% end %>
           <p>価格: <%= keyboard.price %>円</p>
-          <p>ブランド名: <%= keyboard.brand %></p>
           <p>OS: <%= keyboard.os %></p>
           <p>レイアウト: <%= keyboard.layout %></p>
           <p>サイズ: <%= keyboard.size %></p>
