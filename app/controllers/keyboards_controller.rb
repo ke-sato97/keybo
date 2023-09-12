@@ -8,15 +8,9 @@ class KeyboardsController < ApplicationController
     end
   end
 
-  def new
-  end
-
   def show
     @keyboard = Keyboard.find(params[:id])
     @tags = @keyboard.tags
-  end
-
-  def edit
   end
 
   def search
@@ -36,7 +30,9 @@ class KeyboardsController < ApplicationController
     end
     @keyboards.each do |keyboard|
       unless Keyboard.all.include?(keyboard)
-        keyboard.save
+        if keyboard.save
+          flash.now[:danger] = '取得しました'
+        end
       end
 
       tag_names = create_tag_from_name_and_caption(keyboard.name) || create_tag_from_name_and_caption(keyboard.caption)

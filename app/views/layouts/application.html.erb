@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" , media: "all" %>
     <%= javascript_importmap_tags %>
+    <meta name="turbolinks-visit-control" content="reload">
   </head>
 
   <body>
@@ -15,8 +16,8 @@
       <%= render 'shared/header' %>
     <% else %>
       <%= render 'shared/before_login_header' %>
-    <%= render 'shared/flash_message' %>
     <% end %>
+    <%= render 'shared/flash_message' %>
     <%= yield %>
     <%= render 'shared/footer' %>
   </body>

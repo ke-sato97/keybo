@@ -15,7 +15,7 @@ class DiagnosesController < ApplicationController
     name = params[:name]
 
     if [selected_price, selected_os, selected_layout].any?(&:blank?)
-      flash[:notice] = "選択していない項目があります"
+      flash[:danger] =  "選択していない項目があります"
       redirect_to action: "new"
       return
     end
@@ -28,12 +28,12 @@ class DiagnosesController < ApplicationController
       if @diagnosis.save
         redirect_to diagnosis_path(@selected_keyboard)
       else
-        flash[:notice] = '診断結果の保存に失敗しました'
+        flash.now[:notice] = '診断結果の保存に失敗しました'
         redirect_to action: "new"
       end
     else
       @diagnosis = Diagnosis.new
-      flash[:notice] = 'お探しのものは見つかりませんでした。もう一度やり直してください。'
+      flash[:notice] = '選択された条件に合うものは見つかりませんでした'
       redirect_to action: "new"
     end
   end
@@ -63,7 +63,7 @@ class DiagnosesController < ApplicationController
     # name パラメーターが空でない場合にのみ name 条件を追加
     query = Keyboard.where("? = ANY (os) AND layout = ? AND price >= ? AND price <= ?", selected_os, selected_layout, price.min, price.max)
     query = query.where("name ILIKE ?", "%#{name}%") if name.present?
-    keyboard = query.first
+    keyboard = query.order("RANDOM()").first
 
     keyboard
   end
