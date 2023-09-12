@@ -5,6 +5,7 @@ class Keyboard < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :brand, presence: true
   validates :os, presence: true
+  validates :layout, presence: true
   validates :caption, presence: true
 end
 
