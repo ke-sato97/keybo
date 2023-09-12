@@ -1,0 +1,22 @@
+<h1 class="text-4xl font-bold">Diagnoses#index</h1>
+<h1>すべての診断結果</h1>
+<table>
+  <thead>
+    <tr>
+      <th>診断結果ID</th>
+      <th>ユーザー</th>
+      <th>アイテム</th>
+      <!-- 他の診断結果の属性を追加 -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @diagnoses.each do |diagnosis| %>
+      <tr>
+        <td><%= diagnosis.id %></td>
+        <td><%= diagnosis.user.name %></td>
+        <td><%= diagnosis.keyboard.name %></td>
+        <!-- 他の診断結果の属性を追加 -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,20 @@
+<!-- app/views/diagnoses/new.html.erb -->
+<%= form_with model: @keyboard, url: diagnoses_path, local: true, method: :post do |f| %>
+  <p>質問1: 希望する価格帯はどれくらいですか？</p>
+  <%= f.select :price, [['0~5000円', '0-5000'], ['5000~10000円', '5000-10000'], ['10000~15000円', '10000-15000'], ['15000~20000円', '15000-20000'], ['20000円以上', '20000+']], prompt: '選択してください' %>
+
+  <p>質問2: 希望するOSはなんですか？</p>
+  <%= f.select :os, [["WindowsOS", "windows"], ["MacOS", "macos"]], prompt: '選択してください' %>
+
+  <p>質問3: 希望するサイズはなんですか？</p>
+  <%= f.select :layout, [["US配列", "US配列"], ["日本語配列", "日本語配列"]], prompt: '選択してください' %>
+
+  <p>質問4: 希望するメーカー名やモデルを記載してください(任意)</p>
+  <%= f.text_field :name, prompt: '記載してください' %>
+
+  <br>
+  <%= f.submit '診断する' %>
+<% end %>
+
+<br>
+<%= link_to '過去の診断結果を表示する', diagnoses_path %>

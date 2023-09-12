@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       redirect_to login_path, success: t('.success')
     else
       flash.now[:danger] = t('.fail')
-      render :new
+      render action: 'new'
     end
   end
 
