@@ -23,17 +23,16 @@ class DiagnosesController < ApplicationController
     @selected_keyboard = select_keyboard(selected_price, selected_os, selected_layout, name)
 
     if @selected_keyboard
-      binding.pry
       @diagnosis = current_user.diagnoses.build(keyboard: @selected_keyboard)
       if @diagnosis.save
         redirect_to diagnosis_path(@selected_keyboard)
       else
-        flash.now[:notice] = '診断結果の保存に失敗しました'
+        flash.now[:danger] = '診断結果の保存に失敗しました'
         redirect_to action: "new"
       end
     else
       @diagnosis = Diagnosis.new
-      flash[:notice] = '選択された条件に合うものは見つかりませんでした'
+      flash[:danger] = '選択された条件に合うものは見つかりませんでした'
       redirect_to action: "new"
     end
   end
