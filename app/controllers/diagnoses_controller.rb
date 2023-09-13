@@ -11,21 +11,23 @@ class DiagnosesController < ApplicationController
   def create
     selected_price = params[:price]
     selected_os = params[:os]
+    selected_size = params[:size]
     selected_layout = params[:layout]
+    selected_switch = params[:switch]
     name = params[:name]
 
-    if [selected_price, selected_os, selected_layout].any?(&:blank?)
-      flash[:danger] =  "選択していない項目があります"
+    if [selected_price, selected_os].any?(&:blank?)
+      flash[:danger] =  "質問１と質問2は必須項目です"
       redirect_to action: "new"
       return
     end
 
-    @selected_keyboard = select_keyboard(selected_price, selected_os, selected_layout, name)
+    @selected_keyboard = select_keyboard(selected_price, selected_os, selected_size, selected_layout, selected_switch, name)
 
     if @selected_keyboard
       @diagnosis = current_user.diagnoses.build(keyboard: @selected_keyboard)
       if @diagnosis.save
-        redirect_to diagnosis_path(@selected_keyboard)
+        redirect_to diagnosis_path(@selected_keyboard), notice: 'おすすめのキーボードが見つかりました'
       else
         flash.now[:danger] = '診断結果の保存に失敗しました'
         redirect_to action: "new"
@@ -43,7 +45,7 @@ class DiagnosesController < ApplicationController
 
   private
 
-  def select_keyboard(selected_price, selected_os, selected_layout, name)
+  def select_keyboard(selected_price, selected_os, selected_size, selected_layout, selected_switch, name)
     price = case selected_price
                       when '0-5000'
                         0..5000
@@ -59,11 +61,15 @@ class DiagnosesController < ApplicationController
                         nil
                       end
 
-    # name パラメーターが空でない場合にのみ name 条件を追加
-    query = Keyboard.where("? = ANY (os) AND layout = ? AND price >= ? AND price <= ?", selected_os, selected_layout, price.min, price.max)
-    query = query.where("name ILIKE ?", "%#{name}%") if name.present?
-    keyboard = query.order("RANDOM()").first
+    query = Keyboard.where("? = ANY (os) AND price >= ? AND price <= ?", selected_os, price.min, price.max)
 
+    # パラメーターが空でない場合にのみ条件を追加
+    query = query.where("name ILIKE ?", "%#{name}%") if name.present?
+    query = query.where("size = ?", selected_size) if selected_size.present?
+    query = query.where("layout = ?", selected_layout) if selected_layout.present?
+    query = query.where("switch = ?", selected_switch) if selected_switch.present?
+
+    keyboard = query.order("RANDOM()").first
     keyboard
   end
 

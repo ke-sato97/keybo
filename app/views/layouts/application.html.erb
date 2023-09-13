@@ -18,7 +18,9 @@
       <%= render 'shared/before_login_header' %>
     <% end %>
     <%= render 'shared/flash_message' %>
-    <%= yield %>
+    <div class="bg-slate-200">
+      <%= yield %>
+    </div>
     <%= render 'shared/footer' %>
   </body>
 </html>

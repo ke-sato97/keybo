@@ -3,3 +3,4 @@ import "@hotwired/turbo-rails"
 import "controllers"
 console.log("JSが正常に動作しています")
 
+import 'flowbite';

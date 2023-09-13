@@ -17,7 +17,7 @@ class KeyboardsController < ApplicationController
     @keyboards = []
     @name = params[:keyword]
     if @name.present?
-      results = RakutenWebService::Ichiba::Item.search(keyword: @name, hits: 15 )
+      results = RakutenWebService::Ichiba::Item.search(keyword: @name, hits: 30 )
 
       results.each do |result|
         keyboard_info = read(result)
@@ -75,7 +75,7 @@ class KeyboardsController < ApplicationController
   # 以下APIから受け取ったデータを加工
   # nameカラムに送られてくるAPIからのデータを編集
   def remove_brackets(text)
-    text.gsub(/\【.*?\】|＼.*?／|＼.*?／|\b(国内正規品|&限定価格&ポイント2倍&クーポン |正規保証品|正規保証|12ヶ月安心保証|1年間無償保証|2年間無償保証|3年間無償保証|送料無料|新生活)\b/, "")
+    text.gsub(/\【.*?\】|＼.*?／|[.*?]|\b(国内正規品|着日指定不可|&限定価格&ポイント2倍&クーポン |正規保証品|正規保証|12ヶ月安心保証|一年間品質保証|ギフト|お誕生日|★即納|誕生日プレゼント|人気ギフト|贈り物|敬老の日|1年間無償保証|2年間無償保証|3年間無償保証|★絶賛発売中|送料無料|新生活)\b/, "")
   end
 
   # OS
@@ -92,7 +92,7 @@ class KeyboardsController < ApplicationController
 
   # size
   def create_size_from_name_and_caption(text)
-    size_pattern = /(フルサイズ|テンキーレス|60%|70%|75%|80%|100%|110%|67キー|92キー|104 キー|106キー|107キー|108キー|109キー|110キー|111キー|112キー)/
+    size_pattern = /(フルサイズ|テンキー付き|テンキーレス|テンキーなし|60%|70%|75%|80%|100%|110%|67キー|92キー|104 キー|106キー|107キー|108キー|109キー|110キー|111キー|112キー)/
     match = text.match(size_pattern)
     return match[0] if match
     nil
