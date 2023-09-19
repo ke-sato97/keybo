@@ -2,9 +2,9 @@ class KeyboardsController < ApplicationController
   def index
     if params[:tag_id].present?
       tag = Tag.find(params[:tag_id])
-      @keyboards = tag.keyboards.includes(:tags)
+      @keyboards = tag.keyboards.includes(:tags).page(params[:page])
     else
-      @keyboards = Keyboard.includes(:tags).all
+      @keyboards = Keyboard.includes(:tags).all.page(params[:page])
     end
   end
 

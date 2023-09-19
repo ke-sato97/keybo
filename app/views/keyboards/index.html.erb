@@ -1,6 +1,12 @@
 <h1>Keyboards#index</h1>
 <%= link_to "一覧画面", keyboards_path %>
 <%= link_to "取得画面", keyboards_search_path %>
+  <!-- 一覧 -->
 <div class="mt-4">
-    <%= render 'keyboards/keyboard' %>
+  <!-- ページネーション -->
+  <%= paginate @keyboards %>
+  <!-- 掲示板 -->
+  <%= render 'keyboards/keyboard' %>
+  <!-- ページネーション -->
+  <%= paginate @keyboards %>
 </div>
