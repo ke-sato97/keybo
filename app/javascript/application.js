@@ -4,3 +4,7 @@ import "controllers"
 console.log("JSが正常に動作しています")
 
 import 'flowbite';
+
+// autocomplete.js ファイルの読み込み
+import "./autocomplete"
+

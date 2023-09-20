@@ -1,0 +1,13 @@
+  <div class="relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">
+    <div class="relative flex items-center justify-center mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg h-80 rounded-xl bg-clip-border">
+      <%= image_tag @selected_keyboard.medium_image_urls.first, size: '250' %>
+    </div>
+    <div class="p-6 text-center">
+      <h4 class="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+        <%= @selected_keyboard.name %>
+      </h4>
+      <p class="block font-sans text-base antialiased font-medium leading-relaxed text-transparent bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-text">
+        <h3>価格: <%= @selected_keyboard.price %>円</h3>
+      </p>
+    </div>
+  </div>
