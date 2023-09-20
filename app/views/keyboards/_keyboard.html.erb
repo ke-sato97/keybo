@@ -5,9 +5,10 @@
           <%= image_tag keyboard.medium_image_urls.first, size: '250' %>
         </div>
           <div class="p-6 text-center w-96 h-96">
-            <h3 class="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+            <div class="block mb-2 font-sans text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 ">
               <%= keyboard.name %>
-            </h3>
+              <%= link_to keyboard.name, keyboard_path(keyboard) %>
+            </div>
         </div>
     </div>
   </div>

@@ -1,10 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
 .top-wrapper {
-  background-image: url("sample5.jpg");
+  background-image: image-url("images/sample.jpg");
   height: calc(100vh - 134px);
   position: relative;
   background-position: center;
