@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" , media: "all" %>
+    <%= javascript_importmap_tags %>
+    <meta name="turbolinks-visit-control" content="reload">
+  </head>
+
+  <body>
+    <%= render 'shared/header' %>
+    <%= render 'shared/flash_message' %>
+    <div class="bg-teal-200">
+      <%= yield %>
+    </div>
+  </body>
+</html>

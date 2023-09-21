@@ -7,6 +7,14 @@ Rails.application.routes.draw do
 
   get 'keyboards/search', to: 'keyboards#search'
 
+  namespace :admin do
+    get 'keyboards/search'
+    get 'keyboards/edit'
+    get 'login', to: 'user_sessions#new'
+    post 'login', to: 'user_sessions#create'
+    delete 'logout', to: 'user_sessions#destroy'
+  end
+
   resources :users
   resources :keyboards
   resources :diagnoses, only: %i[index new show create]

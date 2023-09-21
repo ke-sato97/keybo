@@ -1,7 +1,16 @@
 <h1 class="text-2xl font-bold">Keyboard search</h1>
 <%= link_to "一覧画面", keyboards_path %>
-<%= link_to "取得画面", admin_keyboards_search_path %>
-<%= render 'keyboards/search_box' %>
+<%= link_to "取得画面", keyboards_search_path %>
+<div class="flex items-center justify-center ">
+  <div class="flex border-2 border-gray-200 rounded">
+  <%= form_with url: admin_keyboards_search_path, method: :get do |f| %>
+    <div class="flex items-center p-2 border space-x-4 rounded-md">
+      <%= f.text_field :keyword, value: @model, class: "px-4 py-2 w-80" %>
+      <%= f.submit '製品名を検索', class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>
+  <% end %>
+  </div>
+</div>
 <div class="mt-4">
   <% if @keyboards.any? %>
     <div class="grid grid-cols-3 gap-4">
