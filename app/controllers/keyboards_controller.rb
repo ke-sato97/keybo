@@ -1,6 +1,4 @@
 class KeyboardsController < ApplicationController
-  before_action :set_search
-
   def index
     if params[:tag_id].present?
       tag = Tag.find(params[:tag_id])

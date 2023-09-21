@@ -5,7 +5,6 @@ document.addEventListener("turbo:load", function() {
   if (keyboardSearch) {
     keyboardSearch.addEventListener("input", function() {
       const searchTerm = keyboardSearch.value;
-      console.log(searchTerm)
 
       if (searchTerm.length >= 3) {
         fetch(`/keyboards?search=${searchTerm}`, { headers: { accept: "application/json" } })
@@ -16,7 +15,7 @@ document.addEventListener("turbo:load", function() {
               const p = document.createElement("p");
               p.classList.add("truncate", "border-2", "border-gray-200", "rounded");
               p.setAttribute("data-text", name);
-              p.textContent = name.substring(0, 20); // 最初の20文字を表示
+              p.textContent = name.substring(0, 35); // 最初の20文字を表示
               p.addEventListener("click", function() {
                 keyboardSearch.value = p.getAttribute("data-text"); // 完全なテキストを挿入
                 keyboardResults.innerHTML = "";
