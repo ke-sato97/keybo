@@ -4,18 +4,15 @@
       <%= link_to image_tag('header_logo.jpg', size: '90x360'), root_path %>
 
       <%= form_with url: keyboards_path, method: :get, remote: true do |f| %>
-        <%= f.text_field :search, id: "keyboard_search", placeholder: "Search keyboards" %>
-        <%= f.submit "search" %>
+        <div class="flex items-center justify-center ">
+          <div class="flex border-2 border-gray-200 rounded">
+            <%= f.text_field :search, id: "keyboard_search",class: "px-4 py-2 w-80", autocomplete: 'off', placeholder: "Search keyboards" %>
+            <button type="submit" class="px-4 text-white bg-gray-600 border-l ">検索</button>
+          </div>
+        </div>
+        <div id="keyboard_results"> <!-- absoluteと他のスタイルを追加 -->
+        </div>
       <% end %>
-    <div id="autocomplete_results">
-      <ul id="keyboard_results">
-        <% if params[:search].present? && @keyboards.any? %>
-          <% @keyboards.each do |keyboard| %>
-            <%= keyboard.name %>
-          <% end %>
-        <% end %>
-      </ul>
-    </div>
 
       <div class="flex items-center lg:order-2">
         ログインユーザー：<%= current_user.name %>さん

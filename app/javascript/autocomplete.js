@@ -1,6 +1,6 @@
 document.addEventListener("turbo:load", function() {
+  const keyboardSearch = document.querySelector("#keyboard_search");
   const keyboardResults = document.querySelector("#keyboard_results");
-  const autocompleteResults = document.querySelector("#autocomplete_results");
 
   if (keyboardSearch) {
     keyboardSearch.addEventListener("input", function() {
@@ -12,21 +12,21 @@ document.addEventListener("turbo:load", function() {
           .then(response => response.json())
           .then(data => {
             keyboardResults.innerHTML = "";
-            autocompleteResults.innerHTML = ""; // オートコンプリートの結果をクリア
-            data.forEach(name => {
-              const li = document.createElement("li");
-              li.textContent = name;
-              li.addEventListener("click", function() {
-                keyboardSearch.value = name;
+            data.slice(0, 5).forEach(name => { // 最大5個の結果を表示
+              const p = document.createElement("p");
+              p.classList.add("truncate", "border-2", "border-gray-200", "rounded");
+              p.setAttribute("data-text", name);
+              p.textContent = name.substring(0, 20); // 最初の20文字を表示
+              p.addEventListener("click", function() {
+                keyboardSearch.value = p.getAttribute("data-text"); // 完全なテキストを挿入
                 keyboardResults.innerHTML = "";
               });
-              autocompleteResults.appendChild(li); // オートコンプリートの結果を追加
+              keyboardResults.appendChild(p);
             });
           });
       } else {
         keyboardResults.innerHTML = "";
-        autocompleteResults.innerHTML = ""; // オートコンプリートの結果をクリア
       }
     });
   }
-}):
+});
