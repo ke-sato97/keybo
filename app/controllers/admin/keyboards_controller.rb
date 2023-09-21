@@ -24,10 +24,7 @@ class Admin::KeyboardsController < Admin::BaseController
         end
 
         # タグの作成と関連付け
-        create_layout_tag(keyboard_info[:name], existing_keyboard)
-        create_switch_tag(keyboard_info[:name], existing_keyboard)
-        create_os_tag(keyboard_info[:name], existing_keyboard)
-        create_size_tag(keyboard_info[:name], existing_keyboard)
+        create_and_assign_tags(keyboard_info, existing_keyboard)
       end
     end
   end
@@ -79,9 +76,9 @@ class Admin::KeyboardsController < Admin::BaseController
 
   # sizeカラムに保存する文字列
   def create_size_from_name_and_caption(text)
-    size_pattern = /(テンキーレス|テンキーなし|テンキー付き|フルサイズ|60%|70%|75%|80%|100%|110%|67キー|92キー|104 キー|105キー|106キー|107キー|108キー|109キー|110キー|111キー|112キー|113キー|114キー|115キー)/
+    size_pattern = /(テンキーレス|テンキーなし|テンキー付き|フルサイズ|60%|70%|75%|80%|100%|110%|66キー|67キー|84キー|92キー|104 キー|105キー|106キー|107キー|108キー|109キー|110キー|111キー|112キー|113キー|114キー|115キー)/
     match = text.match(size_pattern)
-    return match[0].gsub(/(テンキーレス|テンキーなし|60%|70%|75%|80%|67キー|92キー)/, "テンキーレス").gsub(/(テンキー付き|フルサイズ|100%|110%|105キー|106キー|107キー|108キー|109キー|110キー|111キー|112キー|113キー|114キー|115キー)/, "フルサイズ") if match
+    return match[0].gsub(/(テンキーレス|テンキーなし|60%|70%|75%|80%|66キー|67キー|84キー|92キー)/, "テンキーレス").gsub(/(テンキー付き|フルサイズ|100%|110%|105キー|106キー|107キー|108キー|109キー|110キー|111キー|112キー|113キー|114キー|115キー)/, "フルサイズ") if match
     nil
   end
 
@@ -102,39 +99,30 @@ class Admin::KeyboardsController < Admin::BaseController
   end
 
   # タグの作成と関連付けのメソッド
-  # osカラムと同時
-  def create_os_tag(keyboard_name, keyboard)
-    os_tag_name = create_os_from_name_and_caption(keyboard_name)
+  def create_and_assign_tags(keyboard_info, keyboard)
+    tags_to_create = [
+      convert_os_to_string(keyboard_info[:os]),
+      keyboard_info[:size],
+      keyboard_info[:switch],
+      keyboard_info[:layout]
+    ].compact
 
-    # os_tag_nameが配列であれば、文字列に変換
-    os_tag_name = os_tag_name.join(' ') if os_tag_name.is_a?(Array)
-
-    if os_tag_name
-      tag = Tag.find_or_create_by(name: os_tag_name)
-      keyboard.tags << tag
+    tags_to_create.each do |tag_name|
+      create_and_assign_tag(tag_name, keyboard)
     end
   end
 
-  def create_size_tag(keyboard_name, keyboard)
-    size_tag_name = create_size_from_name_and_caption(keyboard_name)
-    if size_tag_name
-      tag = Tag.find_or_create_by(name: size_tag_name)
-      keyboard.tags << tag
+  # 配列を文字列に変換する
+  def convert_os_to_string(os)
+    if os.is_a?(Array)
+      return os.join(' ')
     end
+    os
   end
 
-  def create_switch_tag(keyboard_name, keyboard)
-    switch_tag_name = create_switch_from_name_and_caption(keyboard_name)
-    if switch_tag_name
-      tag = Tag.find_or_create_by(name: switch_tag_name)
-      keyboard.tags << tag
-    end
-  end
-
-  def create_layout_tag(keyboard_name, keyboard)
-    layout_tag_name = create_layout_from_name_and_caption(keyboard_name)
-    if layout_tag_name
-      tag = Tag.find_or_create_by(name: layout_tag_name)
+  def create_and_assign_tag(tag_name, keyboard)
+    if tag_name
+      tag = Tag.find_or_create_by(name: tag_name)
       keyboard.tags << tag
     end
   end
