@@ -12,31 +12,32 @@ class Admin::KeyboardsController < Admin::BaseController
         name_without_brackets = remove_brackets(keyboard_info[:name]) # 商品名からremove_brackets内の文字列を削除
         keyboard_info[:name] = name_without_brackets # 更新した商品名を設定
 
-        keyboard = Keyboard.new(keyboard_info)
-        @keyboards << keyboard
-      end
-    end
-    @keyboards.each do |keyboard|
-      unless Keyboard.all.include?(keyboard)
-        if keyboard.save
-          flash.now[:success] = '取得しました'
-        end
-      end
+        existing_keyboard = Keyboard.find_by(name: keyboard_info[:name])
 
-      tag_names = create_tag_from_name_and_caption(keyboard.name) || create_tag_from_name_and_caption(keyboard.caption)
-
-      if tag_names.present?
-        tag_names.each do |tag_name|
-          tag = Tag.find_or_create_by(name: tag_name)
-          keyboard.tags << tag
+        if existing_keyboard
+          # 既存のキーボードが存在する場合は更新
+          existing_keyboard.update(keyboard_info)
+          keyobard = existing_keyboard
+        else
+          # 既存のキーボードが存在しない場合は新規保存
+          keyobard = Keyboard.new(keyboard_info)
+          keyobard.save
         end
+
+        # tag_names = create_tag_from_name_and_caption(keyboard.name) || create_tag_from_name_and_caption(keyboard.caption)
+
+        # if tag_names.present?
+        #   tag_names.each do |tag_name|
+        #     tag = Tag.find_or_create_by(name: tag_name)
+        #     keyboard.tags << tag
+        #   end
+        # end
       end
     end
     @keyboards_with_tags = Keyboard.includes(:tags).where(id: @keyboards.map(&:id))
   end
 
-  def edit
-  end
+  def edit; end
 
   private
 
@@ -46,10 +47,10 @@ class Admin::KeyboardsController < Admin::BaseController
     brand = result["shopCode"]
     price = result["itemPrice"]
     caption = result["itemCaption"]
-    os = create_os_from_caption(caption)
+    os = create_os_from_name_and_caption(name) || create_os_from_name_and_caption(caption)
     size = create_size_from_name_and_caption(name) || create_size_from_name_and_caption(caption)
-    switch = create_switch_from_caption(caption)
-    layout = create_layout_from_caption(caption)
+    switch = create_switch_from_name_and_caption(name) || create_switch_from_name_and_caption(caption)
+    layout = create_layout_from_name_and_caption(name) || create_layout_from_name_and_caption(caption)
     {
       medium_image_urls: medium_image_urls,
       name: name,
@@ -70,9 +71,9 @@ class Admin::KeyboardsController < Admin::BaseController
   end
 
   # osカラムに保存する文字列(全て小文字に変換し配列にして保存)
-  def create_os_from_caption(caption)
-    os_pattern = /(MacOS|macOS|Windows|windows|Linux|linux|Chrome OS|iOS|Android)/i
-    matches = caption.scan(os_pattern)
+  def create_os_from_name_and_caption(text)
+    os_pattern = /(MacOS|mac OS|macOS|Windows|windows|Linux|linux|Chrome OS|iOS|Android)/i
+    matches = text.scan(os_pattern)
 
     if matches.any?
       normalized_os = matches.flatten.uniq.map(&:downcase)
@@ -83,36 +84,35 @@ class Admin::KeyboardsController < Admin::BaseController
 
   # sizeカラムに保存する文字列
   def create_size_from_name_and_caption(text)
-    size_pattern = /(テンキーレス|テンキーなし|テンキー付き|フルサイズ|60%|70%|75%|80%|100%|110%|67キー|92キー|104 キー|105キー|106キー|107キー|108キー|109キー|110キー|111キー|112キー)/
+    size_pattern = /(テンキーレス|テンキーなし|テンキー付き|フルサイズ|60%|70%|75%|80%|100%|110%|67キー|92キー|104 キー|105キー|106キー|107キー|108キー|109キー|110キー|111キー|112キー|113キー|114キー|115キー)/
     match = text.match(size_pattern)
-    return match[0].gsub(/(テンキーレス|テンキーなし|60%|70%|75%|80%|67キー|92キー)/, "テンキーレス").gsub(/(テンキー付き|フルサイズ|100%|110%|105キー|106キー|107キー|108キー|109キー|110キー|111キー|112キー)/, "フルサイズ") if match
+    return match[0].gsub(/(テンキーレス|テンキーなし|60%|70%|75%|80%|67キー|92キー)/, "テンキーレス").gsub(/(テンキー付き|フルサイズ|100%|110%|105キー|106キー|107キー|108キー|109キー|110キー|111キー|112キー|113キー|114キー|115キー)/, "フルサイズ") if match
     nil
   end
 
   # switchカラムに保存する文字列
-  def create_switch_from_caption(caption)
+  def create_switch_from_name_and_caption(text)
     switch_pattern = /(メンブレン|パンタグラフ|メカニカル|静電容量無接点)/
-    match = caption.match(switch_pattern)
+    match = text.match(switch_pattern)
     return match[0] if match
     nil
   end
 
   # layoutカラムに保存する文字列
-  def create_layout_from_caption(caption)
+  def create_layout_from_name_and_caption(text)
     layout_pattern = /(日本語配列|英語配列|JIS配列|US配列|日本語レイアウト)/
-    match = caption.match(layout_pattern)
+    match = text.match(layout_pattern)
     return match[0].gsub(/(日本語レイアウト|日本語配列)/, "JIS配列").gsub(/(英語配列|英語レイアウト)/, "US配列") if match
     nil
   end
 
   # タグを作成
-  def create_tag_from_name_and_caption(text)
-    tag_pattern = /(フルサイズ|テンキーレス|60%|70%|75%|80%|100%|110%|67キー|92キー|106キー|107キー|108キー|109キー|110キー|111キー|112キー|日本語レイアウト|US配列|日本語配列|英語配列|MacOS|macOS|Windows|Linux|メンブレン|メカニカル|パンタグラフ|静電容量無接点)/
+  # def create_tag_from_name_and_caption(text)
+  #   tag_pattern = /(フルサイズ|テンキーレス|60%|70%|75%|80%|100%|110%|67キー|92キー|106キー|107キー|108キー|109キー|110キー|111キー|112キー|日本語レイアウト|US配列|日本語配列|英語配列|MacOS|macOS|Windows|Linux|メンブレン|メカニカル|パンタグラフ|静電容量無接点)/
 
-    matches = text.scan(tag_pattern)
-    return matches.flatten.uniq if matches.any?
-    # return matches if matches.any?
-    nil
-  end
+  #   matches = text.scan(tag_pattern)
+  #   return matches.flatten.uniq if matches.any?
+  #   # return matches if matches.any?
+  #   nil
+  # end
 end
-
