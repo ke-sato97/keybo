@@ -26,7 +26,7 @@
 }
 
 .login-wrapper {
-  background-image: image-url("images/sample6.jpg");
+  background-image: image-url("login.jpg");
   height: calc(100vh - 134px);
   position: relative;
   background-position: center;

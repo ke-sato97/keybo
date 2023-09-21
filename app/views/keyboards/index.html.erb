@@ -8,7 +8,7 @@
   <!-- 掲示板 -->
   <% if @keyboards.any? %>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-      <%= render 'keyboards/keyboard' %>
+      <%= render 'keyboards/keyboard', keyboards: @keyboards %>
     </div>
   <% else %>
     <li>条件に合うものは見つかりませんでした。</li>

@@ -1,7 +1,7 @@
 class DiagnosesController < ApplicationController
   before_action :require_login
   def index
-    @diagnoses = current_user.diagnoses.includes(:keyboard).all
+    @diagnoses = current_user.diagnoses.includes(:keyboard).page(params[:page]).all.map(&:keyboard)
   end
 
   def new
