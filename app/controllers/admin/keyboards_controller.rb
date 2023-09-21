@@ -17,24 +17,19 @@ class Admin::KeyboardsController < Admin::BaseController
         if existing_keyboard
           # 既存のキーボードが存在する場合は更新
           existing_keyboard.update(keyboard_info)
-          keyobard = existing_keyboard
         else
           # 既存のキーボードが存在しない場合は新規保存
-          keyobard = Keyboard.new(keyboard_info)
-          keyobard.save
+          existing_keyboard = Keyboard.new(keyboard_info)
+          existing_keyboard.save
         end
 
-        # tag_names = create_tag_from_name_and_caption(keyboard.name) || create_tag_from_name_and_caption(keyboard.caption)
-
-        # if tag_names.present?
-        #   tag_names.each do |tag_name|
-        #     tag = Tag.find_or_create_by(name: tag_name)
-        #     keyboard.tags << tag
-        #   end
-        # end
+        # タグの作成と関連付け
+        create_layout_tag(keyboard_info[:name], existing_keyboard)
+        create_switch_tag(keyboard_info[:name], existing_keyboard)
+        create_os_tag(keyboard_info[:name], existing_keyboard)
+        create_size_tag(keyboard_info[:name], existing_keyboard)
       end
     end
-    @keyboards_with_tags = Keyboard.includes(:tags).where(id: @keyboards.map(&:id))
   end
 
   def edit; end
@@ -106,13 +101,41 @@ class Admin::KeyboardsController < Admin::BaseController
     nil
   end
 
-  # タグを作成
-  # def create_tag_from_name_and_caption(text)
-  #   tag_pattern = /(フルサイズ|テンキーレス|60%|70%|75%|80%|100%|110%|67キー|92キー|106キー|107キー|108キー|109キー|110キー|111キー|112キー|日本語レイアウト|US配列|日本語配列|英語配列|MacOS|macOS|Windows|Linux|メンブレン|メカニカル|パンタグラフ|静電容量無接点)/
+  # タグの作成と関連付けのメソッド
+  # osカラムと同時
+  def create_os_tag(keyboard_name, keyboard)
+    os_tag_name = create_os_from_name_and_caption(keyboard_name)
 
-  #   matches = text.scan(tag_pattern)
-  #   return matches.flatten.uniq if matches.any?
-  #   # return matches if matches.any?
-  #   nil
-  # end
+    # os_tag_nameが配列であれば、文字列に変換
+    os_tag_name = os_tag_name.join(' ') if os_tag_name.is_a?(Array)
+
+    if os_tag_name
+      tag = Tag.find_or_create_by(name: os_tag_name)
+      keyboard.tags << tag
+    end
+  end
+
+  def create_size_tag(keyboard_name, keyboard)
+    size_tag_name = create_size_from_name_and_caption(keyboard_name)
+    if size_tag_name
+      tag = Tag.find_or_create_by(name: size_tag_name)
+      keyboard.tags << tag
+    end
+  end
+
+  def create_switch_tag(keyboard_name, keyboard)
+    switch_tag_name = create_switch_from_name_and_caption(keyboard_name)
+    if switch_tag_name
+      tag = Tag.find_or_create_by(name: switch_tag_name)
+      keyboard.tags << tag
+    end
+  end
+
+  def create_layout_tag(keyboard_name, keyboard)
+    layout_tag_name = create_layout_from_name_and_caption(keyboard_name)
+    if layout_tag_name
+      tag = Tag.find_or_create_by(name: layout_tag_name)
+      keyboard.tags << tag
+    end
+  end
 end
