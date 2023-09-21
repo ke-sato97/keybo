@@ -7,6 +7,15 @@
         <%= f.text_field :search, id: "keyboard_search", placeholder: "Search keyboards" %>
         <%= f.submit "search" %>
       <% end %>
+    <div id="autocomplete_results">
+      <ul id="keyboard_results">
+        <% if params[:search].present? && @keyboards.any? %>
+          <% @keyboards.each do |keyboard| %>
+            <%= keyboard.name %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
 
       <div class="flex items-center lg:order-2">
         ログインユーザー：<%= current_user.name %>さん
@@ -24,7 +33,7 @@
             <%= link_to (t 'defaults.ranking'), "#", class: "block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700" %>
           </li>
           <li>
-            <%= link_to (t 'defaults.history'), "#", class: "block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700" %>
+            <%= link_to (t 'defaults.history'), diagnoses_path, class: "block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700" %>
           </li>
           <li>
             <%= link_to (t 'defaults.bookmark'), "#", class: "block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700" %>
