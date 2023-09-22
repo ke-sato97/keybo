@@ -4,7 +4,7 @@ class Admin::KeyboardsController < Admin::BaseController
     @name = params[:keyword]
     if @name.present?
       # APIにリクエストを送信
-      results = RakutenWebService::Ichiba::Item.search(keyword: @name, hits: 30 )
+      results = RakutenWebService::Ichiba::Item.search(keyword: @name, hits: 20 )
 
       # レスポンスを処理
       results.each do |result|
@@ -33,6 +33,7 @@ class Admin::KeyboardsController < Admin::BaseController
 
   private
 
+  # 各カラムに振り分け
   def read(result)
     medium_image_urls = result["mediumImageUrls"]
     name = result["itemName"]
@@ -64,7 +65,7 @@ class Admin::KeyboardsController < Admin::BaseController
 
   # osカラムに保存する文字列(全て小文字に変換し配列にして保存)
   def create_os_from_name_and_caption(text)
-    os_pattern = /(MacOS|mac OS|macOS|Windows|windows|Linux|linux|Chrome OS|iOS|Android)/i
+    os_pattern = /(Mac|mac|Windows|windows|Linux|linux|Chrome OS|iOS|Android)/i
     matches = text.scan(os_pattern)
 
     if matches.any?
@@ -107,12 +108,15 @@ class Admin::KeyboardsController < Admin::BaseController
       keyboard_info[:layout]
     ].compact
 
+    # キーボードに既に関連付けられているタグを取得
+    existing_tags = keyboard.tags.to_a
+
     tags_to_create.each do |tag_name|
-      create_and_assign_tag(tag_name, keyboard)
+      create_and_assign_tag(tag_name, keyboard, existing_tags)
     end
   end
 
-  # 配列を文字列に変換する
+  # 配列を文字列に変換する ※ここで結合しないと先頭しか保存されない
   def convert_os_to_string(os)
     if os.is_a?(Array)
       return os.join(' ')
@@ -120,10 +124,17 @@ class Admin::KeyboardsController < Admin::BaseController
     os
   end
 
-  def create_and_assign_tag(tag_name, keyboard)
-    if tag_name
-      tag = Tag.find_or_create_by(name: tag_name)
-      keyboard.tags << tag
+  def create_and_assign_tag(tag_names, keyboard, existing_tags)
+    if tag_names
+      tag_names.split(' ').each do |tag_name|
+        tag = existing_tags.find { |t| t.name == tag_name }
+
+        if tag.nil?
+          tag = Tag.find_or_create_by(name: tag_name)
+          keyboard.tags << tag
+          existing_tags << tag
+        end
+      end
     end
   end
 end
