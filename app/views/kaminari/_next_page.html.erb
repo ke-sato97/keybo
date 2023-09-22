@@ -7,5 +7,5 @@
     remote:        data-remote
 -%>
 <li class="next">
-  <%= link_to_unless current_page.last?, t('views.pagination.next').html_safe, url, rel: 'next', remote: remote, class: "block py-[12px] w-12 h-12 bg-white border text-console text-center !leading-none rounded-r-[3px]" %>
+  <%= link_to_unless current_page.last?, t('views.pagination.next').html_safe, url, rel: 'next', remote: remote, class: "block py-[12px] w-12 h-12 bg-white border text-console text-center !leading-none rounded-r-[3px] hover:bg-gray-100" %>
 </li>

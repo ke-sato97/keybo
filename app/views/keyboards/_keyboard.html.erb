@@ -1,15 +1,14 @@
 <% keyboards.each do |keyboard| %>
-  <div class="p-4 border rounded-md">
-    <div class="relative text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">
-        <div class="relative flex items-center justify-center mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg h-80 rounded-xl bg-clip-border">
-          <%= image_tag keyboard.medium_image_urls.first, size: '250' %>
+  <%= button_to keyboard_path(keyboard), method: :get, class: "p-4 border rounded-md" do %>
+    <div class="relative text-gray-700 bg-white shadow-lg hover:bg-gray-100 w-96 rounded-xl bg-clip-border">
+      <div class="relative flex items-center justify-center mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg h-80 rounded-xl bg-clip-border">
+        <%= image_tag keyboard.medium_image_urls.first, size: '250' %>
+      </div>
+      <div class="h-64 p-6 text-center w-96">
+        <div class="block mb-2 font-sans text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 ">
+          <%= keyboard.name %>
         </div>
-          <div class="p-6 text-center w-96 h-96">
-            <div class="block mb-2 font-sans text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 ">
-              <%= keyboard.name %>
-              <%= link_to keyboard.name, keyboard_path(keyboard) %>
-            </div>
-        </div>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>

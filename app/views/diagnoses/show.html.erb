@@ -1,25 +1,25 @@
 <!-- app/views/diagnoses/:id -->
-<h1>診断結果</h1>
-<br>
-<% if @selected_keyboard %>
-  <h1><%= current_user.name %>へのおすすめはこちらです!</h1>
-    <div class="grid grid-cols-3 gap-4">
-      <ul>
-        <h2 class="text-lg font-bold"><%= @selected_keyboard.name %></h2>
-        <div class="image-gallery">
-          <% @selected_keyboard.medium_image_urls.each do |url| %>
-            <%= image_tag url, size: "128x128", class: "gallery-image" %>
-          <% end %>
-        </div>
-        <h3>価格: <%= @selected_keyboard.price %>円</h3>
-        <h3>対応のOS: <%= @selected_keyboard.os %></h3>
-        <h3>サイズ: <%= @selected_keyboard.size %></h3>
-        <!-- 他のキーボード情報も表示できるようにする場合、適宜追加してください -->
-      </ul>
-    </div>
-<% else %>
-  <p>選択された条件に合うものは見つかりませんでした。</p>
-<% end %>
-<br>
-<%= link_to '新しい診断を行う', new_diagnosis_path %>
+<div class="flex bg-cover bg-center h-[calc(100vh-134px)]">
+<div class="flex flex-col items-center h-screen pb-12 mx-auto mt-24 max-w-screen-md">
+  <div class="p-6 bg-white rounded-lg shadow-lg">
+    <h1 class="mt-10 mb-2 text-lg"><%= current_user.name %>へのおすすめはこちらです!</h1>
+    <h1 class="mb-4 text-4xl font-bold">診断結果</h1>
+    <br>
+    <ul class="text-center">
+      <h2 class="mb-10 text-lg font-bold"><%= @selected_keyboard.name %></h2>
+      <div class="flex justify-center mb-4 rounded-lg shadow-lg image-gallery gap-4">
+        <% @selected_keyboard.medium_image_urls.each do |image| %>
+          <%= image_tag image, size: "250x250" %>
+        <% end %>
+      </div>
+      <h3 class="mb-10 text-2xl font-bold">価格: <%= @selected_keyboard.price %>円</h3>
+      <h3 class="mb-10 text-2xl font-bold">対応のOS: <%= @selected_keyboard.os %></h3>
+      <h3 class="mb-10 text-2xl font-bold">サイズ: <%= @selected_keyboard.size %></h3>
+      <!-- 他のキーボード情報も表示できるようにする場合、適宜追加してください -->
+    </ul>
+    <br>
 
+    <%= link_to '新しい診断を行う', new_diagnosis_path, class: "bg-transparent hover:bg-slate-500 shadow-lg text-slate-700 font-semibold hover:text-white py-2 px-4 border border-slate-500 hover:border-transparent rounded" %>
+  </div>
+</div>
+</div>
