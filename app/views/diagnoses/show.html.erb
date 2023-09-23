@@ -1,28 +1,41 @@
 <!-- app/views/diagnoses/:id -->
 <div class='top-wrapper'>
   <div class="backdrop-blur-md flex bg-cover bg-center h-[calc(100vh-134px)]">
-    <div class="flex flex-col items-center justify-center h-screen pb-12 mx-auto max-w-screen-lg">
-      <div class="p-6 bg-white rounded-lg shadow-lg">
+    <div class="p-6 mx-auto bg-white shadow-lg max-w-screen-lg">
         <h1 class="mb-4 text-4xl font-bold">診断結果</h1>
         <br>
-        <ul class="text-center">
+        <div class="text-center text-gray-700">
           <h2 class="mb-10 text-2xl font-bold"><%= @selected_keyboard.name %></h2>
-          <div class="flex justify-center rounded-lg shadow-lg mb-7 image-gallery gap-4">
+          <div class="flex justify-center mb-7 image-gallery gap-4">
             <% @selected_keyboard.medium_image_urls.each do |image| %>
               <%= image_tag image, class: "w-64 h-64 object-cover" %>
             <% end %>
           </div>
+          <div class="w-full px-2 py-4 border border-gray-100 rounded-lg shadow-lg mb-7">
+            <h3 class="mb-2 text-4xl font-bold"><span class="text-red-500">価格 </span><%= @selected_keyboard.price %>円</h3>
+          </div>
+          <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
+            <h3 class="mb-2 text-2xl font-bold text-red-500">
+              対応のOS
+            </h3>
+            <h3 class="mb-2 text-2xl font-bold">
+              <% @selected_keyboard.os.each do |os| %>
+                <%= os %>
+              <% end %>
+            </h3>
+          </div>
 
-          <h3 class="mb-5 text-4xl font-bold"><span class="text-red-500">価格 : </span> <%= @selected_keyboard.price %>円</h3>
-          <h3 class="mb-5 text-2xl font-bold">
-            <span class="text-red-500">対応のOS :</span> <% @selected_keyboard.os.each do |os| %>
-              <%= os %>
-            <% end %>
-          </h3>
-          <h3 class="mb-5 text-2xl font-bold"><span class="text-red-500">サイズ :</span> <%= @selected_keyboard.size %></h3>
-          <h3 class="mb-5 text-2xl font-bold"><span class="text-red-500">配列 :</span> <%= @selected_keyboard.layout %></h3>
-          <h3 class="mb-5 text-2xl font-bold"><span class="text-red-500">キースイッチ : </span><%= @selected_keyboard.switch %>方式</h3>
-        </ul>
+          <div class="flex justify-between">
+          <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
+            <h3 class="mb-2 text-2xl font-bold"><%= @selected_keyboard.size %></h3>
+          </div>
+            <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
+              <h3 class="mb-2 text-2xl font-bold"><%= @selected_keyboard.layout %></h3>
+            </div>
+            <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
+              <h3 class="mb-2 text-2xl font-bold"><%= @selected_keyboard.switch %>スイッチ</h3>
+            </div>
+          </div>
         <br>
 
         <%= link_to 'もう一度診断を行う', new_diagnosis_path, class: "bg-transparent hover:bg-slate-500 shadow-lg text-slate-700 font-semibold hover:text-white py-2 px-4 border border-slate-500 hover:border-transparent rounded" %>

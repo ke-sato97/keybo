@@ -1,22 +1,51 @@
-<h1>Keyboards#show</h1>
-<%= link_to "一覧画面", keyboards_path %>
-<%= link_to "取得画面", admin_keyboards_search_path %>
-<div class="grid grid-cols-3 gap-4">
-  <div class="p-4 border rounded-md">
-    <h2 class="text-lg font-bold"><%= @keyboard.name %></h2>
-    <% @keyboard.medium_image_urls.each do |image| %>
-      <%= image_tag image %>
-    <% end %>
-    <p>ブランド名: <%= @keyboard.brand %></p>
-    <p>価格: <%= @keyboard.price %>円</p>
-    <p>キーサイズ: <%= @keyboard.size %></p>
-    <p>対応OS: <%= @keyboard.os %></p>
-    <p>キー配列: <%= @keyboard.layout %></p>
-    <p>キースイッチ: <%= @keyboard.switch %>方式</p>
-    <p>説明: <%= @keyboard.caption %></p>
-    <h4>タグ↓</h4>
+<div class="p-6 mx-auto bg-white shadow-lg max-w-screen-xl">
+
+  <div class="w-full px-2 py-4 border border-gray-100 rounded-lg shadow-lg mb-7">
     <% @tags.each do |tag| %>
-      <span><%= link_to tag.name, keyboards_path(tag_id: tag.id) %></span>
+      <span class="px-2 py-1 text-white bg-gray-600 rounded-lg hover:bg-slate-500"><%= link_to tag.name, keyboards_path(tag_id: tag.id) %></span>
     <% end %>
   </div>
+
+  <div class="text-center text-gray-700">
+    <h2 class="mb-10 text-2xl font-bold"><%= @keyboard.name %></h2>
+    <div class="flex justify-center mb-7 image-gallery gap-4">
+      <% @keyboard.medium_image_urls.each do |image| %>
+        <%= image_tag image, class: "w-64 h-64 object-cover" %>
+      <% end %>
+    </div>
+    <div class="w-full px-2 py-4 border border-gray-100 rounded-lg shadow-lg mb-7">
+      <h3 class="mb-2 text-4xl font-bold"><span class="text-red-500">価格 </span><%= @keyboard.price %>円</h3>
+    </div>
+    <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
+      <h3 class="mb-2 text-2xl font-bold text-red-500">
+        対応のOS
+      </h3>
+      <h3 class="mb-2 text-2xl font-bold">
+        <% @keyboard.os.each do |os| %>
+          <%= os %>
+        <% end %>
+      </h3>
+    </div>
+
+    <div class="flex justify-between">
+    <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
+      <h3 class="mb-2 text-2xl font-bold"><%= @keyboard.size %></h3>
+    </div>
+      <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
+        <h3 class="mb-2 text-2xl font-bold"><%= @keyboard.layout %></h3>
+      </div>
+      <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
+        <h3 class="mb-2 text-2xl font-bold"><%= @keyboard.switch %>スイッチ</h3>
+      </div>
+    </div>
+
+    <div class="px-2 py-4 rounded-lg shadow-lg mb-7">
+      <h3 class="mb-2 text-2xl font-bold text-red-500">詳細情報</h3>
+      <div class="mb-2 text-lg">
+        <%= @keyboard.caption %>
+      </div>
+    </div>
+
+  </div>
+
 </div>
