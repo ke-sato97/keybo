@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
-	enum role: { general: 0, admin: 1 }
+	enum role: { general: 0, admin: 1, guest: 2}
 
   has_many :diagnoses, dependent: :destroy
 
