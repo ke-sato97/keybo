@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   delete '/logout', to: 'user_sessions#destroy'
   post '/guest_login', to: 'user_sessions#guest_login'
 
-  get 'keyboards/search', to: 'keyboards#search'
 
   namespace :admin do
     get 'keyboards/search'

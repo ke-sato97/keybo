@@ -33,7 +33,7 @@ class Admin::KeyboardsController < Admin::BaseController
 
   private
 
-  # 各カラムに振り分け
+  # レスポンスを各カラムに振り分け
   def read(result)
     medium_image_urls = result["mediumImageUrls"]
     name = result["itemName"]
@@ -57,7 +57,7 @@ class Admin::KeyboardsController < Admin::BaseController
     }
   end
 
-  # 以下APIから受け取ったデータを加工
+  # 以下APIから受け取ったデータを加工 -----------------------------------------
   # nameカラムに送られてくるAPIからのデータを編集
   def remove_brackets(text)
     text.gsub(/\【.*?\】|＼.*?／|[.*?]|\b(国内正規品|着日指定不可|&限定価格&ポイント2倍&クーポン |正規保証品|正規保証|12ヶ月安心保証|一年間品質保証|ギフト|お誕生日|★即納|誕生日プレゼント|人気ギフト|贈り物|敬老の日|1年間無償保証|2年間無償保証|3年間無償保証|★絶賛発売中|送料無料|新生活)\b/, "")
@@ -98,8 +98,9 @@ class Admin::KeyboardsController < Admin::BaseController
     return match[0].gsub(/(日本語レイアウト|日本語配列)/, "JIS配列").gsub(/(英語配列|英語レイアウト)/, "US配列") if match
     nil
   end
+  # --------------------------------------------------------------------------
 
-  # タグの作成と関連付けのメソッド
+  # タグの作成と関連付けのメソッド -------------------------------------------
   def create_and_assign_tags(keyboard_info, keyboard)
     tags_to_create = [
       convert_os_to_string(keyboard_info[:os]),
@@ -116,7 +117,7 @@ class Admin::KeyboardsController < Admin::BaseController
     end
   end
 
-  # 配列を文字列に変換する ※ここで結合しないと先頭しか保存されない
+  # 配列を文字列に変換する ※ここで結合しないと先頭の単語しか保存されない
   def convert_os_to_string(os)
     if os.is_a?(Array)
       return os.join(' ')
@@ -137,4 +138,5 @@ class Admin::KeyboardsController < Admin::BaseController
       end
     end
   end
+  # --------------------------------------------------------------------------
 end
