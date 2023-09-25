@@ -1,4 +1,20 @@
 class Admin::KeyboardsController < Admin::BaseController
+  before_action :set_keyboard, only: %i[edit update]
+  def index
+    @keyboards = Keyboard.all
+  end
+
+  def edit; end
+
+  # def update
+  #   if @keyboard.update(keyboard_params)
+  #     redirect_to admin_keyboards_path, success: 'キーボード情報を更新しました'
+  #   else
+  #     flash[:danger] = '更新に失敗しました'
+  #     redirect_to action: "edit"
+  #   end
+  # end
+
   def search
     @keyboards = []
     @name = params[:keyword]
@@ -29,9 +45,15 @@ class Admin::KeyboardsController < Admin::BaseController
     end
   end
 
-  def edit; end
-
   private
+
+  def keyboard_params
+    params.require(:keyboard).permit(:name, :price, :os, :size, :switch, :layout, :caption)
+  end
+
+  def set_keyboard
+    @keyboard = Keyboard.find(params[:id])
+  end
 
   # レスポンスを各カラムに振り分け
   def read(result)
@@ -77,9 +99,9 @@ class Admin::KeyboardsController < Admin::BaseController
 
   # sizeカラムに保存する文字列
   def create_size_from_name_and_caption(text)
-    size_pattern = /(テンキーレス|テンキーなし|テンキー付き|フルサイズ|60%|70%|75%|80%|100%|110%|66キー|67キー|84キー|92キー|104 キー|105キー|106キー|107キー|108キー|109キー|110キー|111キー|112キー|113キー|114キー|115キー)/
+    size_pattern = /(テンキーレス|テンキーなし|テンキー付き|フルサイズ|60%|65%|70%|75%|80%|100%|110%|66キー|67キー|81キー|84キー|92キー|104 キー|105キー|106キー|107キー|108キー|109キー|110キー|111キー|112キー|113キー|114キー|115キー)/
     match = text.match(size_pattern)
-    return match[0].gsub(/(テンキーレス|テンキーなし|60%|70%|75%|80%|66キー|67キー|84キー|92キー)/, "テンキーレス").gsub(/(テンキー付き|フルサイズ|100%|110%|105キー|106キー|107キー|108キー|109キー|110キー|111キー|112キー|113キー|114キー|115キー)/, "フルサイズ") if match
+    return match[0].gsub(/(テンキーレス|テンキーなし|60%|65%|70%|75%|80%|66キー|67キー|81キー|84キー|92キー)/, "テンキーレス").gsub(/(テンキー付き|フルサイズ|100%|110%|104キー|105キー|106キー|107キー|108キー|109キー|110キー|111キー|112キー|113キー|114キー|115キー)/, "フルサイズ") if match
     nil
   end
 
@@ -93,9 +115,9 @@ class Admin::KeyboardsController < Admin::BaseController
 
   # layoutカラムに保存する文字列
   def create_layout_from_name_and_caption(text)
-    layout_pattern = /(日本語配列|英語配列|JIS配列|US配列|日本語レイアウト)/
+    layout_pattern = /(日本語配列|日本語 タクタイル||日本語レイアウト|JIS配列|英語配列|US配列|EPOMAKER|e元素)/
     match = text.match(layout_pattern)
-    return match[0].gsub(/(日本語レイアウト|日本語配列)/, "JIS配列").gsub(/(英語配列|英語レイアウト)/, "US配列") if match
+    return match[0].gsub(/(日本語レイアウト|日本語 タクタイル|日本語配列)/, "JIS配列").gsub(/(英語配列|英語レイアウト|EPOMAKER|e元素)/, "US配列") if match
     nil
   end
   # --------------------------------------------------------------------------

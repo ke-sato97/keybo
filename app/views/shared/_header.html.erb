@@ -1,15 +1,8 @@
 <header>
   <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
     <div class="flex flex-wrap items-center justify-between mx-auto max-w-screen-xl">
-      <%= form_with url: keyboards_path, method: :get, remote: true do |f| %>
-        <div class="flex items-center justify-center ">
-          <div class="flex border-2 border-gray-200 rounded">
-            <%= f.text_field :search, id: "keyboard_search",class: "px-4 py-2 w-80", autocomplete: 'off', placeholder: "Search keyboards" %>
-            <button type="submit" class="px-4 text-white bg-gray-600 hover:bg-slate-500 ">検索</button>
-          </div>
-        </div>
-        <div id="keyboard_results"></div>
-      <% end %>
+
+      <%= render 'shared/search_form' %>
 
       <div class="items-center hidden w-full lg:flex lg:w-auto" id="mobile-menu-2">
         <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">

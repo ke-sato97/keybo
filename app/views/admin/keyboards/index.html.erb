@@ -1,0 +1,23 @@
+<h1>すべてのキーボード</h1>
+<table>
+  <thead>
+    <tr>
+      <th>アイテム</th>
+      <!-- 他の診断結果の属性を追加 -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @keyboards.each do |keyboard| %>
+      <tr>
+        <td><%= keyboard.id %></td>
+        <td><%= link_to keyboard.name, edit_admin_keyboard_path(keyboard) %></td>
+        <td><%= keyboard.brand %></td>
+        <td><%= keyboard.price %></td>
+        <td><%= keyboard.os %></td>
+        <td><%= keyboard.size %></td>
+        <td><%= keyboard.layout %></td>
+        <td><%= keyboard.switch %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
