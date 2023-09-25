@@ -26,3 +26,6 @@ console_command = "/rails/bin/rails console"
   name = "www"
   value = "webapp02.fly.dev"
   ttl = 3600
+[deploy]
+  release_command = "./bin/rails db:prepare"
+
