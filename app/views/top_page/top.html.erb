@@ -5,7 +5,7 @@
     <% else %>
     <div class="flex space-x-4">
       <%= button_to  t('defaults.login'), login_path, method: :get, class: "bg-transparent hover:bg-slate-500 bg-white shadow-lg text-slate-700 font-semibold hover:text-white py-8 px-12 text-4xl hover:border-transparent rounded-lg" %>
-      <%= button_to 'ゲストログイン', login_path, method: :get, class: "bg-transparent hover:bg-slate-500 bg-white shadow-lg text-slate-700 font-semibold hover:text-white py-8 px-12 text-4xl hover:border-transparent rounded-lg" %>
+      <%= button_to 'ゲストログイン', guest_login_path, method: :post, class: "bg-transparent hover:bg-slate-500 bg-white shadow-lg text-slate-700 font-semibold hover:text-white py-8 px-12 text-4xl hover:border-transparent rounded-lg" %>
     </div>
     <% end %>
   </div>
