@@ -7,8 +7,10 @@ class KeyboardsController < ApplicationController
       @keyboards = Keyboard.where('name LIKE ?', "%#{params[:search]}%")
                           .includes(:tags)
                           .page(params[:page])
-    else
+    elsif current_user && current_user.admin?
       @keyboards = Keyboard.includes(:tags).all.page(params[:page])
+    else
+      head :no_content
     end
   end
 

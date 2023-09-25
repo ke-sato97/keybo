@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
+    root 'keyboards#search'
     get 'keyboards/search'
     get 'login', to: 'user_sessions#new'
     post 'login', to: 'user_sessions#create'
