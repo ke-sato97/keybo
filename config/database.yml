@@ -24,6 +24,9 @@ default: &default
 development:
   <<: *default
   database: portfolio_development
+  username: portfolio
+  password: password
+  host: localhost
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -82,5 +85,5 @@ test:
 production:
   <<: *default
   database: portfolio_production
-  username: portfolio
-  password: <%= ENV["PORTFOLIO_DATABASE_PASSWORD"] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
