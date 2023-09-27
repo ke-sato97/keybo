@@ -12,10 +12,10 @@
   </head>
 
   <body>
-    <div class="bg-sky-400">
+    <% if logged_in? %>
       <%= render 'admin/shared/header' %>
-      <%= render 'shared/flash_message' %>
-    </div>
+    <% end %>
+    <%= render 'shared/flash_message' %>
     <div class="bg-cyan-100">
       <%= yield %>
     </div>

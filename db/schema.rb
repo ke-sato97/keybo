@@ -41,6 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_21_093622) do
     t.string "layout"
     t.string "size"
     t.string "switch"
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "caption"

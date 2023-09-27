@@ -9,6 +9,7 @@ class CreateKeyboards < ActiveRecord::Migration[7.0]
       t.string :layout
       t.string :size
       t.string :switch
+      t.string :url
 
       t.timestamps
     end

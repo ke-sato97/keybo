@@ -20,7 +20,7 @@ class Admin::KeyboardsController < Admin::BaseController
     @name = params[:keyword]
     if @name.present?
       # APIにリクエストを送信
-      results = RakutenWebService::Ichiba::Item.search(keyword: @name, hits: 20 )
+      results = RakutenWebService::Ichiba::Item.search(keyword: @name, hits: 10 )
 
       # レスポンスを処理
       results.each do |result|
@@ -48,7 +48,7 @@ class Admin::KeyboardsController < Admin::BaseController
   private
 
   def keyboard_params
-    params.require(:keyboard).permit(:name, :price, :os, :size, :switch, :layout, :caption)
+    params.require(:keyboard).permit(:name, :price, :os, :url, :size, :switch, :layout, :caption)
   end
 
   def set_keyboard
@@ -61,6 +61,7 @@ class Admin::KeyboardsController < Admin::BaseController
     name = result["itemName"]
     brand = result["shopCode"]
     price = result["itemPrice"]
+    url = result["itemUrl"]
     caption = result["itemCaption"]
     os = create_os_from_name_and_caption(name) || create_os_from_name_and_caption(caption)
     size = create_size_from_name_and_caption(name) || create_size_from_name_and_caption(caption)
@@ -71,6 +72,7 @@ class Admin::KeyboardsController < Admin::BaseController
       name: name,
       brand: brand,
       price: price,
+      url: url,
       caption: caption,
       size: size,
       os: os,
@@ -115,7 +117,7 @@ class Admin::KeyboardsController < Admin::BaseController
 
   # layoutカラムに保存する文字列
   def create_layout_from_name_and_caption(text)
-    layout_pattern = /(日本語配列|日本語 タクタイル||日本語レイアウト|JIS配列|英語配列|US配列|EPOMAKER|e元素)/
+    layout_pattern = /(日本語配列|日本語 タクタイル|日本語レイアウト|JIS配列|英語配列|US配列|EPOMAKER|e元素)/
     match = text.match(layout_pattern)
     return match[0].gsub(/(日本語レイアウト|日本語 タクタイル|日本語配列)/, "JIS配列").gsub(/(英語配列|英語レイアウト|EPOMAKER|e元素)/, "US配列") if match
     nil
