@@ -1,8 +1,8 @@
 ja:
   defaults:
-    login: 'Log In'
-    register: 'Sign Up'
-    logout: 'Log Out'
+    login: 'ログイン'
+    register: '会員登録'
+    logout: 'ログアウト'
     top: 'トップページ'
     ranking: 'ランキング'
     history: '履歴'
@@ -26,14 +26,14 @@ ja:
       not_authorized: '権限がありません'
   users:
     new:
-      title: 'Sign Up'
+      title: '会員登録'
       to_login_page: 'ログインページへ'
     create:
       success: 'ユーザー登録が完了しました'
       fail: 'ユーザー登録に失敗しました'
   user_sessions:
     new:
-      title: 'Log In'
+      title: 'ログイン'
       to_register_page: '登録ページへ'
       password_forget: 'パスワードをお忘れの方'
     create:

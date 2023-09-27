@@ -1,4 +1,4 @@
-<h1>すべてのキーボード</h1>
+<h1 class="text-4xl font-bold">すべてのキーボード</h1>
 <table>
   <thead>
     <tr>
@@ -9,7 +9,6 @@
   <tbody>
     <% @keyboards.each do |keyboard| %>
       <tr>
-        <td><%= keyboard.id %></td>
         <td><%= link_to keyboard.name, edit_admin_keyboard_path(keyboard) %></td>
         <td><%= keyboard.brand %></td>
         <td><%= keyboard.price %></td>
