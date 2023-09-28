@@ -65,9 +65,7 @@ group :test do
   gem "webdrivers"
 end
 
-group :production do
-  gem "pg"
-end
+gem "pg"
 
 gem 'rails-i18n', '~> 7.0.0' # For 7.0.0
 gem 'sorcery'

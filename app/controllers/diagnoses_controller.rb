@@ -27,7 +27,7 @@ class DiagnosesController < ApplicationController
     if @selected_keyboard
       @diagnosis = current_user.diagnoses.build(keyboard: @selected_keyboard)
       if @diagnosis.save
-        redirect_to diagnosis_path(@selected_keyboard), notice: 'おすすめのキーボードが見つかりました'
+        redirect_to diagnosis_path(@selected_keyboard), success: 'おすすめのキーボードが見つかりました'
       else
         flash.now[:danger] = '診断結果の保存に失敗しました'
         redirect_to action: "new"

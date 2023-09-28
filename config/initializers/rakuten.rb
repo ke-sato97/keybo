@@ -3,7 +3,7 @@
     c.application_id = '1017426853971475242'
 
     # (任意) 楽天アフィリエイトID
-    c.affiliate_id = '3faa5e4cd93e53ff4312f072605c40ea2c260c16' # default: nil
+    c.affiliate_id = '35e0836e.dde6c32e.35e0836f.76be0fdc' # default: nil
 
     # (任意) リクエストのリトライ回数
     # 一定期間の間のリクエスト数が制限を超えた時、APIはリクエスト過多のエラーを返す。

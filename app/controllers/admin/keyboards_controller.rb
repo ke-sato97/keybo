@@ -23,6 +23,7 @@ class Admin::KeyboardsController < Admin::BaseController
       results = RakutenWebService::Ichiba::Item.search(keyword: @name, hits: 10 )
 
       # レスポンスを処理
+      puts "=================================================================================="
       results.each do |result|
         keyboard_info = read(result)
         name_without_brackets = remove_brackets(keyboard_info[:name]) # 商品名からremove_brackets内の文字列を削除
@@ -42,13 +43,14 @@ class Admin::KeyboardsController < Admin::BaseController
         # タグの作成と関連付け
         create_and_assign_tags(keyboard_info, existing_keyboard)
       end
+      puts "================================================================================="
     end
   end
 
   private
 
   def keyboard_params
-    params.require(:keyboard).permit(:name, :price, :os, :url, :size, :switch, :layout, :caption)
+    params.require(:keyboard).permit(:name, :price, :os, :url, :size, :switch, :layout, :caption, :url)
   end
 
   def set_keyboard
@@ -61,7 +63,7 @@ class Admin::KeyboardsController < Admin::BaseController
     name = result["itemName"]
     brand = result["shopCode"]
     price = result["itemPrice"]
-    url = result["itemUrl"]
+    url = result["affiliateUrl"]
     caption = result["itemCaption"]
     os = create_os_from_name_and_caption(name) || create_os_from_name_and_caption(caption)
     size = create_size_from_name_and_caption(name) || create_size_from_name_and_caption(caption)
