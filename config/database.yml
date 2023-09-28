@@ -24,9 +24,7 @@ default: &default
 development:
   <<: *default
   database: portfolio_development
-  username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  url: <%= ENV['DATABASE_URL'] %>
+    # url: <%= ENV['DATABASE_URL'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -61,8 +59,6 @@ development:
 test:
   <<: *default
   database: portfolio_test
-  username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
   url: <%= ENV['DATABASE_URL'] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -90,4 +86,4 @@ production:
   database: portfolio_production
   username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
-  url: <%= ENV['DATABASE_URL'] %>
+    # url: <%= ENV['DATABASE_URL'] %>
