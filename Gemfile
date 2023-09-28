@@ -65,17 +65,14 @@ group :test do
   gem "webdrivers"
 end
 
+group :production do
+  gem "pg"
+end
+
 gem 'rails-i18n', '~> 7.0.0' # For 7.0.0
 gem 'sorcery'
 gem 'rakuten_web_service'
-
-
 gem "dockerfile-rails", ">= 1.5", :group => :development
-
 gem "sentry-ruby", "~> 5.10"
-
 gem "sentry-rails", "~> 5.10"
-
-gem "pg", "~> 1.1"
-
 gem 'kaminari'
