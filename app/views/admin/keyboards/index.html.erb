@@ -2,20 +2,30 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>アイテム</th>
+      <th>ショップ名</th>
+      <th>金額</th>
+      <th>OS</th>
+      <th>サイズ</th>
+      <th>配列</th>
+      <th>キースイッチ</th>
       <!-- 他の診断結果の属性を追加 -->
     </tr>
   </thead>
   <tbody>
     <% @keyboards.each do |keyboard| %>
       <tr>
-        <td><%= link_to keyboard.name, edit_admin_keyboard_path(keyboard) %></td>
-        <td><%= keyboard.brand %></td>
-        <td><%= keyboard.price %></td>
-        <td><%= keyboard.os %></td>
-        <td><%= keyboard.size %></td>
-        <td><%= keyboard.layout %></td>
-        <td><%= keyboard.switch %></td>
+        <div class="grid grid-cols-3 gap-4">
+          <td><%= keyboard.id %></td>
+          <td><%= link_to keyboard.name, edit_admin_keyboard_path(keyboard) %></td>
+          <td><%= keyboard.brand %></td>
+          <td><%= keyboard.price %></td>
+          <td><%= keyboard.os %></td>
+          <td><%= keyboard.size %></td>
+          <td><%= keyboard.layout %></td>
+          <td><%= keyboard.switch %></td>
+        </div>
       </tr>
     <% end %>
   </tbody>

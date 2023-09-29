@@ -1,29 +1,34 @@
 class Admin::KeyboardsController < Admin::BaseController
-  before_action :set_keyboard, only: %i[edit update]
+  before_action :set_keyboard, only: %i[edit update destroy]
   def index
     @keyboards = Keyboard.all
   end
 
   def edit; end
 
-  # def update
-  #   if @keyboard.update(keyboard_params)
-  #     redirect_to admin_keyboards_path, success: 'キーボード情報を更新しました'
-  #   else
-  #     flash[:danger] = '更新に失敗しました'
-  #     redirect_to action: "edit"
-  #   end
-  # end
+  def update
+      binding.pry
+    if @keyboard.update(keyboard_params)
+      redirect_to admin_keyboards_path, success: 'キーボード情報を更新しました'
+    else
+      flash[:danger] = '更新に失敗しました'
+      redirect_to action: "edit"
+    end
+  end
+
+  def destroy
+    @keyboard.destroy
+    redirect_to admin_keyboards_path, status: :see_other, success: 'キーボード情報を削除しました'
+  end
 
   def search
     @keyboards = []
     @name = params[:keyword]
     if @name.present?
       # APIにリクエストを送信
-      results = RakutenWebService::Ichiba::Item.search(keyword: @name, hits: 10 )
+      results = RakutenWebService::Ichiba::Item.search(keyword: @name, hits: 30 )
 
       # レスポンスを処理
-      puts "=================================================================================="
       results.each do |result|
         keyboard_info = read(result)
         name_without_brackets = remove_brackets(keyboard_info[:name]) # 商品名からremove_brackets内の文字列を削除
@@ -43,14 +48,13 @@ class Admin::KeyboardsController < Admin::BaseController
         # タグの作成と関連付け
         create_and_assign_tags(keyboard_info, existing_keyboard)
       end
-      puts "================================================================================="
     end
   end
 
   private
 
   def keyboard_params
-    params.require(:keyboard).permit(:name, :price, :os, :url, :size, :switch, :layout, :caption, :url)
+    params.require(:keyboard).permit(:name, :price, :os, :url, :size, :switch, :layout, :caption)
   end
 
   def set_keyboard

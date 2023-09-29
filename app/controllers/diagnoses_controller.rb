@@ -16,8 +16,8 @@ class DiagnosesController < ApplicationController
     selected_switch = params[:switch]
     name = params[:name]
 
-    if [selected_price, selected_os].any?(&:blank?)
-      flash[:danger] =  "質問１と質問2は必須項目です"
+    if [selected_price].any?(&:blank?)
+      flash[:danger] =  "質問１は必須項目です"
       redirect_to action: "new"
       return
     end
@@ -55,16 +55,19 @@ class DiagnosesController < ApplicationController
                         10000..15000
                       when '15000-20000'
                         15000..20000
-                      when '20000+'
-                        20000..999999
+                      when '20000-30000'
+                        20000..30000
+                      when '30000+'
+                        30000..999999
                       else
                         nil
                       end
 
-    query = Keyboard.where("? = ANY (os) AND price >= ? AND price <= ?", selected_os, price.min, price.max)
+    query = Keyboard.where("price >= ? AND price <= ?", price.min, price.max)
 
     # パラメーターが空でない場合にのみ条件を追加
     query = query.where("name ILIKE ?", "%#{name}%") if name.present?
+    query = query.where("? = ANY (os)", selected_os) if selected_os.present?
     query = query.where("size = ?", selected_size) if selected_size.present?
     query = query.where("layout = ?", selected_layout) if selected_layout.present?
     query = query.where("switch = ?", selected_switch) if selected_switch.present?

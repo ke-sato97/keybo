@@ -1,25 +1,21 @@
 <div class='top-wrapper'>
-  <div class="flex bg-cover bg-center h-[calc(100vh-134px)]">
-    <div class="flex flex-col items-center justify-center h-screen pb-12 mx-auto max-w-screen-lg">
-      <div class="p-6 bg-white rounded-lg shadow-lg">
+  <div class="flex items-center justify-center h-screen">
+    <div class="p-6 mx-auto bg-white rounded-lg shadow-lg max-w-screen-lg">
       <%= form_with model: @keyboard, url: diagnoses_path, local: true, method: :post do |f| %>
-        <div class="flex flex-col w-full">
-        <h2 class="text-lg text-red-600">必須項目</h2>
-          <p>質問1: 希望する価格帯はどれくらいですか？</p>
-          <%= f.select :price, [['0~5000円', '0-5000'], ['5000~10000円', '5000-10000'], ['10000~15000円', '10000-15000'], ['15000~20000円', '15000-20000'], ['20000円以上', '20000+']], prompt: '選択してください', class: "w-full" %>
+        <div class="flex flex-col text-2xl">
+        <h2 class="mb-2 text-red-600">必須項目</h2>
+          <p>質問1: 予算はどれくらいで考えていますか？</p>
+          <%= f.select :price, [['0~5000円', '0-5000'], ['5000~10000円', '5000-10000'], ['10000~15000円', '10000-15000'], ['15000~20000円', '15000-20000'], ['20000~30000円', '20000-30000'], ['30000円以上', '30000+']], prompt: '選択してください', class: "w-full" %>
 
-          <p class="mt-2">質問2: 希望するOSはなんですか？</p>
+          <h2 class="mt-2 mb-2 text-blue-600">任意項目</h2>
+          <p class="mt">質問2: 使用しているPCはどちらですか？</p>
           <%= f.select :os, [["WindowsOS", "windows"], ["MacOS", "mac"]], prompt: '選択してください' %>
 
-          <h2 class="mt-2 text-lg text-blue-600">任意項目</h2>
-          <p class="mt">質問3: 希望するサイズはなんですか？</p>
+          <p class="mt-2 mb-2">質問3: 希望するサイズはなんですか？</p>
           <%= f.select :size, [["テンキーあり", "フルサイズ"], ["テンキーなし", "テンキーレス"]], prompt: '選択してください' %>
 
-          <p class="mt-2">質問4: 希望するレイアウトはなんですか？</p>
-          <%= f.select :layout, [["US配列", "US配列"], ["JIS配列", "JIS配列"]], prompt: '選択してください' %>
-
-          <p class="mt-2">質問5: 希望するキースイッチはなんですか？</p>
-          <%= f.select :switch, [["メンブレン方式", "メンブレン"], ["パンタグラフ方式", "パンタグラフ"], ["メカニカル方式", "メカニカル"], ["静電容量無接点方式", "静電容量無接点"]], prompt: '選択してください' %>
+          <p class="mt-2 mb-2">質問4: どちらが好みですか？</p>
+          <%= f.select :layout, [["世界標準レイアウト(US配列)", "US配列"], ["日本の標準レイアウト(JIS配列)", "JIS配列"]], prompt: '選択してください' %>
         </div>
 
         <br>
