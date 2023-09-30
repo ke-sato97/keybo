@@ -4,11 +4,20 @@ class Admin::KeyboardsController < Admin::BaseController
     @keyboards = Keyboard.all
   end
 
-  def edit; end
+  def edit
+    @tags = @keyboard.tags
+  end
 
   def update
-      binding.pry
     if @keyboard.update(keyboard_params)
+      # タグの関連付けも更新する
+      @keyboard.tags.clear
+      if params[:keyboard][:tag_ids].present?
+        params[:keyboard][:tag_ids].each do |tag_id|
+          tag = Tag.find(tag_id)
+          @keyboard.tags << tag
+        end
+      end
       redirect_to admin_keyboards_path, success: 'キーボード情報を更新しました'
     else
       flash[:danger] = '更新に失敗しました'
@@ -54,7 +63,7 @@ class Admin::KeyboardsController < Admin::BaseController
   private
 
   def keyboard_params
-    params.require(:keyboard).permit(:name, :price, :os, :url, :size, :switch, :layout, :caption)
+    params.require(:keyboard).permit(:name, :price, :url, :size, :switch, :layout, :caption, os: [], medium_image_urls: [])
   end
 
   def set_keyboard
