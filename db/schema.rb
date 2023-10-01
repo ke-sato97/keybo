@@ -35,13 +35,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_21_093622) do
   create_table "keyboards", force: :cascade do |t|
     t.string "name"
     t.string "brand"
-    t.string "medium_image_urls", default: [], array: true
-    t.string "os", default: [], array: true
     t.integer "price"
     t.string "layout"
     t.string "size"
     t.string "switch"
     t.string "url"
+    t.string "os", default: [], array: true
+    t.string "connect", default: [], array: true
+    t.string "medium_image_urls", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "caption"

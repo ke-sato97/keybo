@@ -4,6 +4,7 @@
     <tr>
       <th>ID</th>
       <th>アイテム</th>
+      <th>接続方法</th>
       <th>ショップ名</th>
       <th>金額</th>
       <th>OS</th>
@@ -19,6 +20,7 @@
         <div class="grid grid-cols-3 gap-4">
           <td><%= keyboard.id %></td>
           <td><%= link_to keyboard.name, edit_admin_keyboard_path(keyboard) %></td>
+          <td><%= keyboard.connect %></td>
           <td><%= keyboard.brand %></td>
           <td><%= keyboard.price %></td>
           <td><%= keyboard.os %></td>
