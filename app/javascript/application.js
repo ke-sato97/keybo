@@ -4,9 +4,6 @@ import "controllers"
 
 import 'flowbite';
 
-console.log("JS 使えてるねん！");
-alert('正常にしている証拠')
-
 // autocomplete.js ファイルの読み込み
 import "./autocomplete"
 // document.addEventListener("turbo:load", function() {
@@ -24,7 +21,7 @@ import "./autocomplete"
 //             keyboardResults.innerHTML = "";
 //             data.slice(0, 10).forEach(name => { // 最大5個の結果を表示
 //               const p = document.createElement("p");
-//               p.classList.add("truncate", "border-2", "py-2", "border-gray-400");
+//               p.classList.add("truncate", "border-2", "py-2", "border-slate-400");
 //               p.setAttribute("data-text", name);
 //               p.textContent = name.substring(0, 35); // 最初の20文字を表示
 //               p.addEventListener("click", function() {

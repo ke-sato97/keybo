@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def set_search
     if params[:search].present?
-      @keyboards = Keyboard.where('name LIKE ?', "%#{params[:search]}%")
+      @keyboards = Keyboard.where('name ILIKE ?', "%#{params[:search]}%")
     else
       @keyboards = []
     end
