@@ -8,5 +8,5 @@ pin "flowbite", to: "https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowb
 pin_all_from "app/javascript/controllers", under: "controllers"
 
 #  追加したファイル
-pin "autocomplete"
-pin "admin"
+pin_all_from "app/javascript/autocomplete", under: "autocomplete"
+
