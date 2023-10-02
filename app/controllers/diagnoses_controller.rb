@@ -2,8 +2,8 @@ class DiagnosesController < ApplicationController
   before_action :require_login
   def index
   # ページネーションを適用する前に、ユーザーの診断履歴を取得
-  @keyboards = current_user.diagnoses.includes(:keyboard).page(params[:page])
-  @diagnoses = @keyboards.all.map(&:keyboard)
+  @selected_keyboards = current_user.diagnoses.includes(:keyboard).page(params[:page])
+  @diagnoses = @selected_keyboards.all.map(&:keyboard)
   end
 
   def new
@@ -11,20 +11,21 @@ class DiagnosesController < ApplicationController
   end
 
   def create
-    selected_price = params[:price]
-    selected_os = params[:os]
-    selected_size = params[:size]
-    selected_layout = params[:layout]
-    selected_switch = params[:switch]
+    price = params[:price]
+    os = params[:os]
+    size = params[:size]
+    layout = params[:layout]
+    switch = params[:switch]
+    connect = params[:connect]
     name = params[:name]
 
-    if [selected_price].any?(&:blank?)
+    if [price].any?(&:blank?)
       flash[:danger] =  "質問１は必須項目です"
       redirect_to action: "new"
       return
     end
 
-    @selected_keyboard = select_keyboard(selected_price, selected_os, selected_size, selected_layout, selected_switch, name)
+    @selected_keyboard = select_keyboard(price, os, size, layout, switch, connect, name)
 
     if @selected_keyboard
       @diagnosis = current_user.diagnoses.build(keyboard: @selected_keyboard)
@@ -47,8 +48,8 @@ class DiagnosesController < ApplicationController
 
   private
 
-  def select_keyboard(selected_price, selected_os, selected_size, selected_layout, selected_switch, name)
-    price = case selected_price
+  def select_keyboard(price, os, size, layout, switch, connect, name)
+    price_case = case price
                       when '0-5000'
                         0..5000
                       when '5000-10000'
@@ -65,14 +66,15 @@ class DiagnosesController < ApplicationController
                         nil
                       end
 
-    query = Keyboard.where("price >= ? AND price <= ?", price.min, price.max)
+    query = Keyboard.where("price >= ? AND price <= ?", price_case.min, price_case.max)
 
     # パラメーターが空でない場合にのみ条件を追加
-    query = query.where("name ILIKE ?", "%#{name}%") if name.present?
-    query = query.where("? = ANY (os)", selected_os) if selected_os.present?
-    query = query.where("size = ?", selected_size) if selected_size.present?
-    query = query.where("layout = ?", selected_layout) if selected_layout.present?
-    query = query.where("switch = ?", selected_switch) if selected_switch.present?
+    query = query.where("? = ANY (os)", os) if os.present?
+    query = query.where("size = ?", size) if size.present?
+    query = query.where("layout = ?", layout) if layout.present?
+    # query = query.where("switch = ?", switch) if switch.present?
+    query = query.where("? = ANY (connect)", connect) if connect.present?
+    # query = query.where("name ILIKE ?", "%#{name}%") if name.present?
 
     keyboard = query.order("RANDOM()").first
     keyboard

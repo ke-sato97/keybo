@@ -98,7 +98,7 @@ class Admin::KeyboardsController < Admin::BaseController
     }
   end
 
-  # 以下APIから受け取ったデータを加工 -----------------------------------------
+  # 以下APIから受け取ったデータを加工(そのうちmodelに移行する部分) -----------------------------------------
   # nameカラムに送られてくるAPIからのデータを編集
   def remove_brackets(text)
     text.gsub(/\【.*?\】|＼.*?／|［.*?］|[.*?]|\b(国内正規品|着日指定不可|&限定価格&ポイント2倍&クーポン |正規保証品|正規保証|12ヶ月安心保証|一年間品質保証|ギフト|お誕生日|★即納|誕生日プレゼント|人気ギフト|贈り物|敬老の日|1年間無償保証|2年間無償保証|3年間無償保証|★絶賛発売中|送料無料|新生活)\b/, "")
@@ -106,7 +106,7 @@ class Admin::KeyboardsController < Admin::BaseController
 
   # osカラムに保存する文字列(全て小文字に変換し配列にして保存)
   def create_os_from_name_and_caption(text)
-    os_pattern = /(Mac|mac|Windows|windows|Linux|linux|Chrome OS|iOS|Android)/i
+    os_pattern = /(Mac|mac|Windows|windows|Linux|linux|Chrome|iOS|Android)/i
     matches = text.scan(os_pattern)
 
     if matches.any?
@@ -134,17 +134,17 @@ class Admin::KeyboardsController < Admin::BaseController
 
   # switchカラムに保存する文字列
   def create_switch_from_name_and_caption(text)
-    switch_pattern = /(メンブレン|パンタグラフ|メカニカル|静電容量無接点)/
+    switch_pattern = /(メンブレン|パンタグラフ|atechi|メカニカル|静電容量無接点)/
     match = text.match(switch_pattern)
-    return match[0] if match
+    return match[0].gsub(/(パンタグラフ|atechi)/, "パンタグラフ") if match
     nil
   end
 
   # layoutカラムに保存する文字列
   def create_layout_from_name_and_caption(text)
-    layout_pattern = /(日本語配列|日本語 タクタイル|日本語レイアウト|JIS配列|英語配列|US配列|EPOMAKER|e元素)/
+    layout_pattern = /(日本語配列|日本語 タクタイル|日本語レイアウト|JIS配列|英語配列|US配列|EPOMAKER|YUNZII|e元素)/
     match = text.match(layout_pattern)
-    return match[0].gsub(/(日本語レイアウト|日本語 タクタイル|日本語配列)/, "JIS配列").gsub(/(英語配列|英語レイアウト|EPOMAKER|e元素)/, "US配列") if match
+    return match[0].gsub(/(日本語レイアウト|日本語 タクタイル|日本語配列)/, "JIS配列").gsub(/(英語配列|英語レイアウト|EPOMAKER|YUNZII|e元素)/, "US配列") if match
     nil
   end
   # --------------------------------------------------------------------------

@@ -28,6 +28,14 @@
         <% end %>
       </h3>
     </div>
+    <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
+      <h3 class="mb-2 text-2xl font-bold text-red-500">接続方法</h3>
+      <h3 class="mb-2 text-2xl font-bold">
+        <% @keyboard.connect.each do |connect| %>
+          <%= connect %>
+        <% end %>
+      </h3>
+    </div>
 
     <div class="flex justify-between">
     <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">

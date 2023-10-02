@@ -3,9 +3,7 @@ class KeyboardsController < ApplicationController
     if params[:tag_id].present?
       tag = Tag.find(params[:tag_id])
       @keyboards = tag.keyboards.includes(:tags).page(params[:page])
-    end
-
-    if params[:search].present?
+    elsif params[:search].present?
       @keyboards = Keyboard.where('name ILIKE ?', "%#{params[:search]}%")
                           .includes(:tags)
                           .page(params[:page])
