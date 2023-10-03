@@ -1,5 +1,5 @@
 .top-wrapper {
-  background-image: image-url("images/sample.jpg");
+  background-image: url("sample5.jpg");
   height: calc(100vh - 134px);
   position: relative;
   background-position: center;
@@ -18,22 +18,11 @@
       font-size: 2.0rem;
     }
   }
-}
 
 .login-wrapper {
-  background-image: image-url("images/sample6.jpg");
+  background-image: url("login.jpg");
   height: calc(100vh - 134px);
   position: relative;
   background-position: center;
 }
 
-.diagnosis-wrapper {
-  background-image: image-url("images/sample.jpg");
-  height: calc(100vh - 134px);
-  position: relative;
-  background-position: center;
-
-  /* ぼかしを適用 */
-  backdrop-filter: blur(10px); /* ぼかしの半径を調整 */
-  -webkit-backdrop-filter: blur(10px); /* Safari対応 */
-}

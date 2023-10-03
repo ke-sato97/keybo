@@ -1,55 +1,51 @@
 <!-- app/views/diagnoses/:id -->
-<div class='top-wrapper'>
 <br>
-  <div class="w-full backdrop-blur-md h-[calc(100vh-134px)]">
-    <div class="p-6 mx-auto bg-white rounded-lg shadow-lg max-w-screen-lg">
-        <h1 class="text-4xl font-bold">診断結果</h1>
-        <br>
-        <div class="text-center text-gray-700">
-          <h2 class="text-2xl font-bold mb-7"><%= @selected_keyboard.name %></h2>
-          <div class="flex justify-center mb-7 image-gallery gap-4">
-            <% @selected_keyboard.medium_image_urls.each do |image| %>
-              <%= image_tag image, class: "w-64 h-64 object-cover" %>
-            <% end %>
-          </div>
-          <div class="w-full px-2 py-4 border border-gray-100 rounded-lg shadow-lg mb-7">
-            <h3 class="mb-2 text-4xl font-bold"><span class="text-red-500">価格 </span><%= @selected_keyboard.price %>円</h3>
-          </div>
-          <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
-            <h3 class="mb-2 text-2xl font-bold text-red-500">対応のOS</h3>
-            <h3 class="mb-2 text-2xl font-bold">
-              <% @selected_keyboard.os.each do |os| %>
-                <%= os %>
-              <% end %>
-            </h3>
-          </div>
-          <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
-            <h3 class="mb-2 text-2xl font-bold text-red-500">接続方法</h3>
-            <h3 class="mb-2 text-2xl font-bold">
-              <% @selected_keyboard.connect.each do |connect| %>
-                <%= connect %>
-              <% end %>
-            </h3>
-          </div>
-
-          <div class="flex justify-between mb-5">
-          <div class="w-full px-2 py-4 rounded-lg shadow-lg">
-            <h3 class="mb-2 text-2xl font-bold"><%= @selected_keyboard.size %></h3>
-          </div>
-            <div class="w-full px-2 py-4 rounded-lg shadow-lg">
-              <h3 class="mb-2 text-2xl font-bold"><%= @selected_keyboard.layout %></h3>
-            </div>
-            <div class="w-full px-2 py-4 rounded-lg shadow-lg">
-              <h3 class="mb-2 text-2xl font-bold"><%= @selected_keyboard.switch %>スイッチ</h3>
-            </div>
-          </div>
-        <br>
-
-        <div class="mb-2">
-          <%= link_to 'もう一度診断を行う', new_diagnosis_path, class: "bg-transparent hover:bg-slate-500 shadow-lg text-slate-700 font-semibold hover:text-white py-2 px-4 border border-slate-500 text-lg hover:border-transparent rounded" %>
-          <%= link_to '楽天市場に移動する', @selected_keyboard.url, class: "border border-gray-100 rounded shadow-lg mb-7 bg-red-500 font-bold hover:bg-red-600 text-white text-lg hover:text-white text-center py-2 px-4 hover:border-transparent rounded" %>
-        </div>
+<div class="p-6 mx-auto bg-white rounded-lg shadow-lg max-w-screen-lg">
+  <h1 class="text-4xl font-bold">診断結果</h1>
+  <br>
+  <div class="text-center text-gray-700">
+    <h2 class="text-2xl font-bold mb-7"><%= @selected_keyboard.name %></h2>
+    <div class="flex justify-center mb-7 image-gallery gap-4">
+      <% @selected_keyboard.medium_image_urls.each do |image| %>
+        <%= image_tag image, class: "w-64 h-64 object-cover" %>
+      <% end %>
     </div>
+    <div class="w-full px-2 py-4 border border-gray-100 rounded-lg shadow-lg mb-7">
+      <h3 class="mb-2 text-4xl font-bold"><span class="text-red-500">価格 </span><%= @selected_keyboard.price %>円</h3>
+    </div>
+    <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
+      <h3 class="mb-2 text-2xl font-bold text-red-500">対応のOS</h3>
+      <h3 class="mb-2 text-2xl font-bold">
+        <% @selected_keyboard.os.each do |os| %>
+          <%= os %>
+        <% end %>
+      </h3>
+    </div>
+    <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
+      <h3 class="mb-2 text-2xl font-bold text-red-500">接続方法</h3>
+      <h3 class="mb-2 text-2xl font-bold">
+        <% @selected_keyboard.connect.each do |connect| %>
+          <%= connect %>
+        <% end %>
+      </h3>
+    </div>
+
+    <div class="flex justify-between mb-5">
+    <div class="w-full px-2 py-4 rounded-lg shadow-lg">
+      <h3 class="mb-2 text-2xl font-bold"><%= @selected_keyboard.size %></h3>
+    </div>
+      <div class="w-full px-2 py-4 rounded-lg shadow-lg">
+        <h3 class="mb-2 text-2xl font-bold"><%= @selected_keyboard.layout %></h3>
+      </div>
+      <div class="w-full px-2 py-4 rounded-lg shadow-lg">
+        <h3 class="mb-2 text-2xl font-bold"><%= @selected_keyboard.switch %>スイッチ</h3>
+      </div>
+    </div>
+  <br>
+
+  <div class="mb-2">
+    <%= link_to 'もう一度診断を行う', new_diagnosis_path, class: "bg-transparent hover:bg-slate-500 shadow-lg text-slate-700 font-semibold hover:text-white py-2 px-4 border border-slate-500 text-lg hover:border-transparent rounded" %>
+    <%= link_to '楽天市場に移動する', @selected_keyboard.url, class: "border border-gray-100 rounded shadow-lg mb-7 bg-red-500 font-bold hover:bg-red-600 text-white text-lg hover:text-white text-center py-2 px-4 hover:border-transparent rounded" %>
   </div>
-<br>
 </div>
+<br>
