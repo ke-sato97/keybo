@@ -7,7 +7,7 @@
         <span class="px-2 py-1 text-white bg-gray-600 rounded-lg hover:bg-slate-500"><%= link_to tag.name, keyboards_path(tag_id: tag.id) %></span>
       <% end %>
     </div>
-      <%= link_to '楽天市場に移動する', @keyboard.url, class: "border border-gray-100 rounded-lg shadow-lg mb-7 bg-red-500 font-bold hover:bg-red-600 text-white text-2xl hover:text-white text-center py-2 px-4 hover:border-transparent rounded" %>
+      <%= link_to '楽天市場に移動する', @keyboard.url, method: :get, class: "border border-gray-100 rounded-lg shadow-lg mb-7 bg-red-500 font-bold hover:bg-red-600 text-white text-2xl hover:text-white text-center py-2 px-4 hover:border-transparent rounded" %>
   </div>
 
   <div class="text-center text-gray-700">

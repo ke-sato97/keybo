@@ -9,7 +9,6 @@ class CreateKeyboards < ActiveRecord::Migration[7.0]
       t.string :switch
       t.string :url
       t.string :os, array: true, default: []
-      t.string :connect, array: true, default: []
       t.string :medium_image_urls, array: true, default: []
 
       t.timestamps

@@ -35,7 +35,7 @@ class Admin::KeyboardsController < Admin::BaseController
     @name = params[:keyword]
     if @name.present?
       # APIにリクエストを送信
-      results = RakutenWebService::Ichiba::Item.search(keyword: @name, hits: 15 )
+      results = RakutenWebService::Ichiba::Item.search(keyword: @name, hits: 30 )
 
       # レスポンスを処理
       results.each do |result|
