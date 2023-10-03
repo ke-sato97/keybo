@@ -50,4 +50,4 @@ Twitter等SNSで告知
 https://www.figma.com/file/6ykb0mhMf1Cvt2jqeH2kvk/web%E3%82%A2%E3%83%97%E3%83%AA-%E7%94%BB%E9%9D%A2%E8%BB%A2%E7%A7%BB%E5%9B%B3?type=design&node-id=0-1&mode=design&t=5EHIJc193ORCxVDC-0
 
 ## ER図
-https://gyazo.com/74f60e6ac82cb83cdabb9c265d53bbae
+https://gyazo.com/4b13236a46d06f00af2b8a38b47b2450
