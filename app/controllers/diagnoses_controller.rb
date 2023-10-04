@@ -84,4 +84,3 @@ class DiagnosesController < ApplicationController
     redirect_to login_path, alert: "ログインしてください"
   end
 end
-
