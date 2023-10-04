@@ -3,7 +3,7 @@ class DiagnosesController < ApplicationController
   def index
   # ページネーションを適用する前に、ユーザーの診断履歴を取得
   @keyboards = current_user.diagnoses.includes(:keyboard).page(params[:page])
-  @diagnoses = @keyboards.all.map(&:keyboard)
+  @diagnoses = @keyboards.all.order(created_at: :desc).map(&:keyboard)
   end
 
   def new
