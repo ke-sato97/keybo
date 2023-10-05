@@ -1,5 +1,3 @@
-import { application } from "application"
-
 document.addEventListener("turbo:load", function() {
   const keyboardSearch = document.querySelector("#keyboard_search");
   const keyboardResults = document.querySelector("#keyboard_results");
