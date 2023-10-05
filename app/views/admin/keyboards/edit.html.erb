@@ -48,9 +48,8 @@
 <% @tags.each do |tag| %>
   <%= tag.name %>
 <% end %>
-  <br>
-  <%= link_to 'DELETE', admin_keyboard_path(@keyboard), data: { turbo_method: :delete }
- %>
+<br>
+<%= link_to 'DELETE', admin_keyboard_path(@keyboard), data: { turbo_method: :delete } %>
 <br>
 <div class="text-lg">
   <%= @keyboard.caption %>

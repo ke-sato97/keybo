@@ -9,4 +9,3 @@ class Keyboard < ApplicationRecord
   validates :os, presence: true
   validates :caption, presence: true
 end
-
