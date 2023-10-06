@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post '/guest_login', to: 'user_sessions#guest_login'
 
   resources :users, only: %i[new create destroy]
-  resources :keyboards
+  resources :keyboards, only: %i[index show]
   resources :diagnoses, only: %i[index new show create]
 
   namespace :admin do

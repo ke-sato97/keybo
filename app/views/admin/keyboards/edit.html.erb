@@ -8,14 +8,14 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
 
-    <%= f.label :connect %>
-    <%= f.text_field :connect %>
-
     <%= f.label :price %>
     <%= f.text_field :price %>
 
     <%= f.label :os %>
-    <%= f.select :os, Size::OPTIONS, { include_blank: true }, { multiple: true, class: 'w-full' } %>
+    <%= f.text_field :os %>
+
+    <%= f.label :connect %>
+    <%= f.text_field :connect %>
 
     <%= f.label :size %>
     <%= f.text_field :size %>
@@ -25,9 +25,6 @@
 
     <%= f.label :switch %>
     <%= f.text_field :switch %>
-
-    <%= f.label :url %>
-    <%= f.text_field :url %>
   </div>
 
   <div class="flex flex-wrap -mx-2">
@@ -48,11 +45,11 @@
 <% @tags.each do |tag| %>
   <%= tag.name %>
 <% end %>
-  <br>
-  <%= link_to 'DELETE', admin_keyboard_path(@keyboard), data: { turbo_method: :delete }
- %>
 <br>
 <div class="text-lg">
-  <%= @keyboard.caption %>
+  <p class="mt-4"><%= @keyboard.url %></p>
+  <p class="mt-4"><%= @keyboard.caption %></p>
 </div>
+<br>
+<%= link_to 'DELETE', admin_keyboard_path(@keyboard), data: { turbo_method: :delete } %>
 
