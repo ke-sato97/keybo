@@ -13,7 +13,9 @@
 
   <body>
     <% if logged_in? %>
+    <div class="bg-cyan-100">
       <%= render 'admin/shared/header' %>
+    </div>
     <% end %>
     <%= render 'shared/flash_message' %>
     <div class="bg-cyan-100">
