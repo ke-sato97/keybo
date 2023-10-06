@@ -4,7 +4,7 @@
   <%= paginate @keyboards %>
   <!-- 掲示板 -->
     <% if @keyboards.any? %>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 4xl:grid-cols-6">
         <%= render 'keyboards/keyboard', keyboards: @keyboards %>
       </div>
     <% else %>

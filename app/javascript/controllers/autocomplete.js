@@ -1,11 +1,5 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
-import "controllers"
+import { application } from "controllers/application"
 
-import 'flowbite';
-
-// autocomplete.js ファイルの読み込み
-// import "./autocomplete";
 document.addEventListener("turbo:load", function() {
   const keyboardSearch = document.querySelector("#keyboard_search");
   const keyboardResults = document.querySelector("#keyboard_results");
