@@ -15,7 +15,7 @@
     <%= f.text_field :price %>
 
     <%= f.label :os %>
-    <%= f.text_field :os %>
+    <%= f.select :os, Size::OPTIONS, { include_blank: true }, { multiple: true, class: 'w-full' } %>
 
     <%= f.label :size %>
     <%= f.text_field :size %>
