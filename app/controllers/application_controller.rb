@@ -2,11 +2,11 @@ class ApplicationController < ActionController::Base
   before_action :set_search
 
   def set_search
-    if params[:search].present?
-      @keyboards = Keyboard.where('name ILIKE ?', "%#{params[:search]}%")
-    else
-      @keyboards = []
-    end
+    @keyboards = if params[:search].present?
+                   Keyboard.where('name ILIKE ?', "%#{params[:search]}%")
+                 else
+                   []
+                 end
 
     respond_to do |format|
       format.html

@@ -1,12 +1,12 @@
 class UserSessionsController < ApplicationController
   def create
-    @user = login(params[:email], (params[:password]))
+    @user = login(params[:email], params[:password])
 
     if @user
       redirect_back_or_to(:root, notice: t('.success'))
     else
       flash.now[:danger] = t('.fail')
-      redirect_to action: "new"
+      redirect_to action: 'new'
     end
   end
 
@@ -14,9 +14,10 @@ class UserSessionsController < ApplicationController
     redirect_to root_path, alert: 'すでにログインしています' if current_user # ログインしてる場合はユーザーを作成しない
 
     random_value = SecureRandom.hex
-    user = User.create!(name: 'ゲスト', email: "test_#{random_value}@example.com", password: "#{random_value}", password_confirmation: "#{random_value}", role: :guest)
+    user = User.create!(name: 'ゲスト', email: "test_#{random_value}@example.com", password: "#{random_value}",
+                        password_confirmation: "#{random_value}", role: :guest)
     auto_login(user)
-    redirect_to  root_path, success: 'ゲストとしてログインしました'
+    redirect_to root_path, success: 'ゲストとしてログインしました'
   end
 
   def destroy

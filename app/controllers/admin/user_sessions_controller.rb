@@ -7,10 +7,10 @@ class Admin::UserSessionsController < Admin::BaseController
   def create
     @user = login(params[:email], params[:password])
     if @user
-      redirect_to admin_keyboards_search_path  ,success: '管理者としてログインしました'
+      redirect_to admin_keyboards_search_path, success: '管理者としてログインしました'
     else
       flash.now[:danger] = '管理者のログインに失敗しました'
-      redirect_to action: "new"
+      redirect_to action: 'new'
     end
   end
 

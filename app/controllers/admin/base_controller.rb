@@ -11,6 +11,6 @@ class Admin::BaseController < ApplicationController
   end
 
   def check_admin
-    redirect_to root_path, danger: "管理者権限がありません" unless current_user.admin?
+    redirect_to root_path, danger: '管理者権限がありません' unless current_user.admin?
   end
 end
