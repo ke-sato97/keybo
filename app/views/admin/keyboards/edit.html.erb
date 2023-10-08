@@ -45,12 +45,10 @@
 <% @tags.each do |tag| %>
   <%= tag.name %>
 <% end %>
-  <br>
-  <%= link_to 'DELETE', admin_keyboard_path(@keyboard), data: { turbo_method: :delete }
- %>
 <br>
 <div class="text-lg">
   <p class="mt-4"><%= @keyboard.url %></p>
   <p class="mt-4"><%= @keyboard.caption %></p>
 </div>
-
+<br>
+<%= link_to 'DELETE', admin_keyboard_path(@keyboard), data: { turbo_method: :delete } %>
