@@ -111,11 +111,8 @@ class Admin::KeyboardsController < Admin::BaseController
   def create_os_from_name_and_caption(text)
     os_pattern = /(Mac|mac|Windows|windows|Linux|linux|Chrome|iOS|Android)/i
     matches = text.scan(os_pattern)
+    return matches.flatten.uniq.map(&:downcase) if matches.any?
 
-    if matches.any?
-      normalized_os = matches.flatten.uniq.map(&:downcase)
-      return normalized_os
-    end
     nil
   end
 
@@ -181,7 +178,7 @@ class Admin::KeyboardsController < Admin::BaseController
     end
   end
 
-  # 配列を文字列に変換する ※ここで結合しないと先頭の単語しか保存されない
+  # 配列を文字列に結合する ※ここで結合しないと先頭の単語しか保存されない
   def convert_os_to_string(os)
     return os.join(' ') if os.is_a?(Array)
 
@@ -197,6 +194,7 @@ class Admin::KeyboardsController < Admin::BaseController
   def create_and_assign_tag(tag_names, keyboard, existing_tags)
     return unless tag_names
 
+    # 文字列の結合を分割する
     tag_names.split(' ').each do |tag_name|
       tag = existing_tags.find { |t| t.name == tag_name }
 
