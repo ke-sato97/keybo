@@ -3,6 +3,7 @@ import "@hotwired/turbo-rails"
 import "controllers"
 
 import 'flowbite';
+import "@fortawesome/fontawesome-free"
 
 // autocomplete.js ファイルの読み込み
 import "./autocomplete";
