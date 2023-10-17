@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :set_search
+  protect_from_forgery with: :null_session
 
   def set_search
     @keyboards = if params[:search].present?

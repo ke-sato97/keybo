@@ -1,4 +1,5 @@
 class KeyboardsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def index
     if params[:tag_id].present?
       tag = Tag.find(params[:tag_id])
@@ -18,4 +19,9 @@ class KeyboardsController < ApplicationController
     @keyboard = Keyboard.find(params[:id])
     @tags = @keyboard.tags
   end
+
+	def bookmarks
+	  @bookmarks_keyboards = current_user.bookmark_keyboards.includes([:tags]).order(created_at: :desc)
+	end
 end
+

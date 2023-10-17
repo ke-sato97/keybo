@@ -7,8 +7,13 @@ Rails.application.routes.draw do
   delete '/logout', to: 'user_sessions#destroy'
   post '/guest_login', to: 'user_sessions#guest_login'
 
+  resources :keyboards do
+    collection do
+      get :bookmarks
+    end
+  end
+  resources :bookmarks, only: %i[create destroy]
   resources :users, only: %i[new create destroy]
-  resources :keyboards, only: %i[index show]
   resources :diagnoses, only: %i[index new show create]
 
   namespace :admin do
