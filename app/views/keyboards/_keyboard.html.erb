@@ -1,5 +1,6 @@
 <% keyboards.each do |keyboard| %>
-  <%= button_to keyboard_path(keyboard), data: { turbo_method: :get }, class: "p-2 border rounded-md" do %>
+  <div class="ml-2 mr-2">
+  <%= button_to keyboard_path(keyboard), method: :get, class: "p-2 border rounded-md" do %>
     <div class="relative text-gray-700 bg-white shadow-lg hover:bg-gray-100 w-80 rounded-xl bg-clip-border">
       <div class="relative flex items-center justify-center h-64 mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg rounded-xl bg-clip-border">
         <%= image_tag keyboard.medium_image_urls.first, size: '180' %>
@@ -9,9 +10,10 @@
           <%= keyboard.name %>
           <br>
           <br>
-          <%= render 'bookmarks/bookmark_button', keyboard: keyboard %>
+          <%#= render 'bookmarks/bookmark_button', keyboard: keyboard %>
         </div>
       </div>
     </div>
   <% end %>
+  </div>
 <% end %>
