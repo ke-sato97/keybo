@@ -3,7 +3,7 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_back_or_to(:root, notice: t('.success'))
+      redirect_back_or_to(:root, success: t('.success'))
     else
       flash.now[:danger] = t('.fail')
       redirect_to action: 'new'

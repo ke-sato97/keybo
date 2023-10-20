@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :bookmarks, only: %i[index create destroy]
   resources :users, only: %i[new create destroy]
   resources :diagnoses, only: %i[index new show create]
+  resources :password_resets, only: %i[new create edit update]
 
   namespace :admin do
     root 'keyboards#search'
@@ -25,6 +26,8 @@ Rails.application.routes.draw do
 
     resources :keyboards, only: %i[index show edit update destroy]
   end
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
