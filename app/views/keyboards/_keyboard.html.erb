@@ -1,12 +1,12 @@
 <% keyboards.each do |keyboard| %>
-  <div class="ml-2 mr-2">
-  <%= button_to keyboard_path(keyboard), method: :get, class: "p-2 border rounded-md" do %>
-    <div class="relative text-gray-700 bg-white shadow-lg hover:bg-gray-100 w-80 rounded-xl bg-clip-border">
-      <div class="relative flex items-center justify-center h-64 mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg rounded-xl bg-clip-border">
+  <div class="mb-4 ml-2 mr-2">
+  <%= button_to keyboard_path(keyboard), method: :get, class: "border rounded-md" do %>
+    <div class="relative text-gray-700 bg-white shadow-lg hover:bg-slate-100 w-80 rounded-xl bg-clip-border">
+      <div class="relative flex items-center justify-center h-64 mx-4 mt-4 overflow-hidden bg-white shadow-lg text-slate-700 rounded-xl bg-clip-border">
         <%= image_tag keyboard.medium_image_urls.first, size: '180' %>
       </div>
-      <div class="h-64 p-6 text-center w-80">
-        <div class="block mb-2 font-sans text-base antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 ">
+      <div class="h-48 p-6 text-center w-80">
+        <div class="block mb-2 font-sans text-sm antialiased font-semibold leading-snug tracking-normal">
           <%= keyboard.name %>
           <br>
           <br>
