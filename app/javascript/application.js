@@ -6,14 +6,14 @@ import 'flowbite';
 import "@fortawesome/fontawesome-free"
 
 // autocomplete.js ファイルの読み込み
+// import "./autocomplete";
 document.addEventListener("turbo:load", function() {
   const keyboardSearch = document.querySelector("#keyboard_search");
   const keyboardResults = document.querySelector("#keyboard_results");
 
   if (keyboardSearch) {
     keyboardSearch.addEventListener("input", function() {
-      const searchTerm = keyboardSearch.value;
-
+      const searchTerm = keyboardSearch.value; // 入力をそのまま使用
       if (searchTerm.length >= 3) {
         fetch(`/keyboards?search=${encodeURIComponent(searchTerm)}`, { headers: { accept: "application/json" } })
           .then(response => response.json())
