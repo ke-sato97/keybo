@@ -37,7 +37,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -72,8 +72,8 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     domain: 'gmail.com',
     port: 587,
-    user_name: Rails.application.credentials.gmail[:user_name],  #Gmailアドレス（credentials.yml.encに記載）
-    password: Rails.application.credentials.gmail[:password],  #アプリパスワード（credentials.yml.encに記載）
+    user_name: ENV['MAIL_ADDRESS'],  #Gmailアドレス（credentials.yml.encに記載）
+    password: ENV['SMTP_PASSWORD'],  #アプリパスワード（credentials.yml.encに記載）
     authentication: :login
   }
 end
