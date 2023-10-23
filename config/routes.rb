@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'contacts/new'
+  get 'contacts/confirm'
+  get 'contacts/done'
   root 'top_page#top'
   get '/how_to_use', to: 'top_page#how_to_use'
 
@@ -10,6 +13,13 @@ Rails.application.routes.draw do
   resources :keyboards do
     collection do
       get :bookmarks
+    end
+  end
+  resources :contacts, only: [:new, :create] do
+    collection do
+      post :confirm
+      post :back
+      get :done
     end
   end
   resources :bookmarks, only: %i[index create destroy]
@@ -27,7 +37,6 @@ Rails.application.routes.draw do
     resources :keyboards, only: %i[index show edit update destroy]
   end
 
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
