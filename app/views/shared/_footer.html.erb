@@ -1,19 +1,17 @@
-<footer class="absolute bottom-0 w-full bg-white dark:bg-gray-900">
+<footer class="bottom-0 w-full">
   <div class="container px-6 py-8 mx-auto">
-    <div class="flex flex-col items-center sm:flex-row sm:justify-between">
-      <div class="flex mt-3 -mx-2 sm:mt-0">
-        <%= link_to "#", class: "mx-2 text-sm text-gray-500 transition-colors duration-300 hover:text-gray-500 dark:hover:text-gray-300", "aria-label" => "Teams" do %>
-          お問い合わせフォーム
-        <% end %>
+    <div class="flex items-center flex-center">
+      <%= link_to new_contact_path, class: "mx-2 text-md text-slate-700 transition-colors duration-300 hover:text-red-700", "aria-label" => "Teams" do %>
+        お問い合わせフォーム
+      <% end %>
 
-        <%= link_to "#", class: "mx-2 text-sm text-gray-500 transition-colors duration-300 hover:text-gray-500 dark:hover:text-gray-300", "aria-label" => "Privacy" do %>
-          プライバシーポリシー
-        <% end %>
+      <%= link_to "#", class: "mx-2 text-md text-slate-700 transition-colors duration-300 hover:text-red-700", "aria-label" => "Privacy" do %>
+        プライバシーポリシー
+      <% end %>
 
-        <%= link_to "#", class: "mx-2 text-sm text-gray-500 transition-colors duration-300 hover:text-gray-500 dark:hover:text-gray-300", "aria-label" => "Cookies" do %>
-          利用規約
-        <% end %>
-      </div>
+      <%= link_to "#", class: "mx-2 text-md text-slate-700 transition-colors duration-300 hover:text-red-700", "aria-label" => "Cookies" do %>
+        利用規約
+      <% end %>
     </div>
   </div>
 </footer>

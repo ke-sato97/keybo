@@ -7,20 +7,20 @@
       <div class="items-center hidden w-full lg:flex lg:w-auto" id="mobile-menu-2">
         <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
           <li>
-            <%= link_to (t 'defaults.top'), root_path, class: "bg-transparent hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 hover:border-transparent rounded", "aria-current" => "page" %>
+            <%= link_to (t 'defaults.top'), root_path, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 rounded", "aria-current" => "page" %>
           </li>
           <li>
-            <%= link_to "診断", new_diagnosis_path, class: "bg-transparent hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 hover:border-transparent rounded", "aria-current" => "page" %>
+            <%= link_to "診断", new_diagnosis_path, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 rounded", "aria-current" => "page" %>
           </li>
           <li>
-            <%= link_to (t 'defaults.history'), diagnoses_path, class: "bg-transparent hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 hover:border-transparent rounded", "aria-current" => "page" %>
+            <%= link_to (t 'defaults.history'), diagnoses_path, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 rounded", "aria-current" => "page" %>
           </li>
           <li>
-            <%= link_to '使用方法', how_to_use_path, class: "bg-transparent hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 hover:border-transparent rounded", "aria-current" => "page" %>
+            <%= link_to '使用方法', how_to_use_path, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 rounded", "aria-current" => "page" %>
           </li>
         </ul>
       </div>
-      <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete }, class: "bg-transparent hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 hover:border-transparent rounded" %>
+      <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete }, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 rounded" %>
       <div class="test-lg">
         <%= current_user.name %>さん
       </div>

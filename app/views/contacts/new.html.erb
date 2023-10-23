@@ -1,15 +1,26 @@
-<%= form_with model: @contact, url: confirm_contacts_path, data: { turbo: false }, local: true do |f| %>
-  <%= f.label :name, 'お名前' %><br>
-  <%= f.text_field :name %>
-  <br>
-  <%= f.label :email, 'メールアドレス' %><br>
-  <%= f.email_field :email %>
-  <br>
-  <%= f.label :subject, '件名' %><br>
-  <%= f.text_area :subject %>
-  <br>
-  <%= f.label :message, 'メッセージ' %><br>
-  <%= f.text_area :message, rows: '5' %>
-  <br>
-    <%= f.submit '入力内容確認', class: 'text-white bg-red-500 hover:bg-red-600 px-4 py-2' %>
-<% end %>
+<div class="pt-8 pb-8">
+  <div class="p-6 mx-auto bg-white rounded-lg shadow-lg max-w-screen-lg">
+    <div class="flex justify-center mb-4 text-4xl font-bold text-slate-600">
+      お問い合わせ
+    </div>
+    <%= form_with model: @contact, url: confirm_contacts_path, data: { turbo: false }, local: true do |f| %>
+      <div class="mb-3 form-group">
+        <%= f.label :name, '名前', class:"text-lg pb-2" %>
+        <%= f.text_field :name, class:"w-full rounded-lg border border-slate-700" %>
+      <div class="mt-3 mb-3 form-group">
+        <%= f.label :email, 'メールアドレス', class:"text-lg pb-2" %>
+        <%= f.email_field :email, class:"w-full rounded-lg border border-slate-700" %>
+      </div>
+      <div class="mb-3 form-group">
+        <%= f.label :subject, '件名', class:"text-lg pb-2" %>
+        <%= f.text_field :subject, class:"w-full rounded-lg border border-slate-700" %>
+      </div>
+      <div class="mb-4 form-group">
+        <%= f.label :message, 'メッセージ', class:"text-lg pb-2" %>
+        <%= f.text_area :message, class:"w-full rounded-lg border border-slate-700", rows: '5' %>
+      </div>
+      <div class="flex justify-center">
+        <%= f.submit '入力内容確認', class: 'rounded shadow-lg text-lg text-white bg-red-500 hover:bg-red-600 px-4 py-2' %>
+      </div>
+    <% end %>
+</div>
