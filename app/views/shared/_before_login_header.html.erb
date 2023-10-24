@@ -1,11 +1,13 @@
 <header>
-  <nav class="px-4 lg:px-6 py-2.5">
-    <div class="flex flex-wrap items-center justify-between mx-auto max-w-screen-xl">
+  <nav class="px-4 py-2 lg:px-6">
+    <div class="flex flex-wrap items-center justify-between max-w-full">
 
-      <%= render 'shared/search_form' %>
+      <div class="flex items-center ml-40"> <!-- フォームを左寄せ -->
+        <%= render 'shared/search_form' %>
+      </div>
 
-      <div class="items-center hidden w-full lg:flex lg:w-auto" id="mobile-menu-2">
-        <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+      <div class="flex items-center justify-center flex-grow"> <!-- 中央揃え -->
+        <ul class="flex flex-col lg:flex-row lg:space-x-8">
           <li>
             <%= button_to (t 'defaults.top'), root_path, method: :get, class: "bg-transparent hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-4 transition-colors duration-300 rounded" %>
           </li>
@@ -15,10 +17,11 @@
         </ul>
       </div>
 
-      <div class="flex items-center lg:order-2 space-x-4"> <!-- space-x-4 を追加 -->
+      <div class="flex items-center justify-end mr-40"> <!-- 右寄せ -->
         <%= button_to t('defaults.login'), login_path, method: :get, class: "bg-transparent hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-4 transition-colors duration-300 rounded" %>
-        <%= button_to t('defaults.register'), new_user_path, method: :get, class: "bg-transparent hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-4 transition-colors duration-300 rounded" %>
+        <%= button_to t('defaults.register'), new_user_path, method: :get, class: "bg-transparent hover:bg-slate-500 text-slate-700 hover:text-white ml-2 py-2 px-4 transition-colors duration-300 rounded" %>
       </div>
+
     </div>
   </nav>
 </header>

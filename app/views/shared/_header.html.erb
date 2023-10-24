@@ -1,29 +1,27 @@
 <header>
   <nav class="px-4 py-2.5 lg:px-6">
-    <div class="flex flex-wrap items-center justify-between mx-auto max-w-screen-xl">
+    <div class="flex flex-wrap items-center justify-between max-w-full">
 
-      <%= render 'shared/search_form' %>
+      <div class="flex items-center ml-40"> <!-- フォームを左寄せ -->
+        <%= render 'shared/search_form' %>
+      </div>
 
-      <div class="items-center hidden w-full lg:flex lg:w-auto" id="mobile-menu-2">
-        <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-          <li>
-            <%= link_to (t 'defaults.top'), root_path, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 rounded", "aria-current" => "page" %>
-          </li>
+      <div class="flex items-center justify-center flex-grow"> <!-- 中央揃え -->
+        <ul class="flex flex-col lg:flex-row lg:space-x-8">
           <li>
             <%= link_to "診断", new_diagnosis_path, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 rounded", "aria-current" => "page" %>
           </li>
           <li>
             <%= link_to (t 'defaults.history'), diagnoses_path, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 rounded", "aria-current" => "page" %>
           </li>
-          <li>
-            <%= link_to '使用方法', how_to_use_path, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 rounded", "aria-current" => "page" %>
-          </li>
         </ul>
       </div>
-      <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete }, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 rounded" %>
-      <div class="test-lg">
-        <%= current_user.name %>さん
+
+      <div class="flex items-center justify-end mr-40"> <!-- 右寄せ -->
+        <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete }, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 rounded" %>
+        <%= render 'shared/my_page_button' %>
       </div>
+
     </div>
   </nav>
 </header>
