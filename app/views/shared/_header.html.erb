@@ -1,5 +1,5 @@
 <header>
-  <nav class="px-4 py-2.5 lg:px-6">
+  <nav class="px-4 py-2 lg:px-6">
     <div class="flex flex-wrap items-center justify-between max-w-full">
 
       <div class="flex items-center ml-40"> <!-- フォームを左寄せ -->
@@ -9,17 +9,19 @@
       <div class="flex items-center justify-center flex-grow"> <!-- 中央揃え -->
         <ul class="flex flex-col lg:flex-row lg:space-x-8">
           <li>
-            <%= link_to "診断", new_diagnosis_path, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 rounded", "aria-current" => "page" %>
+            <%= button_to "診断", new_diagnosis_path, method: :get, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded", "aria-current" => "page" %>
           </li>
           <li>
-            <%= link_to (t 'defaults.history'), diagnoses_path, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 rounded", "aria-current" => "page" %>
+            <%= button_to (t 'defaults.history'), diagnoses_path, method: :get, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded", "aria-current" => "page" %>
+          </li>
+          <li>
+            <%= render 'shared/my_page_button', "aria-current" => "page" %>
           </li>
         </ul>
       </div>
 
       <div class="flex items-center justify-end mr-40"> <!-- 右寄せ -->
-        <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete }, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2.5 px-4 rounded" %>
-        <%= render 'shared/my_page_button' %>
+        <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete }, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded" %>
       </div>
 
     </div>

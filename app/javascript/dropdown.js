@@ -5,7 +5,6 @@ document.addEventListener("turbo:load", function () {
   if (!button){ return false;}
   button.addEventListener("click", function () {
     if (dropdown.style.display === "none") {
-      console.log(dropdown)
       dropdown.style.display = "block";
     } else {
       dropdown.style.display = "none";

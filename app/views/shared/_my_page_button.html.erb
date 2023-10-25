@@ -1,15 +1,15 @@
-<div class="relative inline-block text-left">
-  <button id="dropdown_button" class="px-2 py-2 ml-2 rounded transition-colors border-slate-400 duration-300 hover:bg-slate-500 text-slate-700 hover:text-white"="button">
-    <i class="fa-solid fa-bars fa-xl" style="color:slate;"></i>
-</button>
+<div class="relative items-center inline-block text-left">
+  <button id="dropdown_button" class="px-3 py-2 rounded transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white">
+    その他<i class="fa-solid fa-fw fa-xs fa-angle-down"></i>
+  </button>
   <div id="dropdown" style="display: none;">
     <!-- メニューコンテンツ -->
-    <ul class="absolute right-0 z-10 py-2 mt-2 text-sm text-gray-700 bg-white rounded-lg shadow origin-top-right w-44 divide-y divide-slate-200">
+    <ul class="absolute right-0 z-10 w-48 py-2 mt-2 text-sm bg-white rounded-lg shadow text-slate-500 origin-top-right divide-y divide-slate-300">
       <li>
-        <%= link_to (t 'defaults.top'), root_path, class: "block px-4 py-2 hover:bg-gray-100 text-slate-600" %>
+        <%= link_to (t 'defaults.top'), root_path, class: "block px-4 py-2 hover:bg-slate-100 text-slate-700" %>
       </li>
       <li>
-        <%= link_to '使用方法', how_to_use_path, class: "block px-4 py-2 hover:bg-gray-100 text-slate-600" %>
+        <%= link_to '使用方法', how_to_use_path, class: "block px-4 py-2 hover:bg-slate-100 text-slate-700" %>
       </li>
     </ul>
   </div>
