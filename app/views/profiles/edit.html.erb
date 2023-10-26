@@ -1,0 +1,20 @@
+<!-- app/views/profiles/edit.html.erb -->
+<div class="p-6 mx-auto my-auto mt-8 bg-white rounded-lg shadow-lg max-w-screen-lg">
+  <div class="flex justify-center mb-4 text-4xl font-bold text-slate-600">
+    編集画面
+  </div>
+
+  <%= form_with model: @user, url: profile_path, local: true do |f| %>
+    <div class="mt-3 mb-3 form-group">
+      <%= f.label :email, 'メールアドレス', class:"text-lg pb-2" %>
+      <%= f.email_field :email, class:"w-full rounded-lg border border-slate-700" %>
+    </div>
+    <div class="mt-3 mb-3 form-group">
+      <%= f.label :image, '画像(5MB以下)' %><br>
+      <%= f.file_field :image %>
+    </div>
+    <div class="flex justify-center">
+      <%= f.submit '変更する', class: 'rounded shadow-lg text-lg text-white bg-red-500 hover:bg-red-600 px-4 py-2' %>
+    </div>
+  <% end %>
+</div>

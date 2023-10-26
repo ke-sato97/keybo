@@ -1,0 +1,29 @@
+<!-- app/views/profiles/show.html.erb -->
+<div class='relative overflow-scroll top-wrapper'>
+  <div class="pt-8 pb-8">
+    <div class="p-6 mx-auto bg-white rounded-lg shadow-lg max-w-screen-lg">
+      <div class="flex justify-center mb-4 text-4xl font-bold text-slate-600">
+        プロフィール確認画面
+      </div>
+
+      <div class="flex items-center justify-center mb-4 text-4xl font-bold text-slate-600">
+        <div class="flex items-left">
+          <% if @user.image.attached? %>
+            <%= image_tag @user.image %>
+          <% end %>
+        </div>
+
+        <div class="flex ml-4 items-right">
+          <div class="mb-2">
+            <div class="text-lg">メールアドレス : <span><%= @user.email %></span></div>
+            <div class="mt-3 mb-3 border-b border-gray-600"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center mb-2">
+        <%= link_to '編集', edit_profile_path(@user), class:"rounded mr-2 shadow-lg text-lg text-white bg-red-500 ml-2 hover:bg-red-600 px-4 py-2" %>
+      </div>
+
+  </div>
+</div>
