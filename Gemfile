@@ -79,3 +79,5 @@ gem 'sentry-ruby', '~> 5.10'
 gem 'sorcery'
 gem 'config'
 gem 'dotenv-rails'
+gem 'mini_magick', '~> 4.8'
+gem "image_processing", ">= 1.2"

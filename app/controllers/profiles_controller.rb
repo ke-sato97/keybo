@@ -1,21 +1,27 @@
 class ProfilesController < ApplicationController
-# app/controllers/profile_controller.rb
+  before_action :set_user, only: %i[show edit update]
+
   def show; end
 
   def edit; end
 
   def update
     if @user.update(user_params)
-      redirect_to profile_path,success: "ユーザーを更新しました"
+      flash[:success] = "プロフィールを更新しました"
+      redirect_to profile_path
     else
-      flash.now[:danger] = "ユーザーを更新できませんでした"
+      flash[:danger] = "プロフィールを更新できませんでした"
       render :edit
     end
   end
 
   private
 
+  def set_user
+    @user = User.find(current_user.id)
+  end
+
   def user_params
-    params.require(:user).permit(:email, :image) # ストロングパラメータにimage(画像カラム)を追加
+    params.require(:user).permit(:name, :email, :image)
   end
 end

@@ -6,6 +6,9 @@
     <!-- メニューコンテンツ -->
     <ul class="absolute right-0 z-10 w-48 py-2 mt-2 text-sm bg-white rounded-lg shadow text-slate-500 origin-top-right divide-y divide-slate-300">
       <li>
+        <%= link_to 'マイページ', profile_path(@user), class: "block px-4 py-2 hover:bg-slate-100 text-slate-700" %>
+      </li>
+      <li>
         <%= link_to (t 'defaults.top'), root_path, class: "block px-4 py-2 hover:bg-slate-100 text-slate-700" %>
       </li>
       <li>
