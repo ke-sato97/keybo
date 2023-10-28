@@ -13,7 +13,7 @@
               <% if @user.image.attached? %>
                 <%= image_tag @user.image.variant(resize: '250'), class: "rounded-lg" %>
               <% else %>
-                <%= image_tag 'noimage', size: '250' %>
+                <%= image_tag 'noimage.png', size: '250' %>
               <% end %>
             </div>
             <%= link_to '画像を変更', image_processing_profile_path, class:"rounded mr-2 shadow-lg text-lg text-white bg-red-500 pb-2 hover:bg-red-600 px-4 py-2" %>
