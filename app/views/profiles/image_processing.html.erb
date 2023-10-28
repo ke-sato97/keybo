@@ -1,0 +1,27 @@
+<!-- app/views/profiles/image_processing.html.erb -->
+<% if @user.image.attached? %>
+  <%= image_tag @user.image.variant(resize: '200'), class: "rounded-lg" %>
+  <%= form_with model: @user, url: image_processing_profile_path, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :image, '新しい画像をアップロード' %><br>
+      <%= f.file_field :image %>
+    </div>
+    <div class="form-group">
+      <%= f.check_box :remove_image %>
+      <%= f.label :remove_image, '画像を削除' %>
+    </div>
+    <div class="form-group">
+      <%= f.submit '更新', class: 'rounded shadow-lg text-lg text-white bg-red-500 hover:bg-red-600 px-4 py-2' %>
+    </div>
+  <% end %>
+<% else %>
+  <%= form_with model: @user, url: image_processing_profile_path, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :image, '新しい画像をアップロード' %>
+      <%= f.file_field :image %>
+    </div>
+    <div class="form-group">
+      <%= f.submit '作成', class: 'rounded shadow-lg text-lg text-white bg-red-500 hover:bg-red-600 px-4 py-2' %>
+    </div>
+  <% end %>
+<% end %>

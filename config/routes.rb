@@ -26,7 +26,10 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create destroy]
   resources :diagnoses, only: %i[index new show create]
   resources :password_resets, only: %i[new create edit update]
-  resource :profile, only: %i[show edit update]
+  resource :profile, only: %i[show edit update] do
+    get :image_processing, on: :member
+    patch :image_processing, on: :member
+  end
 
   namespace :admin do
     root 'keyboards#search'
