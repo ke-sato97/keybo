@@ -33,14 +33,14 @@ class User < ApplicationRecord
   end
 
   def file_type
-    if !image.blob.content_type.in?(%('image/jpeg image/png'))
-      errors.add(:images, 'は JPEG 形式または PNG 形式のみ選択してください')
+    if image.attached? && !image.blob.content_type.in?(%('image/jpeg image/png'))
+      errors.add(:image, 'は JPEG 形式または PNG 形式のみ選択してください')
     end
   end
 
   def file_size
-    if image.blob.byte_size > 5.megabytes
-      errors.add(:images, 'は 5MB 以下のファイルを選択してください')
+    if image.attached? && image.blob.byte_size > 5.megabytes
+      errors.add(:image, 'は 5MB 以下のファイルを選択してください')
     end
   end
 end

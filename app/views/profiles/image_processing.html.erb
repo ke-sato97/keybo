@@ -1,27 +1,64 @@
 <!-- app/views/profiles/image_processing.html.erb -->
-<% if @user.image.attached? %>
-  <%= image_tag @user.image.variant(resize: '200'), class: "rounded-lg" %>
-  <%= form_with model: @user, url: image_processing_profile_path, local: true do |f| %>
-    <div class="form-group">
-      <%= f.label :image, '新しい画像をアップロード' %><br>
-      <%= f.file_field :image %>
+<div class='overflow-scroll top-wrapper'>
+  <div class="p-6 mx-auto my-auto mt-8 bg-white rounded-lg shadow-lg max-w-screen-lg">
+    <div class="flex items-center justify-center mb-4 text-xl font-bold text-slate-600">
+
+      <% if @user.image.attached? %>
+
+        <!-- プレビューを表示 -->
+        <div class="image-preview">
+          <%= image_tag @user.image, id: "image_preview", size: "250", class: "flex justify-center rounded-lg" %>
+        </div>
+
+        <div class="flex items-center mb-4 ml-8">
+          <%= form_with model: @user, url: image_processing_profile_path, local: true do |f| %>
+            <div class="mb-4 form-group">
+              <%= f.file_field :image, onchange: "imageImage(this);" %>
+            </div>
+            <div class="mb-4 form-group">
+              <%= f.check_box :remove_image %>
+              <%= f.label :remove_image, '画像を削除' %>
+            </div>
+              <%= f.submit '更新', class: 'rounded shadow-lg text-lg text-white bg-red-500 hover:bg-red-600 px-4 py-2' %>
+          <% end %>
+        </div>
+
+      <% else %>
+
+          <!-- プレビューを表示するための追加 -->
+        <div class="image-preview">
+          <%= image_tag 'noimage', size: '250',id: "image_preview", class: "flex justify-center rounded-lg" %>
+        </div>
+
+        <div class="flex items-center mb-4 ml-8">
+          <%= form_with model: @user, url: image_processing_profile_path, local: true do |f| %>
+            <div class="mb-4 form-group">
+              <%= f.file_field :image, onchange: "imageImage(this);" %>
+            </div>
+
+            <div class="mb-4 form-group">
+              <%= f.submit '作成', class: 'rounded shadow-lg text-lg text-white bg-red-500 hover:bg-red-600 px-4 py-2' %>
+            </div>
+          <% end %>
+
+      <% end %>
+
     </div>
-    <div class="form-group">
-      <%= f.check_box :remove_image %>
-      <%= f.label :remove_image, '画像を削除' %>
-    </div>
-    <div class="form-group">
-      <%= f.submit '更新', class: 'rounded shadow-lg text-lg text-white bg-red-500 hover:bg-red-600 px-4 py-2' %>
-    </div>
-  <% end %>
-<% else %>
-  <%= form_with model: @user, url: image_processing_profile_path, local: true do |f| %>
-    <div class="form-group">
-      <%= f.label :image, '新しい画像をアップロード' %>
-      <%= f.file_field :image %>
-    </div>
-    <div class="form-group">
-      <%= f.submit '作成', class: 'rounded shadow-lg text-lg text-white bg-red-500 hover:bg-red-600 px-4 py-2' %>
-    </div>
-  <% end %>
-<% end %>
+  </div>
+</div>
+
+<!-- プレビュー表示用の JavaScript -->
+<script>
+  function imageImage(obj){
+    const fileReader = new FileReader();
+    fileReader.onload = (function() {
+      document.getElementById('image_preview').src = fileReader.result;
+    });
+
+    if (obj.files.length > 0) {
+      fileReader.readAsDataURL(obj.files[0]);
+    } else {
+      document.getElementById('image_preview').src = '/assets/noimage.png'; // デフォルトの画像を設定
+    }
+  }
+</script>

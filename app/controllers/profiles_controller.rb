@@ -17,18 +17,24 @@ class ProfilesController < ApplicationController
 
   def image_processing
     if request.patch?
-      if params[:user][:image]
-        # 画像を更新
-        @user.image.purge if @user.image.attached?  # 既存の画像を削除
-        @user.image.attach(params[:user][:image])
-        flash[:success] = "画像が更新されました"
-        redirect_to profile_path
-      elsif params[:user][:remove_image]
-        # 画像を削除
-        @user.image.purge
-        flash[:success] = "画像が削除されました"
-        redirect_to profile_path
+      @user = User.find(current_user.id)
+
+      # フォームから送信されたデータを取得
+      user_params = params[:user]
+
+      if user_params
+        if user_params[:image]
+          # 画像を更新
+          @user.image.attach(user_params[:image])
+          flash[:success] = "画像が更新されました"
+        elsif user_params[:remove_image]
+          # 画像を削除
+          @user.image.purge
+          flash[:success] = "画像が削除されました"
+        end
       end
+
+      redirect_to profile_path
     end
   end
 
