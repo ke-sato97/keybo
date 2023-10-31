@@ -21,7 +21,7 @@ class KeyboardsController < ApplicationController
   end
 
 	def bookmarks
-	  @bookmarks_keyboards = current_user.bookmark_keyboards.includes([:tags]).order(created_at: :desc)
+	  @bookmarks_keyboards = current_user.bookmark_keyboards.includes(:user).order(create_at: :desc)
 	end
 end
 

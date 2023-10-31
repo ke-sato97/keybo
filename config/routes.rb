@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get :bookmarks
     end
   end
-  resources :contacts, only: [:new, :create] do
+  resources :contacts, only: %i[new create] do
     collection do
       post :confirm
       post :back
