@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'contacts/confirm'
   get 'contacts/done'
 
-  resources :keyboards do
+	resources :keyboards do
     collection do
       get :bookmarks
     end

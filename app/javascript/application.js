@@ -2,7 +2,6 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
-import 'flowbite';
 import "@fortawesome/fontawesome-free"
 
 // import "./dropdown";
