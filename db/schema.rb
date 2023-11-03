@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_26_114511) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_03_021417) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_114511) do
     t.index ["keyboard_id"], name: "index_bookmarks_on_keyboard_id"
     t.index ["user_id", "keyboard_id"], name: "index_bookmarks_on_user_id_and_keyboard_id", unique: true
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body", null: false
+    t.bigint "user_id", null: false
+    t.bigint "keyboard_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["keyboard_id"], name: "index_comments_on_keyboard_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -121,6 +131,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_114511) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookmarks", "keyboards"
   add_foreign_key "bookmarks", "users"
+  add_foreign_key "comments", "keyboards"
+  add_foreign_key "comments", "users"
   add_foreign_key "diagnoses", "keyboards"
   add_foreign_key "diagnoses", "users"
   add_foreign_key "keyboard_tags", "keyboards"
