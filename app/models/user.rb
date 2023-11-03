@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :keyboards, dependent: :destroy, through: :diagnoses
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_keyboards, through: :bookmarks, source: :keyboard
+  has_many :comments, dependent: :destroy
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -16,6 +17,10 @@ class User < ApplicationRecord
   validates :reset_password_token, presence: true, uniqueness: true, allow_nil: true
   validate :file_type
   validate :file_size
+
+  def own?(object)
+    self.id == object.user_id #selfは省略できる。
+  end
 
   # 引数で渡したkeyboardレコードを中間テーブルに自動で保存している。<<を使うことでsaveメソッドも自動で行う。
   def bookmark(keyboard)
