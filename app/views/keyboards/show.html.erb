@@ -56,6 +56,15 @@
       </div>
     </div>
 
+    <div class="flex w-1/4 px-6 py-3 bg-white rounded-lg justify-right">
+      <div class="p-4 border rounded-md">
+        <!-- コメントエリア -->
+        <%= render 'comments/comments', { comments: @comments } %>
+        <!-- コメントフォーム -->
+        <%= render 'comments/form', { keyboard: @keyboard, comment: @comment } %>
+      </div>
+    </div>
+
   </div>
 
 </div>
