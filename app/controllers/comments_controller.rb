@@ -24,4 +24,3 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body).merge(keyboard_id: params[:keyboard_id])
   end
 end
-

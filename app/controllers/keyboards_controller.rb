@@ -1,5 +1,6 @@
 class KeyboardsController < ApplicationController
   skip_before_action :verify_authenticity_token
+
   def index
     if params[:tag_id].present?
       tag = Tag.find(params[:tag_id])
@@ -19,11 +20,10 @@ class KeyboardsController < ApplicationController
     @keyboard = Keyboard.find(params[:id])
     @tags = @keyboard.tags
     @comment = Comment.new
-    @comments = @keyboard.comments.includes(:user).order(created_at: :desc)
+    @comments = @keyboard.comments.includes(:user).order(created_at: :asc)
   end
 
-	def bookmarks
-	  @bookmarks_keyboards = current_user.bookmark_keyboards.includes(:user).order(create_at: :desc)
-	end
+  def bookmarks
+    @bookmarks_keyboards = current_user.bookmark_keyboards.includes(:user).order(create_at: :desc)
+  end
 end
-
