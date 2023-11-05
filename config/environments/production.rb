@@ -97,9 +97,8 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     domain: 'gmail.com',
     port: 587,
-    user_name: ENV['MAIL_ADDRESS'],  #Gmailアドレス（credentials.yml.encに記載）
-    password: ENV['SMTP_PASSWORD'],  #アプリパスワード（credentials.yml.encに記載）
+    user_name: ENV['MAIL_ADDRESS'],  # Gmailアドレス（credentials.yml.encに記載）
+    password: ENV['SMTP_PASSWORD'],  # アプリパスワード（credentials.yml.encに記載）
     authentication: :login
   }
 end
-

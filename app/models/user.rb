@@ -19,7 +19,7 @@ class User < ApplicationRecord
   validate :file_size
 
   def own?(object)
-    self.id == object.user_id #selfは省略できる。
+    id == object.user_id # selfは省略できる。
   end
 
   # 引数で渡したkeyboardレコードを中間テーブルに自動で保存している。<<を使うことでsaveメソッドも自動で行う。
@@ -38,14 +38,14 @@ class User < ApplicationRecord
   end
 
   def file_type
-    if image.attached? && !image.blob.content_type.in?(%('image/jpeg image/png'))
-      errors.add(:image, 'は JPEG 形式または PNG 形式のみ選択してください')
-    end
+    return unless image.attached? && !image.blob.content_type.in?(%('image/jpeg image/png'))
+
+    errors.add(:image, 'は JPEG 形式または PNG 形式のみ選択してください')
   end
 
   def file_size
-    if image.attached? && image.blob.byte_size > 5.megabytes
-      errors.add(:image, 'は 5MB 以下のファイルを選択してください')
-    end
+    return unless image.attached? && image.blob.byte_size > 5.megabytes
+
+    errors.add(:image, 'は 5MB 以下のファイルを選択してください')
   end
 end

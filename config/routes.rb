@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'top_page#top'
   get '/how_to_use', to: 'top_page#how_to_use'
   get '/login', to: 'user_sessions#new'
@@ -10,7 +9,7 @@ Rails.application.routes.draw do
   get 'contacts/confirm'
   get 'contacts/done'
 
-	resources :keyboards do
+  resources :keyboards do
     resources :comments, only: %i[create destroy]
     collection do
       get :bookmarks

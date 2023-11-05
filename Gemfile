@@ -44,8 +44,8 @@ gem 'tailwindcss-rails'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'pry-rails'
   gem 'letter_opener_web', '1.3.4'
+  gem 'pry-rails'
 end
 
 group :development do
@@ -70,14 +70,14 @@ end
 
 gem 'pg'
 
+gem 'config'
 gem 'dockerfile-rails', '>= 1.5', group: :development
+gem 'dotenv-rails'
+gem 'image_processing', '>= 1.2'
 gem 'kaminari'
+gem 'mini_magick', '~> 4.8'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'rakuten_web_service'
 gem 'sentry-rails', '~> 5.10'
 gem 'sentry-ruby', '~> 5.10'
 gem 'sorcery'
-gem 'config'
-gem 'dotenv-rails'
-gem 'mini_magick', '~> 4.8'
-gem "image_processing", ">= 1.2"

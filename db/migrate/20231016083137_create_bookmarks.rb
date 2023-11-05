@@ -7,6 +7,6 @@ class CreateBookmarks < ActiveRecord::Migration[7.0]
       t.timestamps
     end
     # bookmarksにおいてuser_idとpost_idの組み合わせを一意性あるものにする
-    add_index  :bookmarks, [:user_id, :keyboard_id], unique: true
+    add_index :bookmarks, %i[user_id keyboard_id], unique: true
   end
 end

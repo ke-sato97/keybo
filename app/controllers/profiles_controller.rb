@@ -7,35 +7,35 @@ class ProfilesController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:success] = "プロフィールを更新しました"
+      flash[:success] = 'プロフィールを更新しました'
       redirect_to profile_path
     else
-      flash[:danger] = "プロフィールを更新できませんでした"
+      flash[:danger] = 'プロフィールを更新できませんでした'
       render :edit
     end
   end
 
   def image_processing
-    if request.patch?
-      @user = User.find(current_user.id)
+    return unless request.patch?
 
-      # フォームから送信されたデータを取得
-      user_params = params[:user]
+    @user = User.find(current_user.id)
 
-      if user_params
-        if user_params[:image]
-          # 画像を更新
-          @user.image.attach(user_params[:image])
-          flash[:success] = "画像が更新されました"
-        elsif user_params[:remove_image]
-          # 画像を削除
-          @user.image.purge
-          flash[:success] = "画像が削除されました"
-        end
+    # フォームから送信されたデータを取得
+    user_params = params[:user]
+
+    if user_params
+      if user_params[:image]
+        # 画像を更新
+        @user.image.attach(user_params[:image])
+        flash[:success] = '画像が更新されました'
+      elsif user_params[:remove_image]
+        # 画像を削除
+        @user.image.purge
+        flash[:success] = '画像が削除されました'
       end
-
-      redirect_to profile_path
     end
+
+    redirect_to profile_path
   end
 
   private
