@@ -1,5 +1,7 @@
-<div class="col-lg-8 offset-lg-2">
-  <table id="js-table-comment" class="table">
-    <%= render comments %>
-  </table>
-</div>
+<%= turbo_frame_tag 'comments' do %>
+  <div class="col-lg-8 offset-lg-2">
+    <% comments.each do |comment| %>
+     <%= render 'comments/comment', comment: comment %>
+    <% end %>
+  </div>
+<% end %>

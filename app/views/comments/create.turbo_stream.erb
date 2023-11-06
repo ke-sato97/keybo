@@ -1,0 +1,11 @@
+<%= turbo_stream.prepend "flash_message", partial: "shared/flash_message" %>
+<%= turbo_stream.replace "#{dom_id(Comment.new)}_form" do %>
+  <%= render "form", keyboard: @keyboard, comment: Comment.new %>
+<% end %>
+
+<%= turbo_stream.update "comments_count" do %>
+  <%= render "comments_count", keyboard: @comment.keyboard, comments: @keyboard.comments %>
+<% end %>
+<%= turbo_stream.prepend "comments" do %>
+  <%= render "comment", comment: @comment %>
+<% end %>
