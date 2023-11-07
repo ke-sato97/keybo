@@ -2,48 +2,42 @@ class CommentsController < ApplicationController
   before_action :find_keyboard, only: %i[create edit]
   before_action :find_comment, only: %i[edit update destroy]
 
-  def new; end
-
   def create
     @comment = @keyboard.comments.build(comment_params)
+
     respond_to do |format|
-      binding.pry
       if @comment.save
-        format.turbo_stream { flash[:success] = "コメントしました" }
-        format.html { redirect_to @comment.keyboard,
-                      flash: { success: "コメントしました" } }
+        format.turbo_stream { }
+        format.html { redirect_to @comment.keyboard }
       else
         format.turbo_stream do
-          flash[:danger] = "コメントに失敗しました"
           render turbo_stream: [
-            turbo_stream.replace("flash_message", partial: "shared/flash_message"),
+            turbo_stream.replace('flash_messages', partial: 'shared/flash_messages')
           ]
         end
-        format.html { redirect_to @comment.keyboard,
-                      flash: { danger: "コメントに失敗しました" } }
+        format.html { redirect_to @comment.keyboard }
       end
     end
   end
-
-  def show; end
 
   def edit; end
 
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.turbo_stream { flash[:success] = "コメントを編集しました" }
-        format.html { redirect_to @comment.keyboard,
-                      flash: { success: "コメントを編集しました" } }
+        format.turbo_stream 
+        format.html do
+          redirect_to @comment.keyboard
+        end
       else
         format.turbo_stream do
-          flash[:warning] = "コメントの編集にしっぱいしました"
           render turbo_stream: [
-            turbo_stream.replace("flash_message", partial: "shared/flash_message"),
+            turbo_stream.replace('flash_messages', partial: 'shared/flash_messages')
           ]
         end
-        format.html { redirect_to @comment.keyboard,
-                      flash: { danger: "コメントの編集にしっぱいしました" } }
+        format.html do
+          redirect_to @comment.keyboard
+        end
       end
     end
   end
@@ -51,9 +45,10 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.turbo_stream { flash[:success] = "コメントを削除しました" }
-      format.html { redirect_to @comment.keyboard,
-                    flash: { success: "コメントを削除しました" } }
+      format.turbo_stream 
+      format.html do
+        redirect_to @comment.keyboard
+      end
     end
   end
 
@@ -74,4 +69,3 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.find(params[:id])
   end
 end
-

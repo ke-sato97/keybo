@@ -1,7 +1,5 @@
 <%= turbo_frame_tag 'comments' do %>
-  <div class="col-lg-8 offset-lg-2">
-    <% comments.each do |comment| %>
-     <%= render 'comments/comment', comment: comment %>
-    <% end %>
-  </div>
+  <% comments.each do |comment| %>
+   <%= render 'comments/comment', comment: comment %>
+  <% end %>
 <% end %>
