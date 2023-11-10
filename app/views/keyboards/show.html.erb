@@ -58,12 +58,14 @@
 
   </div>
 
-    <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
-      <!-- コメントエリア -->
-      <%= render 'comments/comments', { comments: @comments } %>
-      <!-- コメントフォーム -->
-      <%= render 'comments/form', { keyboard: @keyboard, comment: @comment } %>
-    </div>
+  <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
+    <!-- コメントエリア -->
+    <%= render 'comments/comments', { comments: @comments } %>
+    <!-- コメントフォーム -->
+    <%= turbo_stream.replace "#{dom_id(Comment.new)}_form" do %>
+      <%= render "comments/form", keyboard: @keyboard, comment: Comment.new %>
+    <% end %>
+  </div>
 
 </div>
 <br>
