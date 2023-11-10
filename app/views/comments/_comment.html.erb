@@ -1,5 +1,5 @@
 <%= turbo_frame_tag dom_id(comment) do %>
-  <tr id="comment-<%= comment.id %>">
+  <tr>
     <td style="width: 60px">
       <% if comment.user.image.attached? %>
         <%= image_tag comment.user.image.variant(resize: '50'), class: "rounded-lg" %>
@@ -10,19 +10,7 @@
     <td>
       <h3 class="text-md"><%= comment.user.name %></h3>
       <div class="text-xl">
-        <div id="js-comment-<%= comment.id %>">
           <%= simple_format(comment.body) %>
-        </div>
-      </div>
-      <div id="js-p-2 p-2 texmment-box-<%= comment.id %>" style="display: none;">
-        <textarea id="js-textarea-comment-<%= comment.id %>" class="mb-1 form-control"><%= comment.body %></textarea>
-        <button class="btn btn-light js-button-edit-comment-cancel" data-comment-id="<%= comment.id %>">キャンセル</button>
-        <button class="btn btn-success js-button-comment-update" data-comment-id="<%= comment.id %>">更新</button>
-      </div>
-    </td>
-      <div id="js-textarea-comment-box-<%= comment.id %>" style="display: none;">
-        <button class="btn btn-light js-button-edit-comment-cancel" data-comment-id="<%= comment.id %>">キャンセル</button>
-        <button class="btn btn-success js-button-comment-update" data-comment-id="<%= comment.id %>">更新</button>
       </div>
     </td>
 
@@ -30,14 +18,12 @@
       <td class="flex justify-between action">
         <ul class="flex items-center space-x-2">
           <li class="list-inline-item">
-            <a href="#" class='js-edit-comment-button' data-comment-id="<%= comment.id %>">
+            <%= link_to edit_keyboard_comment_path(comment.keyboard, comment) do %>
               <i class="fa-solid fa-pen" style="color:slate;"></i>
-            </a>
+            <% end %>
           </li>
           <li class="list-inline-item">
             <%= link_to polymorphic_path([comment.keyboard, comment]),
-            class: 'js-delete-comment-button',
-            id: "button-delete-#{comment.id}",
             data: { turbo_method: :delete, turbo_confirm: "コメントを削除してもよろしいですか？" } do %>
               <i class="fa-solid fa-trash" style="color:slate;"></i>
             <% end %>

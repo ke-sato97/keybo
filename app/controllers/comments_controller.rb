@@ -1,55 +1,37 @@
 class CommentsController < ApplicationController
   before_action :find_keyboard, only: %i[create edit]
-  before_action :find_comment, only: %i[edit update destroy]
+  before_action :set_comment, only: %i[edit update destroy]
+
+  def new; end
 
   def create
     @comment = @keyboard.comments.build(comment_params)
-
-    respond_to do |format|
-      if @comment.save
-        format.turbo_stream { }
-        format.html { redirect_to @comment.keyboard }
-      else
-        format.turbo_stream do
-          render turbo_stream: [
-            turbo_stream.replace('flash_messages', partial: 'shared/flash_messages')
-          ]
-        end
-        format.html { redirect_to @comment.keyboard }
-      end
+    if @comment.save
+      flash.now.notice = "コメントを投稿しました。"
+    else
+      flash[:danter] = 'コメントできませんでした。'
+      render :new, status: :unprocessable_entity
     end
   end
+
+  def show; end
 
   def edit; end
 
   def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.turbo_stream 
-        format.html do
-          redirect_to @comment.keyboard
-        end
-      else
-        format.turbo_stream do
-          render turbo_stream: [
-            turbo_stream.replace('flash_messages', partial: 'shared/flash_messages')
-          ]
-        end
-        format.html do
-          redirect_to @comment.keyboard
-        end
-      end
+    if @comment.update(comment_params)
+      flash.now.notice = "コメントを更新しました。"
+      redirect_to keyboard_path(@comment.keyboard)
+    else
+      # バリデーションエラーの際はedit.html.erbを返す
+      flash[:danter] = 'コメントを更新できませんでした。'
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @comment.destroy
-    respond_to do |format|
-      format.turbo_stream 
-      format.html do
-        redirect_to @comment.keyboard
-      end
-    end
+    flash.now.notice = "コメントを削除しました。"
   end
 
   private
@@ -65,7 +47,8 @@ class CommentsController < ApplicationController
     nil
   end
 
-  def find_comment
+  def set_comment
     @comment = current_user.comments.find(params[:id])
   end
 end
+

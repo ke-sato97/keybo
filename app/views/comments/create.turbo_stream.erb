@@ -1,6 +1,6 @@
-  <%= turbo_stream.replace "#{dom_id(Comment.new)}_form" do %>
-    <%= render "form", keyboard: @keyboard, comment: Comment.new %>
-  <% end %>
-  <%= turbo_stream.prepend "comments" do %>
-    <%= render "comment", comment: @comment %>
-  <% end %>
+<%= turbo_stream.append "comment_list", @comment %>
+
+<%= turbo_stream.replace "new_comment", partial: 'comments/form', locals: { keyboard: @keyboard, comment: Comment.new } %>
+
+<%= turbo_stream.update "flash", partial: "shared/flash_message" %>
+

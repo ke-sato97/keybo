@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'contacts/done'
 
   resources :keyboards do
-    resources :comments, only: %i[create destroy]
+    resources :comments
     collection do
       get :bookmarks
     end
