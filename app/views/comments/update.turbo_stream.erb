@@ -1,2 +1,2 @@
-<%= turbo_stream.replace @comment %>
+<%= turbo_stream.replace "comments", @comment %>
 <%= turbo_stream.update "flash", partial: "shared/flash_message" %>

@@ -22,6 +22,10 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       flash.now.notice = "コメントを更新しました。"
       # redirect_to keyboard_path(@comment.keyboard)
+      render turbo_stream: [
+        turbo_stream.replace(@comment.keyboard),
+        turbo_stream.update("flash", partial: "shared/flash_message")
+      ]
     else
       # バリデーションエラーの際はedit.html.erbを返す
       flash[:danter] = 'コメントを更新できませんでした。'

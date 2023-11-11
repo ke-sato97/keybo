@@ -1,3 +1,5 @@
-<% comments.each do |comment| %>
- <%= render 'comments/comment', comment: comment %>
+<%= turbo_frame_tag 'comments' do %>
+  <% comments.each do |comment| %>
+   <%= render 'comments/comment', comment: comment %>
+  <% end %>
 <% end %>

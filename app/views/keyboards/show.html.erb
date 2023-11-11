@@ -61,9 +61,7 @@
   <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
     <!-- コメントエリア -->
     <%= turbo_frame_tag "comment_list" do %>
-      <% @comments.each do |comment| %>
-       <%= render 'comments/comment', comment: comment %>
-      <% end %>
+      <%= render 'comments/comments', { comments: @comments } %>
     <% end %>
 
     <!-- コメントフォーム -->
