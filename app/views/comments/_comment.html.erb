@@ -1,35 +1,28 @@
-<%= turbo_frame_tag dom_id(comment) do %>
-  <tr>
-    <td style="width: 60px">
-      <% if comment.user.image.attached? %>
-        <%= image_tag comment.user.image.variant(resize: '50'), class: "rounded-lg" %>
-      <% else %>
-        <%= image_tag 'noimage.png', size: '50' %>
-      <% end %>
-    </td>
-    <td>
-      <h3 class="text-md"><%= comment.user.name %></h3>
-      <div class="text-xl">
-          <%= simple_format(comment.body) %>
-      </div>
-    </td>
+<%= turbo_frame_tag comment do %>
+  <% if comment.user.image.attached? %>
+    <%= image_tag comment.user.image.variant(resize: '50'), class: "rounded-lg" %>
+  <% else %>
+    <%= image_tag 'noimage.png', size: '50' %>
+  <% end %>
 
-    <% if current_user.own?(comment) %>
-      <td class="flex justify-between action">
-        <ul class="flex items-center space-x-2">
-          <li class="list-inline-item">
-            <%= link_to edit_keyboard_comment_path(comment.keyboard, comment) do %>
-              <i class="fa-solid fa-pen" style="color:slate;"></i>
-            <% end %>
-          </li>
-          <li class="list-inline-item">
-            <%= link_to polymorphic_path([comment.keyboard, comment]),
-            data: { turbo_method: :delete, turbo_confirm: "コメントを削除してもよろしいですか？" } do %>
-              <i class="fa-solid fa-trash" style="color:slate;"></i>
-            <% end %>
-          </li>
-        </ul>
-      </td>
-    <% end %>
-  </tr>
+  <h3 class="text-md"><%= comment.user.name %></h3>
+  <div class="text-xl">
+      <%= simple_format(comment.body) %>
+  </div>
+
+  <% if current_user.own?(comment) %>
+    <ul class="flex items-center space-x-2">
+      <li class="list-inline-item">
+        <%= link_to edit_keyboard_comment_path(comment.keyboard, comment) do %>
+          <i class="fa-solid fa-pen" style="color:slate;"></i>
+        <% end %>
+      </li>
+      <li class="list-inline-item">
+        <%= link_to polymorphic_path([comment.keyboard, comment]),
+        data: { turbo_method: :delete, turbo_confirm: "コメントを削除してもよろしいですか？" } do %>
+          <i class="fa-solid fa-trash" style="color:slate;"></i>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
 <% end %>

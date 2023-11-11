@@ -18,9 +18,9 @@ class KeyboardsController < ApplicationController
 
   def show
     @keyboard = Keyboard.find(params[:id])
-    @tags = @keyboard.tags
     @comment = Comment.new
     @comments = @keyboard.comments.includes(:user).order(created_at: :asc)
+    @tags = @keyboard.tags
   end
 
   def bookmarks
