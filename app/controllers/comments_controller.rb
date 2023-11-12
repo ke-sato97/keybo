@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
     @comment = @keyboard.comments.build(comment_params)
     if @comment.save
       flash.now.notice = "コメントを投稿しました。"
+      redirect_to keyboard_path(@comment.keyboard)
     else
       flash[:danter] = 'コメントできませんでした。'
       render :new, status: :unprocessable_entity
