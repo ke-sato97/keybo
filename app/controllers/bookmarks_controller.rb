@@ -9,12 +9,15 @@ class BookmarksController < ApplicationController
   def create
     @keyboard = Keyboard.find(params[:keyboard_id])
     current_user.bookmark(@keyboard)
-    redirect_back fallback_location: keyboards_path
+    redirect_to keyboards_path
+    flash[:success] = 'お気に入り登録しました'
   end
 
   def destroy
     @keyboard = current_user.bookmarks.find(params[:id]).keyboard
     current_user.unbookmark(@keyboard)
-    redirect_back fallback_location: keyboards_path
+    redirect_to keyboards_path
+    # redirect_back fallback_location: keyboards_path
+    flash[:success] = 'お気に入りを解除しました'
   end
 end
