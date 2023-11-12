@@ -1,28 +1,40 @@
 <%= turbo_frame_tag comment do %>
-  <% if comment.user.image.attached? %>
-    <%= image_tag comment.user.image.variant(resize: '50'), class: "rounded-lg" %>
-  <% else %>
-    <%= image_tag 'noimage.png', size: '50' %>
-  <% end %>
+  <div class="border rounded-lg shadow-lg border-slate-100">
+    <div class="flex text-lg justify-left text-slate-500">
 
-  <h3 class="text-md"><%= comment.user.name %></h3>
-  <div class="text-xl">
-      <%= simple_format(comment.body) %>
-  </div>
-
-  <% if current_user.own?(comment) %>
-    <ul class="flex items-center space-x-2">
-      <li class="list-inline-item">
-        <%= link_to edit_keyboard_comment_path(comment.keyboard, comment) do %>
-          <i class="fa-solid fa-pen" style="color:slate;"></i>
+      <div class="px-5 py-2">
+        <% if comment.user.image.attached? %>
+          <%= image_tag comment.user.image.variant(resize: '50x50'), class: "w-11 h-11 rounded-full object-cover" %>
+        <% else %>
+          <%= image_tag 'noimage.png', size: '50x50', class: "w-11 h-11 rounded-full object-cover" %>
         <% end %>
-      </li>
-      <li class="list-inline-item">
-        <%#= link_to polymorphic_path([comment.keyboard, comment]),
-                    data: { turbo: false, confirm: "コメントを削除してもよろしいですか？" } do %>
-          <!-- <i class="fa-solid fa-trash" style="color:slate;"></i> -->
-        <%# end %>
-      </li>
-    </ul>
-  <% end %>
-<%  end %>
+      </div>
+
+      <div class="px-5 py-2">
+        <h3 class="text-md"><%= comment.user.name %></h3>
+      </div>
+
+      <div class="px-5 py-2">
+        <% if current_user.own?(comment) %>
+          <ul class="flex items-center space-x-2">
+            <li class="list-inline-item">
+              <%= link_to edit_keyboard_comment_path(comment.keyboard, comment) do %>
+                <i class="fa-solid fa-pen" style="color:slate;"></i>
+              <% end %>
+            </li>
+            <li class="list-inline-item">
+              <%= link_to polymorphic_path([comment.keyboard, comment]),
+                          data: { turbo: false, confirm: "コメントを削除してもよろしいですか？" } do %>
+                <!-- <i class="fa-solid fa-trash" style="color:slate;"></i> -->
+              <% end %>
+            </li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="px-5 py-2 text-lg text-slate-800">
+        <%= simple_format(comment.body) %>
+    </div>
+  </div>
+<% end %>

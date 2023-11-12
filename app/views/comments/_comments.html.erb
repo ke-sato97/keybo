@@ -1,5 +1,7 @@
-<%#= turbo_frame_tag 'comments' do %>
+<%= turbo_frame_tag 'comments' do %>
   <% comments.each do |comment| %>
-   <%= render comment %>
+    <div class="mt-3">
+       <%= render comment %>
+    </div>
   <% end %>
-<%# end %>
+<% end %>
