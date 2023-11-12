@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :find_keyboard, only: %i[create edit]
-  before_action :set_comment, only: %i[edit update destroy]
+  before_action :set_comment, only: %i[show edit update destroy]
 
   def new; end
 
@@ -20,7 +20,6 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      flash.now.notice = "コメントを更新しました。"
       redirect_to keyboard_path(@comment.keyboard)
     else
       # バリデーションエラーの際はedit.html.erbを返す
@@ -31,6 +30,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
+    # redirect_to keyboard_path(@comment.keyboard)
   end
 
   private
