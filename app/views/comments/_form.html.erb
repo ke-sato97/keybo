@@ -1,4 +1,4 @@
-<%#= turbo_frame_tag comment do %>
+<%= turbo_frame_tag comment do %>
   <%= form_with model: [keyboard, comment] do |f| %>
     <br>
     <%= f.label :body, "コメント" %><br>
@@ -6,4 +6,4 @@
     <br>
     <%= f.submit "送信", class:'border border-gray-100 rounded-lg shadow-lg mb-7 bg-red-500 font-bold hover:bg-red-600 text-white hover:text-white text-center py-2 px-4 hover:border-transparent rounded' %>
   <% end %>
-<%# end %>
+<% end %>
