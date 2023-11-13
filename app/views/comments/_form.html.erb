@@ -1,8 +1,10 @@
 <%= turbo_frame_tag comment do %>
   <%= form_with model: [keyboard, comment] do |f| %>
     <br>
-    <%= f.text_area :body, class: "px-5 py-2 w-full bg-slate-100 rounded-lg", rows: 2, placeholder: "コメントフォーム" %>
+    <%= f.text_area :body, class: "px-5 py-2 w-full bg-slate-100 rounded-lg", rows: 3, placeholder: "コメントフォーム" %>
     <br>
-    <%= f.submit "送信", class:'text-lg border-2 border-red-500 rounded-lg text-red-500 shadow-lg hover:bg-red-500 hover:text-white text-center py-1 px-3 hover:border-transparent rounded' %>
+    <button type="submit" class="px-2 py-1 text-lg text-center text-red-500 border-2 border-red-500 rounded rounded-lg shadow-lg hover:bg-red-500 hover:text-white hover:border-transparent">
+      送信<i class="fa-regular fa-fw fa-paper-plane"></i>
+    </button>
   <% end %>
 <% end %>
