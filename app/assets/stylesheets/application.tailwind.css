@@ -5,7 +5,6 @@
 
 .top-wrapper {
   background-image: url("sample5.jpg");
-  height: calc(100vh - 134px);
   position: relative;
   background-position: center;
 
@@ -27,7 +26,6 @@
 
 .login-wrapper {
   background-image: url("login.jpg");
-  height: calc(100vh - 134px);
   position: relative;
   background-position: center;
 }

@@ -12,10 +12,10 @@
             <%= button_to "診断", new_diagnosis_path, method: :get, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded", "aria-current" => "page" %>
           </li>
           <li>
-            <%= button_to "ブックマーク", bookmarks_path, method: :get, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded", "aria-current" => "page" %>
+            <%= button_to (t 'defaults.history'), diagnoses_path, method: :get, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded", "aria-current" => "page" %>
           </li>
           <li>
-            <%= button_to (t 'defaults.history'), diagnoses_path, method: :get, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded", "aria-current" => "page" %>
+            <%= button_to "お気に入り", bookmarks_path, method: :get, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded", "aria-current" => "page" %>
           </li>
           <li>
             <%= render 'shared/my_page_button', "aria-current" => "page" %>
