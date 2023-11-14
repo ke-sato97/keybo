@@ -1,11 +1,35 @@
 <div class="p-6 mx-auto max-w-screen-xl">
   <div class="flex justify-center pt-6 max-w-screen-xl">
-  <%= render 'shared/sidebar' %>
+
+  <div class="w-64 h-screen">
+    <div class="h-full px-3 py-4 overflow-y-auto bg-white">
+      <div class="text-xl text-center text-bold">
+        ランキング
+      </div>
+      <ul class="text-lg font-medium space-y-2">
+        <li>
+          <%= link_to '#', class: "flex items-center p-2 rounded-lg text-slate-700 switch-ranking", id: "bookmarkRanks", data: { target: 'bookmark' } do %>
+            <span class="flex-1 ms-3 whitespace-nowrap">お気に入り数</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to '#', class: "flex items-center p-2 rounded-lg text-slate-700 switch-ranking", id: "commentRanks", data: { target: 'comment' } do %>
+            <span class="flex-1 ms-3 whitespace-nowrap">コメント数</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to '#', class: "flex items-center p-2 rounded-lg text-slate-700 switch-ranking", id: "diagnosisRanks", data: { target: 'diagnosis' } do %>
+            <span class="flex-1 ms-3 whitespace-nowrap">診断結果表示回数</span>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
 
   <div class="text-center">
     <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">お気に入り数ランキング</h1>
-    <div class="flex justify-center">
-      <div class="grid grid-cols-1">
+    <div class="flex justify-center" id="bookmarkRanks">
+      <div class="grid grid-cols-1" id="each_ranks">
         <%= render 'keyboards/keyboard', keyboards: @bookmark_ranks %>
       </div>
     </div>
@@ -13,8 +37,8 @@
 
   <div class="text-center">
     <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">コメント数ランキング</h1>
-    <div class="flex justify-center">
-      <div class="grid grid-cols-1">
+    <div class="flex justify-center" id="commentRanks">
+      <div class="grid grid-cols-1" id="each_ranks">
         <%= render 'keyboards/keyboard', keyboards: @comment_ranks %>
       </div>
     </div>
@@ -22,10 +46,37 @@
 
   <div class="text-center">
     <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">診断結果に表示された数ランキング</h1>
-    <div class="flex justify-center">
-      <div class="grid grid-cols-1">
+    <div class="flex justify-center" id="diagnosisRanks">
+      <div class="grid grid-cols-1" id="each_ranks">
         <%= render 'keyboards/keyboard', keyboards: @diagnosis_ranks %>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener("turbo:load", function() {
+    const switchLinks = document.querySelectorAll('.switch-ranking');
+    const rankingContainers = {
+      bookmark: document.getElementById('bookmarkRanks'),
+      comment: document.getElementById('commentRanks'),
+      diagnosis: document.getElementById('diagnosisRanks'),
+    };
+
+    switchLinks.forEach(link => {
+      link.addEventListener('click', function(event) {
+        event.preventDefault();
+        const target = this.getAttribute('data-target');
+
+        // 選択されたリンクに応じて対応するランキングを表示
+        for (const key in rankingContainers) {
+          if (key === target) {
+            rankingContainers[key].style.display = 'block';
+          } else {
+            rankingContainers[key].style.display = 'none';
+          }
+        }
+      });
+    });
+  });
+</script>

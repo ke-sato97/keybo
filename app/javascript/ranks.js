@@ -22,6 +22,5 @@
       });
 
       // 最初は全てのランキングを非表示にする
-      rankingContainers[key].style.display = 'none';
     });
   });

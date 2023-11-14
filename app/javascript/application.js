@@ -7,6 +7,7 @@ import "@fortawesome/fontawesome-free"
 // import "./dropdown";
 // // autocomplete.js ファイルの読み込み
 // import "./autocomplete";
+import "./ranks.js";
 
 document.addEventListener("turbo:load", function() {
   const keyboardSearch = document.querySelector("#keyboard_search");
