@@ -9,6 +9,9 @@
       <div class="flex items-center justify-center flex-grow"> <!-- 中央揃え -->
         <ul class="flex flex-col lg:flex-row lg:space-x-8">
           <li>
+            <%= button_to "ランキング", keyboards_ranks_path, method: :get, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded", "aria-current" => "page" %>
+          </li>
+          <li>
             <%= button_to "診断", new_diagnosis_path, method: :get, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded", "aria-current" => "page" %>
           </li>
           <li>

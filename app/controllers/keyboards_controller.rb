@@ -26,4 +26,10 @@ class KeyboardsController < ApplicationController
   def bookmarks
     @bookmarks_keyboards = current_user.bookmark_keyboards.includes(:user).order(create_at: :desc)
   end
+
+  def ranks
+    @bookmark_ranks = Keyboard.bookmark_ranks
+    @comment_ranks = Keyboard.comment_ranks
+    @diagnosis_ranks = Keyboard.diagnosis_ranks
+  end
 end

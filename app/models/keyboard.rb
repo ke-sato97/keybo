@@ -10,4 +10,17 @@ class Keyboard < ApplicationRecord
   validates :price, presence: true
   validates :os, presence: true
   validates :caption, presence: true
+
+  def self.bookmark_ranks
+    Keyboard.find(Bookmark.group(:keyboard_id).order('count(keyboard_id) desc').limit(20).pluck(:keyboard_id))
+  end
+
+  def self.comment_ranks
+    Keyboard.find(Comment.group(:keyboard_id).order('count(keyboard_id) desc').limit(20).pluck(:keyboard_id))
+  end
+
+  def self.diagnosis_ranks
+    Keyboard.find(Diagnosis.group(:keyboard_id).order('count(keyboard_id) desc').limit(20).pluck(:keyboard_id))
+  end
 end
+
