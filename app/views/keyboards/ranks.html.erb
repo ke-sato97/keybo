@@ -26,17 +26,18 @@
     </div>
   </div>
 
-  <div class="text-center" id="bookmarkRanks">
-    <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">お気に入り数ランキング</h1>
+  <!-- blindはranks.jsで使うため注意 -->
+  <div class="text-center blind" id="bookmarkRanks">
+    <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">お気に入り</h1>
     <div class="flex justify-center">
-      <div class="grid grid-cols-1" id="each_ranks">
+      <div class="grid grid-cols-1">
         <%= render 'keyboards/keyboard', keyboards: @bookmark_ranks %>
       </div>
     </div>
   </div>
 
-  <div class="text-center" id="commentRanks">
-    <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">コメント数ランキング</h1>
+  <div class="text-center blind" id="commentRanks">
+    <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">コメント</h1>
     <div class="flex justify-center">
       <div class="grid grid-cols-1" id="each_ranks">
         <%= render 'keyboards/keyboard', keyboards: @comment_ranks %>
@@ -44,8 +45,8 @@
     </div>
   </div>
 
-  <div class="text-center" id="diagnosisRanks">
-    <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">診断結果に表示された数ランキング</h1>
+  <div class="text-center blind" id="diagnosisRanks">
+    <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">診断結果</h1>
     <div class="flex justify-center">
       <div class="grid grid-cols-1" id="each_ranks">
         <%= render 'keyboards/keyboard', keyboards: @diagnosis_ranks %>

@@ -5,7 +5,7 @@
     switchRankingLinks.forEach(function (link) {
       link.addEventListener('click', function () {
         const targetId = link.getAttribute('data-target');
-        const allRankings = document.querySelectorAll('.text-center');
+        const allRankings = document.querySelectorAll('.blind');
 
         allRankings.forEach(function (ranking) {
           ranking.style.display = 'none';
