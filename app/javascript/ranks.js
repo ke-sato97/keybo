@@ -1,26 +1,19 @@
-  document.addEventListener("turbo:load", function() {
-    const switchLinks = document.querySelectorAll('.switch-ranking');
-    const rankingContainers = {
-      bookmark: document.getElementById('bookmarkRanks'),
-      comment: document.getElementById('commentRanks'),
-      diagnosis: document.getElementById('diagnosisRanks'),
-    };
+  document.addEventListener('turbo:load', function () {
+    // ここにJavaScriptコードを配置
+    const switchRankingLinks = document.querySelectorAll('.switch-ranking');
 
-    switchLinks.forEach(link => {
-      link.addEventListener('click', function(event) {
-        event.preventDefault();
-        const target = this.getAttribute('data-target');
+    switchRankingLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        const targetId = link.getAttribute('data-target');
+        const allRankings = document.querySelectorAll('.text-center');
 
-        // 選択されたリンクに応じて対応するランキングを表示
-        for (const key in rankingContainers) {
-          if (key === target) {
-            rankingContainers[key].style.display = 'block';
-          } else {
-            rankingContainers[key].style.display = 'none';
-          }
-        }
+        allRankings.forEach(function (ranking) {
+          ranking.style.display = 'none';
+        });
+
+        const targetRanking = document.querySelector(targetId);
+        targetRanking.style.display = 'block';
+        console.log(targetRanking)
       });
-
-      // 最初は全てのランキングを非表示にする
     });
   });
