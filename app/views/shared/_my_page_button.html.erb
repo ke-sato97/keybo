@@ -1,8 +1,9 @@
 <div class="relative items-center inline-block text-left">
-  <button id="dropdown_button" class="px-3 py-2 rounded transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white">
+  <!-- dropdown_buttonはjsで使用中。下のdropdownも一緒 -->
+  <button class="px-3 py-2 rounded dropdown_button transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white">
     その他<i class="fa-solid fa-fw fa-xs fa-angle-down"></i>
   </button>
-  <div id="dropdown" style="display: none;">
+  <div class="dropdown" style="display: none;">
     <!-- メニューコンテンツ -->
     <ul class="absolute right-0 z-10 w-48 py-2 mt-2 text-sm bg-white rounded-lg shadow text-slate-500 origin-top-right divide-y divide-slate-300">
       <li>

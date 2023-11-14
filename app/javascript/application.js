@@ -40,7 +40,6 @@ document.addEventListener("turbo:load", function() {
   }
 });
 
-
 document.addEventListener("turbo:load", function () {
   const button = document.getElementById("dropdown_button");
   const dropdown = document.getElementById("dropdown");
@@ -60,3 +59,55 @@ document.addEventListener("turbo:load", function () {
     }
   });
 });
+
+
+document.addEventListener("turbo:load", function () {
+  // ドロップダウンボタンとドロップダウンメニューの要素を取得
+  const buttons = document.querySelectorAll(".dropdown_button");
+  const dropdowns = document.querySelectorAll(".dropdown");
+
+  // 各ボタンに対してイベントリスナーを設定
+  buttons.forEach(function (button, index) {
+    const dropdown = dropdowns[index];
+
+    if (!button) { return false; }
+
+    // ボタンがクリックされた時の処理
+    button.addEventListener("click", function () {
+      if (dropdown.style.display === "none") {
+        dropdown.style.display = "block";
+      } else {
+        dropdown.style.display = "none";
+      }
+    });
+
+    // ドキュメント全体でクリックされた時の処理
+    document.addEventListener("click", function (event) {
+      if (event.target !== button) {
+        dropdown.style.display = "none";
+      }
+    });
+  });
+});
+
+
+// ranks.js
+// document.addEventListener('turbo:load', function () {
+//   // ここにJavaScriptコードを配置
+//   const switchRankingLinks = document.querySelectorAll('.switch-ranking');
+//
+//   switchRankingLinks.forEach(function (link) {
+//     link.addEventListener('click', function () {
+//       const targetId = link.getAttribute('data-target');
+//       const allRankings = document.querySelectorAll('.blind');
+//
+//       allRankings.forEach(function (ranking) {
+//         ranking.style.display = 'none';
+//       });
+//
+//       const targetRanking = document.querySelector(targetId);
+//       targetRanking.style.display = 'block';
+//       console.log(targetRanking)
+//     });
+//   });
+// });

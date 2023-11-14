@@ -1,0 +1,25 @@
+<div class="relative items-center inline-block text-left">
+  <button class="px-3 py-2 rounded dropdown_button transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white">
+    ランキング<i class="fa-solid fa-fw fa-xs fa-angle-down"></i>
+  </button>
+  <div class="dropdown" style="display: none;">
+    <!-- メニューコンテンツ -->
+    <ul class="absolute right-0 z-10 w-48 py-2 mt-2 text-sm bg-white rounded-lg shadow text-slate-500 origin-top-right divide-y divide-slate-300">
+        <li>
+          <%= link_to keyboards_ranks_path, class: "block px-4 py-2 hover:bg-slate-100 text-slate-700 switch-ranking", "data-target": "#bookmarkRanks" do %>
+            お気に入り
+          <% end %>
+        </li>
+        <li>
+          <%= link_to 'javascript:void(0);', class: "block px-4 py-2 hover:bg-slate-100 text-slate-700 switch-ranking", "data-target": "#commentRanks" do %>
+            コメント
+          <% end %>
+        </li>
+        <li>
+          <%= link_to 'javascript:void(0);', class: "block px-4 py-2 hover:bg-slate-100 text-slate-700 switch-ranking", "data-target": "#diagnosisRanks" do %>
+            診断結果
+          <% end %>
+        </li>
+    </ul>
+  </div>
+</div>
