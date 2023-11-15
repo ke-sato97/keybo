@@ -1,27 +1,35 @@
-  document.addEventListener("turbo:load", function() {
-    const switchLinks = document.querySelectorAll('.switch-ranking');
-    const rankingContainers = {
-      bookmark: document.getElementById('bookmarkRanks'),
-      comment: document.getElementById('commentRanks'),
-      diagnosis: document.getElementById('diagnosisRanks'),
-    };
+document.addEventListener("turbo:load", function() {
+  const keyboardSearch = document.querySelector("#keyboard_search");
+  const keyboardResults = document.querySelector("#keyboard_results");
 
-    switchLinks.forEach(link => {
-      link.addEventListener('click', function(event) {
-        event.preventDefault();
-        const target = this.getAttribute('data-target');
+  // 検索実行時の処理
+  if (keyboardSearch) {
+    keyboardSearch.addEventListener("input", function() {
+      const searchTerm = keyboardSearch.value;
 
-        // 選択されたリンクに応じて対応するランキングを表示
-        for (const key in rankingContainers) {
-          if (key === target) {
-            rankingContainers[key].style.display = 'block';
-          } else {
-            rankingContainers[key].style.display = 'none';
-          }
-        }
-      });
-
-      // 最初は全てのランキングを非表示にする
-      rankingContainers[key].style.display = 'none';
+      if (searchTerm.length >= 3) {
+        // 検索結果の処理
+        // fetch メソッドを使用して非同期にサーバーにリクエストを送信し、サーバーからの JSON レスポンスを処理。searchパラメータを送信
+        fetch(`/keyboards?search=${encodeURIComponent(searchTerm)}`, { headers: { accept: "application/json" } })
+          .then(response => response.json())
+          .then(data => {
+            keyboardResults.innerHTML = "";
+            data.slice(0, 10).forEach(name => {
+              const p = document.createElement("p");
+              p.classList.add("truncate", "border-2", "py-2", "border-slate-400", "text-slate-700", "hover:bg-slate-100");
+              p.setAttribute("data-text", name);
+              p.textContent = name.substring(0, 35);
+              p.addEventListener("click", function() {
+                keyboardSearch.value = p.getAttribute("data-text");
+                keyboardResults.innerHTML = "";
+              });
+              keyboardResults.appendChild(p);
+            });
+          });
+      } else {
+        // 検索結果をクリア
+        keyboardResults.innerHTML = "";
+      }
     });
-  });
+  }
+});

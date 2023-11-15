@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
       redirect_to keyboard_path(@comment.keyboard)
     else
       flash[:danter] = 'コメントできませんでした。'
-      render :new, status: :unprocessable_entity
+      redirect_to action: 'new'
     end
   end
 
@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
     else
       # バリデーションエラーの際はedit.html.erbを返す
       flash[:danter] = 'コメントを更新できませんでした。'
-      render :edit, status: :unprocessable_entity
+      redirect_to action: 'edit'
     end
   end
 
