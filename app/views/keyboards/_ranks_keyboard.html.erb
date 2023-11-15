@@ -1,59 +1,69 @@
-<div class="mx-auto max-w-screen-xl">
-<% keyboards.each.with_index(1) do |keyboard, i| %>
-  <div class="flex justify-center pt-6">
-    <div class="flex justify-center mb-4 ml-2 mr-2 text-2xl item-center">
-      第<%= i %>位
-    </div>
+<div class="max-w-screen-xl">
+  <% keyboards.each.with_index(1) do |keyboard, i| %>
+    <% if i == 1 %>
+      <div class="flex items-center justify-center">
 
-    <div class="mb-4 ml-2 mr-2">
-    <%= button_to keyboard_path(keyboard), method: :get, class: "rounded-md" do %>
-      <div class="flex justify-center max-w-xl px-4 mx-auto">
-        <div class='relative flex m-0 bg-white shadow-lg'>
-          <div class='relative flex-1 card-block'>
-            <div class="p-6">
-              <p class='leading-normal'>
-                <%= keyboard.name %>
-              </p>
-              <p class="block mt-6 text-sm text-grey">Designation title</p>
-              <a class='absolute flex items-center justify-center w-12 h-12 -m-4 text-center text-white no-underline rounded-full bg-blue-dark hover:bg-blue-darker pin-t pin-r' href='#'>
-                <i class='text-xl fa fa-plus'></i>
-              </a>
-            </div>
-          </div>
-          <div class='flex-no-shrink'>
-            <%= image_tag keyboard.medium_image_urls.first, size: "200" %>
-          </div>
+        <div class="font-sans text-4xl text-slate-700">
+          <i class="fa-regular fa-fw fa-chess-king" style="color:orange;"></i><%= i %> 位
         </div>
+
+        <div class="m-4">
+          <%= button_to keyboard_path(keyboard), method: :get, class: "" do %>
+            <div class="flex justify-center max-w-xl px-4">
+              <div class='relative flex m-0 bg-white shadow-lg'>
+                <div class='relative flex-1 card-block'>
+                  <div class="p-6">
+                    <p class='leading-normal'>
+                      <%= keyboard.name %>
+                    </p>
+                    <p class="block mt-6 text-sm text-red-500">¥<%= keyboard.price %></p>
+                    <a class='absolute flex items-center justify-center w-12 h-12 -m-4 text-center text-white no-underline rounded-full bg-blue-dark hover:bg-blue-darker pin-t pin-r' href='#'>
+                      <i class='text-xl fa fa-plus'></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="relative flex items-center justify-center m-2 bg-white bg-clip-border">
+                  <%= image_tag keyboard.medium_image_urls.first, size: "200" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+
+    <% else %>
+      <div class="flex items-center justify-center">
+
+        <div class="font-sans text-4xl text-slate-700">
+          <%= i %> 位
+        </div>
+
+        <div class="m-4">
+          <%= button_to keyboard_path(keyboard), method: :get, class: "" do %>
+            <div class="flex justify-center max-w-xl px-4">
+              <div class='relative flex m-0 bg-white shadow-lg'>
+                <div class='relative flex-1 card-block'>
+                  <div class="p-6">
+                    <p class='leading-normal'>
+                      <%= keyboard.name %>
+                    </p>
+                    <p class="block mt-6 text-sm text-red-500">¥<%= keyboard.price %></p>
+                    <a class='absolute flex items-center justify-center w-12 h-12 -m-4 text-center text-white no-underline rounded-full bg-blue-dark hover:bg-blue-darker pin-t pin-r' href='#'>
+                      <i class='text-xl fa fa-plus'></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="relative flex items-center justify-center m-2 bg-white bg-clip-border">
+                  <%= image_tag keyboard.medium_image_urls.first, size: "200" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
       </div>
     <% end %>
-    </div>
-  </div>
-<% end %>
+  <% end %>
 </div>
 
-<%= button_to "#", method: :get, class: "border border-black" do %>
-    <div class="flex justify-center max-w-xl px-4 mx-auto">
-      <div class='relative flex m-0 bg-white shadow-lg'>
-        <div class='relative flex-1 card-block'>
-          <div class="p-6">
-            <p class='leading-normal'>Magni inventore repellat dignissimos eveniet dolore ex sit illo adipisci accusamus quos.</p>
-            <p class="block mt-6 text-sm text-grey">Designation title</p>
-            <a class='absolute flex items-center justify-center w-12 h-12 -m-4 text-center text-white no-underline rounded-full bg-blue-dark hover:bg-blue-darker pin-t pin-r' href='#'>
-              <i class='text-xl fa fa-plus'></i>
-            </a>
-          </div>
-        </div>
-        <div class='flex-no-shrink'>
-          <img alt='' class='block w-64 h-64 mx-auto' src='https://source.unsplash.com/WLUHO9A_xik/1600x900'>
-        </div>
-      </div>
-    </div>
-<% end %>
-
-  <div class="max-w-full">
-    <div class="w-1/4">
-    </div>
-
-    <div class="w-3/4">
-    </div>
-  </div>
