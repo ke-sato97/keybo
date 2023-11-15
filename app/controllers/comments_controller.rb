@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @keyboard.comments.build(comment_params)
     if @comment.save
-      flash.now.notice = "コメントを投稿しました。"
+      flash.now.notice = 'コメントを投稿しました。'
       redirect_to keyboard_path(@comment.keyboard)
     else
       flash[:danter] = 'コメントできませんでした。'
@@ -51,4 +51,3 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.find(params[:id])
   end
 end
-

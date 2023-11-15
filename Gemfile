@@ -13,13 +13,13 @@ gem 'sprockets-rails'
 gem 'puma', '~> 5.0'
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+gem 'importmap-rails'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+gem 'turbo-rails'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
+gem 'stimulus-rails'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
@@ -63,13 +63,13 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'pg'
 gem 'config'
 gem 'dockerfile-rails', '>= 1.5', group: :development
 gem 'dotenv-rails'
 gem 'image_processing', '>= 1.2'
 gem 'kaminari'
 gem 'mini_magick', '~> 4.8'
+gem 'pg'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'rakuten_web_service'
 gem 'sentry-rails', '~> 5.10'
