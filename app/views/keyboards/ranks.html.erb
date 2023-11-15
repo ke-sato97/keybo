@@ -1,9 +1,9 @@
-<div class="mx-auto max-w-screen-xl">
-  <div class="flex justify-center pt-6 max-w-screen-xl">
+<div class="pt-6 pb-6 mx-auto max-w-screen-xl">
+  <div class="flex justify-center max-w-screen-xl">
 
   <div class="w-1/4 px-3 py-4 bg-white">
-    <div class="text-2xl font-semibold text-center text-slate-700 text-bold">
-      <i class="fa-regular fa-fw fa-chess-king" style="color:orange;"></i>ランキング<i class="fa-regular fa-fw fa-chess-king" style="color:orange;"></i>
+    <div class="text-2xl font-semibold text-center text-orange-400 text-bold">
+      <i class="fa-regular fa-fw fa-chess-king" style="color:orange:400;"></i>ランキング<i class="fa-regular fa-fw fa-chess-king" style="color:orange:400;"></i>
     </div>
     <ul class="py-5 text-lg font-medium space-y-2">
       <li>
@@ -27,7 +27,7 @@
   <!-- blindはranks.jsで使うため注意 -->
   <div class="w-3/4 ml-4 bg-white">
     <div class="text-center blind" id="bookmarkRanks">
-      <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">お気に入り登録数</h1>
+      <h1 class="pt-6 text-4xl font-bold text-center text-orange-400">お気に入り登録数</h1>
       <div class="flex justify-center">
         <div class="grid grid-cols-1">
           <%= render 'keyboards/ranks_keyboard', keyboards: @bookmark_ranks %>
@@ -36,7 +36,7 @@
     </div>
 
     <div class="text-center blind" id="commentRanks">
-      <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">コメント数</h1>
+      <h1 class="pt-6 text-4xl font-bold text-center text-orange-400">コメント数</h1>
       <div class="flex justify-center">
         <div class="grid grid-cols-1" id="each_ranks">
           <%= render 'keyboards/ranks_keyboard', keyboards: @comment_ranks %>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="text-center blind" id="diagnosisRanks">
-      <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">診断結果表示回数</h1>
+      <h1 class="pt-6 text-4xl font-bold text-center text-orange-400">診断結果表示回数</h1>
       <div class="flex justify-center">
         <div class="grid grid-cols-1" id="each_ranks">
           <%= render 'keyboards/ranks_keyboard', keyboards: @diagnosis_ranks %>

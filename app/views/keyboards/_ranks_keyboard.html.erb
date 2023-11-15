@@ -1,14 +1,72 @@
 <div class="max-w-screen-xl">
   <% keyboards.each.with_index(1) do |keyboard, i| %>
+    <% break if i > 20 %>
     <% if i == 1 %>
       <div class="flex items-center justify-center">
 
         <div class="font-sans text-4xl text-orange-400">
-          <i class="fa-regular fa-fw fa-chess-king" style="color:orange;"></i><%= i %> 位
+          <i class="fa-regular fa-fw fa-chess-king" style="color:orange:400;"></i><%= i %> 位
         </div>
 
         <div class="m-4">
-          <%= button_to keyboard_path(keyboard), method: :get, class: "flex justify-center max-w-xl px-4" do %>
+          <%= button_to keyboard_path(keyboard), method: :get, class: "flex justify-center max-w-2xl px-4" do %>
+            <div class='relative flex m-0 bg-white shadow-lg'>
+              <div class='relative flex-1 card-block'>
+                <div class="p-6">
+                  <p class='leading-normal'>
+                    <%= keyboard.name %>
+                  </p>
+                  <p class="block mt-6 text-lg text-red-500">¥ <%= keyboard.price.to_s(:delimited) %></p>
+                  <a class='absolute flex items-center justify-center w-12 h-12 text-center no-underline border border-black bg-blue-dark' href='#'>
+                    link
+                  </a>
+                </div>
+              </div>
+              <div class="relative flex items-center justify-center m-2 bg-white bg-clip-border">
+                <%= image_tag keyboard.medium_image_urls.first, size: "200" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+
+    <% elsif i == 2 %>
+      <div class="flex items-center justify-center">
+
+        <div class="font-sans text-4xl text-gray-400">
+          <i class="fa-regular fa-fw fa-chess-king" style="color:gray:400;"></i><%= i %> 位
+        </div>
+
+        <div class="m-4">
+          <%= button_to keyboard_path(keyboard), method: :get, class: "flex justify-center max-w-2xl px-4" do %>
+            <div class='relative flex m-0 bg-white shadow-lg'>
+              <div class='relative flex-1 card-block'>
+                <div class="p-6">
+                  <p class='leading-normal'>
+                    <%= keyboard.name %>
+                  </p>
+                  <p class="block mt-6 text-lg text-red-500">¥ <%= keyboard.price.to_s(:delimited) %></p>
+                </div>
+              </div>
+              <div class="relative flex items-center justify-center m-2 bg-white bg-clip-border">
+                <%= image_tag keyboard.medium_image_urls.first, size: "200" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+
+    <% elsif i == 3 %>
+      <div class="flex items-center justify-center">
+
+        <div class="font-sans text-4xl text-amber-700">
+          <i class="fa-regular fa-fw fa-chess-king" style="color:amber:700;"></i><%= i %> 位
+        </div>
+
+        <div class="m-4">
+          <%= button_to keyboard_path(keyboard), method: :get, class: "flex justify-center max-w-2xl px-4" do %>
             <div class='relative flex m-0 bg-white shadow-lg'>
               <div class='relative flex-1 card-block'>
                 <div class="p-6">
@@ -35,7 +93,7 @@
         </div>
 
         <div class="m-4">
-          <%= button_to keyboard_path(keyboard), method: :get, class: "flex justify-center max-w-xl px-4" do %>
+          <%= button_to keyboard_path(keyboard), method: :get, class: "flex justify-center max-w-2xl px-4" do %>
             <div class='relative flex m-0 bg-white shadow-lg'>
               <div class='relative flex-1 card-block'>
                 <div class="p-6">

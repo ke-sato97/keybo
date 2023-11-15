@@ -1,79 +1,77 @@
-<br>
-<div class="flex justify-center ml-4 mr-4">
-<div class="w-3/4 p-6 mx-auto bg-white rounded-lg shadow-lg">
-
-  <div class="flex justify-between">
-      <%= link_to '楽天市場に移動', @keyboard.url, method: :get, target: :_blank, rel: "noopener noreferrer", class: "transition-colors duration-500 border-2 border-red-500 rounded-lg text-red-500 shadow-lg mb-7 font-bold hover:bg-red-500 text-2xl hover:text-white text-center py-3 px-4 hover:border-transparent rounded" %>
-    <div class="w-2/3 px-2 py-4 border rounded-lg shadow-lg border-slate-100 mb-7">
-      <% @tags.each do |tag| %>
-        <span class="px-2 py-2 text-sm text-white rounded-lg bg-slate-500 hover:bg-slate-600"><%= link_to tag.name, keyboards_path(tag_id: tag.id) %></span>
-      <% end %>
-    </div>
-    <div class="flex justify-center w-32 py-3 border rounded-lg shadow-lg border-slate-100 mb-7">
-      <%= render 'keyboards/bookmark_button', keyboard: @keyboard %>
-    </div>
-  </div>
-
-  <div class="text-center text-slate-700">
-    <h2 class="mb-10 text-2xl font-bold"><%= @keyboard.name %></h2>
-    <div class="flex justify-center mb-7 image-gallery gap-4">
-      <% @keyboard.medium_image_urls.each do |image| %>
-        <%= image_tag image, class: "w-64 h-64 object-cover" %>
-      <% end %>
-    </div>
-    <div class="w-full px-2 py-4 border rounded-lg shadow-lg border-slate-100 mb-7">
-      <h3 class="mb-2 text-4xl font-bold"><span class="text-red-500">価格 </span><%= @keyboard.price.to_s(:delimited) %>円</h3>
-    </div>
-    <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
-      <h3 class="mb-2 text-2xl font-bold text-red-500">対応のOS</h3>
-      <h3 class="mb-2 text-2xl font-bold">
-        <% @keyboard.os.each do |os| %>
-          <%= os %>
-        <% end %>
-      </h3>
-    </div>
-    <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
-      <h3 class="mb-2 text-2xl font-bold text-red-500">接続方法</h3>
-      <h3 class="mb-2 text-2xl font-bold">
-        <% @keyboard.connect.each do |connect| %>
-          <%= connect %>
-        <% end %>
-      </h3>
-    </div>
+<div class="flex justify-center p-6">
+  <div class="w-3/4 p-6 mx-auto bg-white">
 
     <div class="flex justify-between">
-    <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
-      <h3 class="mb-2 text-2xl font-bold"><%= @keyboard.size %></h3>
-    </div>
-      <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
-        <h3 class="mb-2 text-2xl font-bold"><%= @keyboard.layout %></h3>
+        <%= link_to '楽天市場に移動', @keyboard.url, method: :get, target: :_blank, rel: "noopener noreferrer", class: "transition-colors duration-500 border-2 border-red-500 rounded-lg text-red-500 shadow-lg mb-7 font-bold hover:bg-red-500 text-2xl hover:text-white text-center py-3 px-4 hover:border-transparent rounded" %>
+      <div class="w-2/3 px-2 py-4 border rounded-lg shadow-lg border-slate-100 mb-7">
+        <% @tags.each do |tag| %>
+          <span class="px-2 py-2 text-sm text-white rounded-lg bg-slate-500 hover:bg-slate-600"><%= link_to tag.name, keyboards_path(tag_id: tag.id) %></span>
+        <% end %>
       </div>
-      <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
-        <h3 class="mb-2 text-2xl font-bold"><%= @keyboard.switch %>スイッチ</h3>
-      </div>
-    </div>
-
-    <div class="px-2 py-4 rounded-lg shadow-lg mb-7">
-      <h3 class="mb-2 text-2xl font-bold text-red-500">詳細情報</h3>
-      <div class="mb-2 text-lg">
-        <%= @keyboard.caption %>
+      <div class="flex justify-center w-20 py-3 border rounded-lg shadow-lg border-slate-100 mb-7">
+        <%= render 'keyboards/bookmark_button', keyboard: @keyboard %>
       </div>
     </div>
 
+    <div class="text-center text-slate-700">
+      <h2 class="mb-10 text-2xl font-bold"><%= @keyboard.name %></h2>
+      <div class="flex justify-center mb-7 image-gallery gap-4">
+        <% @keyboard.medium_image_urls.each do |image| %>
+          <%= image_tag image, class: "w-64 h-64 object-cover" %>
+        <% end %>
+      </div>
+      <div class="w-full px-2 py-4 border rounded-lg shadow-lg border-slate-100 mb-7">
+        <h3 class="mb-2 text-4xl font-bold"><span class="text-red-500">価格 </span><%= @keyboard.price.to_s(:delimited) %>円</h3>
+      </div>
+      <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
+        <h3 class="mb-2 text-2xl font-bold text-red-500">対応のOS</h3>
+        <h3 class="mb-2 text-2xl font-bold">
+          <% @keyboard.os.each do |os| %>
+            <%= os %>
+          <% end %>
+        </h3>
+      </div>
+      <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
+        <h3 class="mb-2 text-2xl font-bold text-red-500">接続方法</h3>
+        <h3 class="mb-2 text-2xl font-bold">
+          <% @keyboard.connect.each do |connect| %>
+            <%= connect %>
+          <% end %>
+        </h3>
+      </div>
+
+      <div class="flex justify-between">
+      <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
+        <h3 class="mb-2 text-2xl font-bold"><%= @keyboard.size %></h3>
+      </div>
+        <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
+          <h3 class="mb-2 text-2xl font-bold"><%= @keyboard.layout %></h3>
+        </div>
+        <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
+          <h3 class="mb-2 text-2xl font-bold"><%= @keyboard.switch %>スイッチ</h3>
+        </div>
+      </div>
+
+      <div class="px-2 py-4 rounded-lg shadow-lg mb-7">
+        <h3 class="mb-2 text-2xl font-bold text-red-500">詳細情報</h3>
+        <div class="mb-2 text-lg">
+          <%= @keyboard.caption %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="w-1/4 p-2 mx-auto ml-4 bg-white max-w-screen-xl">
+    <h3 class="mb-2 text-2xl font-bold text-center text-red-500"><i class="fa-regular fa-fw fa-comments"></i>コメント<i class="fa-regular fa-fw fa-comment"></i></h3>
+    <!-- コメントエリア -->
+    <%#= turbo_frame_tag "comment_list" do %>
+      <%= render 'comments/comments', { comments: @comments } %>
+    <%# end %>
+
+    <!-- コメントフォーム -->
+    <%#= turbo_frame_tag "new_comment" do %>
+      <%= render 'comments/form', { keyboard: @keyboard, comment: @comment } %>
+    <%# end %>
   </div>
 </div>
-
-<div class="w-1/4 p-2 mx-auto ml-4 bg-white rounded-lg shadow-lg max-w-screen-xl">
-  <h3 class="mb-2 text-2xl font-bold text-center text-red-500"><i class="fa-regular fa-fw fa-comments"></i>コメント<i class="fa-regular fa-fw fa-comment"></i></h3>
-  <!-- コメントエリア -->
-  <%#= turbo_frame_tag "comment_list" do %>
-    <%= render 'comments/comments', { comments: @comments } %>
-  <%# end %>
-
-  <!-- コメントフォーム -->
-  <%#= turbo_frame_tag "new_comment" do %>
-    <%= render 'comments/form', { keyboard: @keyboard, comment: @comment } %>
-  <%# end %>
-</div>
-</div>
-<br>
