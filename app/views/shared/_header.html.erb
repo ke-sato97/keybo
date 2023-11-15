@@ -18,7 +18,7 @@
             <%= button_to "お気に入り", bookmarks_path, method: :get, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded", "aria-current" => "page" %>
           </li>
           <li>
-            <%= render 'shared/ranks_button', "aria-current" => "page" %>
+            <%= button_to "ランキング", keyboards_ranks_path, method: :get, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded", "aria-current" => "page" %>
           </li>
           <li>
             <%= render 'shared/my_page_button', "aria-current" => "page" %>

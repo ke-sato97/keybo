@@ -7,8 +7,8 @@
     </div>
     <ul class="py-5 text-lg font-medium space-y-2">
       <li>
-        <%= link_to 'javascript:void(0);', class: "flex hover:bg-slate-100 border items-center p-2 rounded-lg text-slate-700 switch-ranking", "data-target": "#bookmarkRanks" do %>
-          <i class="fa-regular fa-heart"></i><span class="flex-1 ms-3 whitespace-nowrap">お気に入り数</span>
+        <%= link_to 'javascript:void(0);', class: "flex hover:bg-slate-100 border border-slate-200 items-center p-2 rounded-lg text-slate-700 switch-ranking", "data-target": "#bookmarkRanks" do %>
+          <i class="fa-regular fa-heart"></i><span class="flex-1 ms-3 whitespace-nowrap">お気に入り登録数</span>
         <% end %>
       </li>
       <li>
@@ -27,28 +27,28 @@
   <!-- blindはranks.jsで使うため注意 -->
   <div class="w-3/4 ml-4 bg-white">
     <div class="text-center blind" id="bookmarkRanks">
-      <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">お気に入り Top 20</h1>
+      <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">お気に入り登録数</h1>
       <div class="flex justify-center">
         <div class="grid grid-cols-1">
-          <%= render 'keyboards/keyboard', keyboards: @bookmark_ranks %>
+          <%= render 'keyboards/ranks_keyboard', keyboards: @bookmark_ranks %>
         </div>
       </div>
     </div>
 
     <div class="text-center blind" id="commentRanks">
-      <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">コメント</h1>
+      <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">コメント数</h1>
       <div class="flex justify-center">
         <div class="grid grid-cols-1" id="each_ranks">
-          <%= render 'keyboards/keyboard', keyboards: @comment_ranks %>
+          <%= render 'keyboards/ranks_keyboard', keyboards: @comment_ranks %>
         </div>
       </div>
     </div>
 
     <div class="text-center blind" id="diagnosisRanks">
-      <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">診断結果</h1>
+      <h1 class="pt-6 text-4xl font-bold text-center text-slate-700">診断結果表示回数</h1>
       <div class="flex justify-center">
         <div class="grid grid-cols-1" id="each_ranks">
-          <%= render 'keyboards/keyboard', keyboards: @diagnosis_ranks %>
+          <%= render 'keyboards/ranks_keyboard', keyboards: @diagnosis_ranks %>
         </div>
       </div>
     </div>
