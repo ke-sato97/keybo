@@ -2,8 +2,10 @@
   <%= link_to bookmark_path(current_user.bookmarks.find_by(keyboard_id: keyboard.id)), id: "unbookmark-#{keyboard.id}", data: { turbo_method: :delete } do %>
       <i class="justify-center fa-solid fa-heart fa-2xl" style="color:red;"></i>
   <% end %>
-<% else %>
+<% elsif %>
   <%= link_to bookmarks_path(keyboard_id: keyboard.id), id: "bookmark-#{keyboard.id}", data: { turbo_method: :post} do %>
       <i class="fa-regular fa-heart fa-2xl " style="color:red;"></i>
   <% end %>
+<% else %>
+    <i class="fa-regular fa-heart fa-2xl " style="color:red;"></i>
 <% end %>
