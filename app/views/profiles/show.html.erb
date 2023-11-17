@@ -11,7 +11,7 @@
           <div class="text-center text-gray-700">
             <div class="flex justify-center w-full px-2 py-4 rounded-lg shadow-lg mb-7">
               <% if @user.image.attached? %>
-                <%= image_tag @user.image.variant(resize: '250x250#'), class: "rounded-lg" %>
+                <%= image_tag @user.image.variant(resize: '250'), class: "rounded-lg" %>
               <% else %>
                 <%= image_tag 'noimage.png', size: '250' %>
               <% end %>
