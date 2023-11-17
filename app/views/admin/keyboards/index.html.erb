@@ -1,33 +1,35 @@
-<h1 class="text-4xl font-bold">すべてのキーボード</h1>
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>アイテム</th>
-      <th>接続方法</th>
-      <th>ショップ名</th>
-      <th>金額</th>
-      <th>OS</th>
-      <th>サイズ</th>
-      <th>配列</th>
-      <th>キースイッチ</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @keyboards.each do |keyboard| %>
-      <tr>
-        <div class="grid grid-cols-3 gap-4">
-          <td><%= keyboard.id %></td>
-          <td><%= link_to keyboard.name, edit_admin_keyboard_path(keyboard) %></td>
-          <td><%= keyboard.connect %></td>
-          <td><%= keyboard.brand %></td>
-          <td><%= keyboard.price %></td>
-          <td><%= keyboard.os %></td>
-          <td><%= keyboard.size %></td>
-          <td><%= keyboard.layout %></td>
-          <td><%= keyboard.switch %></td>
-        </div>
+<div class="w-3/4">
+  <h1 class="text-4xl font-bold">すべてのキーボード</h1>
+  <table>
+    <thead>
+      <tr class="border border-black">
+        <th class="p-2 border border-black">ID</th>
+        <th class="p-2 border border-black">アイテム</th>
+        <th class="p-2 border border-black">接続方法</th>
+        <th class="p-2 border border-black">ショップ名</th>
+        <th class="p-2 border border-black">金額</th>
+        <th class="p-2 border border-black">OS</th>
+        <th class="p-2 border border-black">サイズ</th>
+        <th class="p-2 border border-black">配列</th>
+        <th class="p-2 border border-black">キースイッチ</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @keyboards.each do |keyboard| %>
+        <tr class="border border-black">
+          <div class="grid grid-cols-3 gap-4">
+            <td class="p-2 border border-black"><%= keyboard.id %></td>
+            <td class="p-2 border border-black"><%= link_to keyboard.name, edit_admin_keyboard_path(keyboard), class: "underline text-blue-500" %></td>
+            <td class="p-2 border border-black"><%= keyboard.connect %></td>
+            <td class="p-2 border border-black"><%= keyboard.brand %></td>
+            <td class="p-2 border border-black"><%= keyboard.price %></td>
+            <td class="p-2 border border-black"><%= keyboard.os %></td>
+            <td class="p-2 border border-black"><%= keyboard.size %></td>
+            <td class="p-2 border border-black"><%= keyboard.layout %></td>
+            <td class="p-2 border border-black"><%= keyboard.switch %></td>
+          </div>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
