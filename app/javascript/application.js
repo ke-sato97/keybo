@@ -4,8 +4,8 @@ import "controllers"
 
 import "@fortawesome/fontawesome-free"
 
-// import "./dropdown";
 // import "./autocomplete";
+// import "./dropdown";
 // import "./ranks.js";
 
 
@@ -40,27 +40,6 @@ document.addEventListener("turbo:load", function() {
     });
   }
 });
-
-// dropdown.js 一つしか反応しない(id="dropdown_button" に反応)
-// document.addEventListener("turbo:load", function () {
-//   const button = document.getElementById("dropdown_button");
-//   const dropdown = document.getElementById("dropdown");
-//
-//   if (!button){ return false;}
-//   button.addEventListener("click", function () {
-//     if (dropdown.style.display === "none") {
-//       dropdown.style.display = "block";
-//     } else {
-//       dropdown.style.display = "none";
-//     }
-//   });
-//
-//   document.addEventListener("click", function (event) {
-//     if (event.target !== button) {
-//       dropdown.style.display = "none";
-//     }
-//   });
-// });
 
 
 // dropdown.js 複数反応する(class="dropdown_button" に反応)

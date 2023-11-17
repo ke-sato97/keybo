@@ -9,6 +9,10 @@ class ProfilesController < ApplicationController
     if @user.update(user_params)
       flash[:success] = 'プロフィールを更新しました'
       redirect_to profile_path
+    elsif user_params[:remove_image]
+      # 画像を削除
+      @user.image.purge
+      flash[:success] = '画像が削除されました'
     else
       flash[:danger] = 'プロフィールを更新できませんでした'
       render :edit
