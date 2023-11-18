@@ -7,78 +7,127 @@
 
               <!-- Q1 -->
               <h2 class="text-2xl text-center text-red-600">必須項目</h2>
-              <div class="p-4 bg-red-100 rounded-lg">
-                <p class="mb-2 text-lg">Q1: 希望する予算を教えてください</p>
-                <%= f.radio_button :price, '0-5000', id: '0-5000' %>
-                <%= label_tag '0-5000', '0~5000円', class: 'mt-4' %><br>
+              <div class="p-4 rounded-lg bg-slate-100">
+                <p class="mb-2 text-xl text-red-500">Q1: 希望する予算を教えてください</p>
 
-                <%= f.radio_button :price, '5000-10000', id: '5000-10000' %>
-                <%= label_tag '5000-10000', '5001~10000円', class: 'mb-4' %><br>
+                <div class="mb-2 mr-2 text-lg">
+                  <%= f.radio_button :price, '0-5000', id: '0-5000' %>
+                  <%= label_tag '0-5000', '0~5000円', class: 'hover:text-red-600' %>
+                </div>
 
-                <%= f.radio_button :price, '10000-15000', id: '10000-15000' %>
-                <%= label_tag'10000-15000' ,'10001~15000円', class: 'mb-4' %><br>
+                <div class="mb-2 mr-2 text-lg">
+                  <%= f.radio_button :price, '5000-10000', id: '5000-10000' %>
+                  <%= label_tag '5000-10000', '5001~10000円', class: 'hover:text-red-600' %>
+                </div>
 
-                <%= f.radio_button :price, '15000-20000', id: '15000-20000' %>
-                <%= label_tag '15000-20000','15001~20000円', class: 'mb-4' %><br>
+                <div class="mb-2 mr-2 text-lg">
+                  <%= f.radio_button :price, '10000-15000', id: '10000-15000' %>
+                  <%= label_tag'10000-15000' ,'10001~15000円', class: 'hover:text-red-600' %>
+                </div>
 
-                <%= f.radio_button :price, '20000-30000', id: '20000-30000' %>
-                <%= label_tag '20000-30000', '20001~30000円', class: 'mb-4' %><br>
+                <div class="mb-2 mr-2 text-lg">
+                  <%= f.radio_button :price, '15000-20000', id: '15000-20000' %>
+                  <%= label_tag '15000-20000','15001~20000円', class: 'hover:text-red-600' %>
+                </div>
 
-                <%= f.radio_button :price, '30000+', id: '30000+' %>
-                <%= label_tag '30000+', '30001円以上', class: 'mb-4' %><br>
+                <div class="mb-2 mr-2 text-lg">
+                  <%= f.radio_button :price, '20000-30000', id: '20000-30000' %>
+                  <%= label_tag '20000-30000', '20001~30000円', class: 'hover:text-red-600' %>
+                </div>
+
+                <div class="mb-2 mr-2 text-lg">
+                  <%= f.radio_button :price, '30000+', id: '30000+' %>
+                  <%= label_tag '30000+', '30001円以上', class: 'hover:text-red-600' %>
+                </div>
               </div>
 
               <!-- Q2 -->
               <h2 class="text-2xl text-center text-blue-600 ">任意項目</h2>
-              <div class="p-4 bg-blue-100 rounded-lg">
-                <p class="mb-2 text-lg">Q2: 使用しているPCを教えてください</p>
-                <%= f.radio_button :os, 'windows', id: 'windows' %>
-                <%= label_tag 'windows', 'Windows', class: 'mb-2' %><br>
+              <div class="p-4 rounded-lg bg-slate-100">
+                <p class="mb-2 text-xl text-blue-600">Q2: 使用しているPCを教えてください</p>
 
-                <%= f.radio_button :os, 'mac', id: 'mac' %>
-                <%= label_tag 'mac', 'Mac' %>
+                <div class="mb-2 mr-2 text-lg">
+                  <%= f.radio_button :os, 'mac', id: 'mac' %>
+                  <%= label_tag 'mac', 'Mac', class: 'hover:text-blue-600' %>
+                </div>
+
+                <div class="mb-1 mr-2 text-lg">
+                  <%= f.radio_button :os, 'windows', id: 'windows' %>
+                  <%= label_tag 'windows', 'Windows', class: 'hover:text-blue-600' %>
+                </div>
 
                 <!-- 他のラジオボタンを追加 -->
+                <div class="mb-2 mr-2 text-lg">
+                  <%= f.radio_button :os, 'none', id: 'os_none' %>
+                  <%= label_tag 'os_none', '選択しない', class: 'hover:text-blue-600' %>
+                </div>
               </div>
 
               <!-- Q3 -->
               <div class="p-4 bg-gray-100 rounded-lg">
-                <p class="mt-2 mb-2">Q3:<br>見積書作成のような<br>頻繁に数字入力を行う作業はありますか？</p>
-                <%= f.radio_button :size, 'フルサイズ', id: 'full_size' %>
-                <%= label_tag 'full_size', 'はい', class: 'mb-4' %><br>
+                <p class="mb-2 text-xl text-blue-600">Q3:見積書作成のような頻繁に数字入力を行う作業はありますか？</p>
 
-                <%= f.radio_button :size, 'テンキーレス', id: 'half_size' %>
-                <%= label_tag 'half_size', 'いいえ' %><br>
+                <div class="mb-2 mr-2 text-lg">
+                  <%= f.radio_button :size, 'フルサイズ', id: 'full_size' %>
+                  <%= label_tag 'full_size', 'はい', class: 'hover:text-blue-600' %>
+                </div>
+
+                <div class="mb-2 mr-2 text-lg">
+                  <%= f.radio_button :size, 'テンキーレス', id: 'half_size' %>
+                  <%= label_tag 'half_size', 'いいえ', class: 'hover:text-blue-600' %>
+                </div>
 
                 <!-- 他のラジオボタンを追加 -->
+                <div class="mb-2 mr-2 text-lg">
+                  <%= f.radio_button :size, 'none', id: 'size_none' %>
+                  <%= label_tag 'size_none', '選択しない', class: 'hover:text-blue-600' %>
+                </div>
               </div>
 
               <!-- Q4 -->
               <div class="p-4 bg-gray-100 rounded-lg">
-                <p class="mt-2 mb-2">Q4: 配列はどちらの方が好みか教えてください</p>
-                <%= f.radio_button :layout, 'US配列', id: 'us_array' %>
-                <%= label_tag 'us_array', 'すっきりして見える方がいい(US配列)', class: 'mb-4' %><br>
+                <p class="mb-2 text-xl text-blue-600">Q4: 配列はどちらの方が好みか教えてください</p>
 
-                <%= f.radio_button :layout, 'JIS配列', id: 'jis_array' %>
-                <%= label_tag 'jis_array', '今までと同じものがいい(JIS配列)' %><br>
+                <div class="mb-2 mr-2 text-lg">
+                  <%= f.radio_button :layout, 'US配列', id: 'us_array' %>
+                  <%= label_tag 'us_array', 'すっきりして見える方がいい(US配列)', class: 'hover:text-blue-600' %>
+                </div>
+
+                <div class="mb-2 mr-2 text-lg">
+                  <%= f.radio_button :layout, 'JIS配列', id: 'jis_array' %>
+                  <%= label_tag 'jis_array', '今までと同じものがいい(JIS配列)', class: 'hover:text-blue-600' %>
+                </div>
 
                 <!-- 他のラジオボタンを追加 -->
+                <div class="mb-2 mr-2 text-lg">
+                  <%= f.radio_button :layout, 'none', id: 'layout_none' %>
+                  <%= label_tag 'layout_none', '選択しない', class: 'hover:text-blue-600' %>
+                </div>
               </div>
 
               <!-- Q5 -->
               <div class="p-4 bg-gray-100 rounded-lg">
-                <p class="mt-2 mb-2">Q5: どちらの特徴を重視するか教えてください</p>
-                <%= f.radio_button :connect, '有線', id: 'wired' %>
-                <%= label_tag 'wired', '入力した時の遅延がない方がいい', class: 'mb-4' %><br>
+                <p class="mb-2 text-xl text-blue-600">Q5: どちらの特徴を重視するか教えてください</p>
 
-                <%= f.radio_button :connect, 'bluetooth', id: 'bluetooth' %>
-                <%= label_tag 'bluetooth', '無線接続の方がいい' %><br>
+                <div class="mb-2 mr-2 text-lg">
+                  <%= f.radio_button :connect, '有線', id: 'wired' %>
+                  <%= label_tag 'wired', '入力した時に遅延が少ない方がいい', class: 'hover:text-blue-600' %>
+                </div>
+
+                <div class="mb-2 mr-2 text-lg">
+                  <%= f.radio_button :connect, 'bluetooth', id: 'bluetooth' %>
+                  <%= label_tag 'bluetooth', '無線接続の方がいい', class: 'hover:text-blue-600' %>
+                </div>
 
                 <!-- 他のラジオボタンを追加 -->
+                <div class="mb-2 mr-2 text-lg">
+                  <%= f.radio_button :connect, 'none', id: 'connect_none' %>
+                  <%= label_tag 'connect_none', '選択しない', class: 'hover:text-blue-600' %>
+                </div>
               </div>
-            <br>
+
           </div>
-            <button type="submit" class="px-4 py-1 font-semibold border hover:bg-slate-500 text-slate-700 hover:text-white border-slate-500">診断する</button>
+            <button type="submit" class="flex justify-center px-4 py-1 mt-4 font-semibold border hover:bg-slate-500 text-slate-700 hover:text-white border-slate-500">診断する</button>
         <% end %>
         </div>
 
