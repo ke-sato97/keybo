@@ -1,29 +1,87 @@
-<div class='relative overflow-scroll bg-scroll top-wrapper'>
-  <div class="absolute relative flex items-center justify-center h-screen z-index">
-    <div class="px-6 py-3 bg-white rounded-lg max-w-screen-lg">
+<div class='relative overflow-scroll top-wrapper'>
+  <div class="absolute relative flex justify-center w-1/2 mx-auto mt-6 mb-6 bg-white rounded-lg shadow-lg">
       <%= form_with model: @keyboard, url: diagnoses_path, local: true, method: :post do |f| %>
-        <div class="flex flex-col text-lg">
-          <h2 class="mb-2 text-red-600">必須項目</h2>
-            <p>質問1: 希望する予算を教えてください</p>
-            <%= f.select :price, [['0~5000円', '0-5000'], ['5000~10000円', '5000-10000'], ['10000~15000円', '10000-15000'], ['15000~20000円', '15000-20000'], ['20000~30000円', '20000-30000'], ['30000円以上', '30000+']], prompt: '選択してください', class: "w-full" %>
+        <div class="p-4">
 
-            <h2 class="mt-2 mb-2 text-blue-600">任意項目</h2>
-            <p class="mt">質問2: 使用しているPCを教えてください</p>
-            <%= f.select :os, [["Windows", "windows"], ["Mac", "mac"]], prompt: '選択してください' %>
+          <div class="flex flex-col space-y-6">
 
-            <p class="mt-2 mb-2">質問3:<br>見積書作成のような<br>頻繁に数字入力を行う作業はありますか？</p>
-              <%= f.select :size, [["はい", "フルサイズ"], ["いいえ", "テンキーレス"]], prompt: '選択してください', class: "text-gray-400" %>
+              <!-- Q1 -->
+              <h2 class="text-2xl text-center text-red-600">必須項目</h2>
+              <div class="p-4 bg-red-100 rounded-lg">
+                <p class="mb-2 text-lg">Q1: 希望する予算を教えてください</p>
+                <%= f.radio_button :price, '0-5000', id: '0-5000' %>
+                <%= label_tag '0-5000', '0~5000円', class: 'mt-4' %><br>
 
-            <p class="mt-2 mb-2">質問4: 配列はどちらの方が好みか教えてください</p>
-            <%= f.select :layout, [["すっきりして見える方がいい(US配列)", "US配列"], ["今までと同じものがいい(JIS配列)", "JIS配列"]], prompt: '選択してください' %>
+                <%= f.radio_button :price, '5000-10000', id: '5000-10000' %>
+                <%= label_tag '5000-10000', '5001~10000円', class: 'mb-4' %><br>
 
-            <p class="mt-2 mb-2">質問5: どちらの特徴を重視するか教えてください</p>
-            <%= f.select :connect, [["入力した時の遅延がない方がいい", "有線"], ["無線接続の方がいい", "bluetooth"]], prompt: '選択してください' %>
+                <%= f.radio_button :price, '10000-15000', id: '10000-15000' %>
+                <%= label_tag'10000-15000' ,'10001~15000円', class: 'mb-4' %><br>
 
-          <br>
-          <button type="submit" class="px-4 py-1 font-semibold border hover:bg-slate-500 text-slate-700 hover:text-white border-slate-500">診断する</button>
+                <%= f.radio_button :price, '15000-20000', id: '15000-20000' %>
+                <%= label_tag '15000-20000','15001~20000円', class: 'mb-4' %><br>
+
+                <%= f.radio_button :price, '20000-30000', id: '20000-30000' %>
+                <%= label_tag '20000-30000', '20001~30000円', class: 'mb-4' %><br>
+
+                <%= f.radio_button :price, '30000+', id: '30000+' %>
+                <%= label_tag '30000+', '30001円以上', class: 'mb-4' %><br>
+              </div>
+
+              <!-- Q2 -->
+              <h2 class="text-2xl text-center text-blue-600 ">任意項目</h2>
+              <div class="p-4 bg-blue-100 rounded-lg">
+                <p class="mb-2 text-lg">Q2: 使用しているPCを教えてください</p>
+                <%= f.radio_button :os, 'windows', id: 'windows' %>
+                <%= label_tag 'windows', 'Windows', class: 'mb-2' %><br>
+
+                <%= f.radio_button :os, 'mac', id: 'mac' %>
+                <%= label_tag 'mac', 'Mac' %>
+
+                <!-- 他のラジオボタンを追加 -->
+              </div>
+
+              <!-- Q3 -->
+              <div class="p-4 bg-gray-100 rounded-lg">
+                <p class="mt-2 mb-2">Q3:<br>見積書作成のような<br>頻繁に数字入力を行う作業はありますか？</p>
+                <%= f.radio_button :size, 'フルサイズ', id: 'full_size' %>
+                <%= label_tag 'full_size', 'はい', class: 'mb-4' %><br>
+
+                <%= f.radio_button :size, 'テンキーレス', id: 'half_size' %>
+                <%= label_tag 'half_size', 'いいえ' %><br>
+
+                <!-- 他のラジオボタンを追加 -->
+              </div>
+
+              <!-- Q4 -->
+              <div class="p-4 bg-gray-100 rounded-lg">
+                <p class="mt-2 mb-2">Q4: 配列はどちらの方が好みか教えてください</p>
+                <%= f.radio_button :layout, 'US配列', id: 'us_array' %>
+                <%= label_tag 'us_array', 'すっきりして見える方がいい(US配列)', class: 'mb-4' %><br>
+
+                <%= f.radio_button :layout, 'JIS配列', id: 'jis_array' %>
+                <%= label_tag 'jis_array', '今までと同じものがいい(JIS配列)' %><br>
+
+                <!-- 他のラジオボタンを追加 -->
+              </div>
+
+              <!-- Q5 -->
+              <div class="p-4 bg-gray-100 rounded-lg">
+                <p class="mt-2 mb-2">Q5: どちらの特徴を重視するか教えてください</p>
+                <%= f.radio_button :connect, '有線', id: 'wired' %>
+                <%= label_tag 'wired', '入力した時の遅延がない方がいい', class: 'mb-4' %><br>
+
+                <%= f.radio_button :connect, 'bluetooth', id: 'bluetooth' %>
+                <%= label_tag 'bluetooth', '無線接続の方がいい' %><br>
+
+                <!-- 他のラジオボタンを追加 -->
+              </div>
+            <br>
           </div>
-      <% end %>
+            <button type="submit" class="px-4 py-1 font-semibold border hover:bg-slate-500 text-slate-700 hover:text-white border-slate-500">診断する</button>
+        <% end %>
+        </div>
+
       </div>
     </div>
   </div>
