@@ -15,6 +15,9 @@ module Portfolio
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     config.active_storage.variant_processor = :mini_magick
+    config.generators do |g|
+      g.test_framework :rspec
+    end
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
