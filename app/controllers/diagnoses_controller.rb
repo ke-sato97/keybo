@@ -5,7 +5,11 @@ class DiagnosesController < ApplicationController
   def index
     # ページネーションを適用する前に、ユーザーの診断履歴を取得
     @keyboards = current_user.diagnoses.includes(:keyboard).page(params[:page])
-    @diagnoses = @keyboards.all.order(created_at: :desc).map(&:keyboard)
+    @diagnoses = @keyboards.order(created_at: :desc).map(&:keyboard)
+  end
+
+  def show
+    @selected_keyboard = Keyboard.find(params[:id])
   end
 
   def new
@@ -44,10 +48,6 @@ class DiagnosesController < ApplicationController
     end
   end
 
-  def show
-    @selected_keyboard = Keyboard.find(params[:id])
-  end
-
   private
 
   def select_keyboard(price, os, size, layout, _switch, connect, _name)
@@ -70,8 +70,8 @@ class DiagnosesController < ApplicationController
 
     # パラメーターが空でない場合にのみ条件を追加
     query = query.where('? = ANY (os)', os) if os.present?
-    query = query.where('size = ?', size) if size.present?
-    query = query.where('layout = ?', layout) if layout.present?
+    query = query.where(size:) if size.present?
+    query = query.where(layout:) if layout.present?
     # query = query.where("switch = ?", switch) if switch.present?
     query = query.where('? = ANY (connect)', connect) if connect.present?
     # query = query.where("name ILIKE ?", "%#{name}%") if name.present?

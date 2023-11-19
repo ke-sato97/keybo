@@ -36,7 +36,7 @@ module Admin
     def search
       @keyboards = []
       @name = params[:keyword]
-      return unless @name.present?
+      return if @name.blank?
 
       # APIにリクエストを送信
       results = RakutenWebService::Ichiba::Item.search(keyword: @name, hits: 15)
@@ -198,7 +198,7 @@ module Admin
       return unless tag_names
 
       # 文字列の結合を分割する
-      tag_names.split(' ').each do |tag_name|
+      tag_names.split.each do |tag_name|
         tag = existing_tags.find { |t| t.name == tag_name }
 
         next unless tag.nil?

@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     return unless @contact.invalid?
 
-    flash[:alert] = @contact.errors.full_messages.join(', ')
+    flash.now[:alert] = @contact.errors.full_messages.join(', ')
     @contact = Contact.new
     render :new
   end
