@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Keyboard < ApplicationRecord
   has_many :diagnoses, dependent: :destroy
   has_many :users, dependent: :destroy, through: :diagnoses

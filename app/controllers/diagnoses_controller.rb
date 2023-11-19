@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DiagnosesController < ApplicationController
   before_action :require_login
   def index

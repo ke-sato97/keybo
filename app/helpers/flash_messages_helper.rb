@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FlashMessagesHelper
   def flash_message_class(message_type)
     case message_type

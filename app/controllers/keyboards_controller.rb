@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class KeyboardsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
@@ -9,7 +11,7 @@ class KeyboardsController < ApplicationController
       @keyboards = Keyboard.where('name ILIKE ?', "%#{params[:search]}%")
                            .includes(:tags)
                            .page(params[:page])
-    elsif current_user && current_user.admin?
+    elsif current_user&.admin?
       @keyboards = Keyboard.includes(:tags).all.page(params[:page])
     else
       head :no_content

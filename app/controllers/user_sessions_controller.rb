@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserSessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password])
@@ -14,8 +16,8 @@ class UserSessionsController < ApplicationController
     redirect_to root_path, alert: 'すでにログインしています' if current_user # ログインしてる場合はユーザーを作成しない
 
     random_value = SecureRandom.hex
-    user = User.create!(name: 'ゲスト', email: "test_#{random_value}@example.com", password: "#{random_value}",
-                        password_confirmation: "#{random_value}", role: :guest)
+    user = User.create!(name: 'ゲスト', email: "test_#{random_value}@example.com", password: random_value.to_s,
+                        password_confirmation: random_value.to_s, role: :guest)
     auto_login(user)
     redirect_to root_path, success: 'ゲストとしてログインしました'
   end

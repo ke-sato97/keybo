@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root 'top_page#top'
   get '/how_to_use', to: 'top_page#how_to_use'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserMailer < ApplicationMailer
   default from: 'ke.sato97@gmail.com'
   def reset_password_email(user)
