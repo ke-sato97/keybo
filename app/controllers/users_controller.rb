@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       auto_login(@user)
       redirect_to root_path, success: t('.success')
     else
-      flash.now[:danger] = t('.fail')
+      flash[:danger] = t('.fail')
       render action: 'new'
     end
   end
