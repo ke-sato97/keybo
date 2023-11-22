@@ -13,6 +13,18 @@ RSpec.describe Comment, type: :model do
         comment.valid?
         expect(comment.errors[:body]).to include("を入力してください")
       end
+
+      it "subjectが255文字を超える場合にエラーメッセージが返ってくるか" do
+        contact = build(:contact, subject: 'a' * 256)
+        contact.valid?
+        expect(contact.errors[:subject]).to include("は255文字以内で入力してください")
+      end
+
+      it "messageが65_536文字を超える場合にエラーメッセージが返ってくるか" do
+        contact = build(:contact, message: 'a' * 65_536)
+        contact.valid?
+        expect(contact.errors[:message]).to include("は65535文字以内で入力してください")
+      end
     end
   end
 end

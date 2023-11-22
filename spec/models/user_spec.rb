@@ -8,11 +8,18 @@ RSpec.describe User, type: :model do
     end
 
     context "バリデーションチェック" do
-      it "passwordが空白の場合にエラーメッセージが返ってくるか" do
-        # passwordのバリデーションチェック
-        user = build(:user, password: nil)
+      it "nameが空白の場合にエラーメッセージが返ってくるか" do
+        # nameのバリデーションチェック
+        user = build(:user, name: nil)
         user.valid?
-        expect(user.errors[:password]).to include("は3文字以上で入力してください")
+        expect(user.errors[:name]).to include("を入力してください")
+      end
+
+      it "emailが空白の場合にエラーメッセージが返ってくるか" do
+        # emailのバリデーションチェック
+        user = build(:user, email: nil)
+        user.valid?
+        expect(user.errors[:email]).to include("を入力してください")
       end
 
       it "無効な場合はエラーメッセージが返ってくるか" do
@@ -20,6 +27,14 @@ RSpec.describe User, type: :model do
         user = build(:user, password: nil)
         user.valid?
         expect(user.errors[:password]).to include("は3文字以上で入力してください")
+      end
+
+      it "emailが重複する場合にエラーメッセージが返ってくるか" do
+        # 重複するメールアドレスを持つユーザーオブジェクトを作成
+        create(:user, email: 'test@example.com')
+        user = build(:user, email: 'test@example.com')
+        user.valid?
+        expect(user.errors[:email]).to include("はすでに存在します")
       end
     end
   end
