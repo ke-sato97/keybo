@@ -43,6 +43,14 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'letter_opener_web', '1.3.4'
   gem 'pry-rails'
+
+  gem "rspec-rails"
+  gem "factory_bot_rails", "~> 6.2", "< 6.3"
+  gem "faker"
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec'
 end
 
 group :development do
@@ -54,11 +62,6 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-  gem 'rubocop', require: false
-  gem 'rubocop-performance', require: false
-  gem 'rubocop-rails', require: false
-  gem 'rubocop-rspec'
-  gem 'rspec'
 end
 
 group :test do
