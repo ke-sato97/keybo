@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :diagnosis do
-    association :user
+  factory :keyboard_tag do
     association :keyboard
+    association :tag
   end
 end
