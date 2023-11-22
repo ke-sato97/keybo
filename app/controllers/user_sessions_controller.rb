@@ -7,8 +7,8 @@ class UserSessionsController < ApplicationController
     if @user
       redirect_back_or_to(:root, success: t('.success'))
     else
-      flash.now[:danger] = t('.fail')
-      redirect_to action: 'new'
+      flash[:danger] = t('.fail')
+      render action: :new
     end
   end
 

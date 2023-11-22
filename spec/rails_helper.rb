@@ -15,6 +15,11 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+
+# spec/support以下が読み込まれます
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
+
+
 RSpec.configure do |config|
   config.fixture_path = Rails.root.join('spec/fixtures')
   config.use_transactional_fixtures = true

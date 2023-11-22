@@ -1,6 +1,6 @@
 ja:
   defaults:
-    login: 'ログイン'
+    login: 'ログイン画面'
     register: '会員登録'
     logout: 'ログアウト'
     top: 'トップページ'
@@ -26,7 +26,7 @@ ja:
       not_authorized: '権限がありません'
   users:
     new:
-      title: '会員登録'
+      title: '登録'
       to_login_page: 'ログインページへ'
     create:
       success: 'ユーザー登録が完了しました'
