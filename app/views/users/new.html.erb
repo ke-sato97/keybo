@@ -2,7 +2,7 @@
   <div class="flex h-[calc(100vh-134px)] items-center justify-center">
     <div class="flex items-center justify-center">
       <div class="max-w-md">
-        <%= form_with model: @user, local: true do |f| %>
+        <%= form_with model: @user, data: { turbo: false }, local: true do |f| %>
           <div class="px-12 pt-6 pb-8 mb-4 bg-white rounded shadow-lg">
             <div class="flex justify-center py-2 mb-4 text-2xl text-gray-800 border-b-2">
               <%= t('.title') %>

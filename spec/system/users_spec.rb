@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
+  # spec/factories/*.rb で作成されたデータ
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
 
@@ -56,7 +57,7 @@ RSpec.describe 'Users', type: :system do
               fill_in 'Email', with: 'test@example.com'
               fill_in 'Password', with: 'password'
               click_button 'ログイン'
-              expect(current_path).to eq login_path
+              expect(current_path).to eq root_path
             end
           end
 

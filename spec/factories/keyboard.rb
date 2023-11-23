@@ -8,7 +8,7 @@ FactoryBot.define do
     switch { 'switch' }
     url { 'url' }
     os { ['os1', 'os2'] }
-    medium_image_urls { ['medium_image_urls1', 'medium_image_urls2' ] }
+    # medium_image_urls { ['medium_image_urls1', 'medium_image_urls2' ] }
     caption { 'caption' }
     connect { ['connect1', 'connect2'] }
   end

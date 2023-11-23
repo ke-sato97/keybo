@@ -23,7 +23,8 @@
         <% end %>
       </div>
       <div class="w-full px-2 py-4 border rounded-lg shadow-lg border-slate-100 mb-7">
-        <h3 class="mb-2 text-4xl font-bold"><span class="text-red-500">価格 </span><%= @keyboard.price.to_s(:delimited) %>円</h3>
+        <!-- rspecでInteger#to_s(:delimited)ではなくInteger#to_fs(:delimited)を使用するようにという警告があった -->
+        <h3 class="mb-2 text-4xl font-bold"><span class="text-red-500">価格 </span><%= @keyboard.price.to_fs(:delimited) %>円</h3>
       </div>
       <div class="w-full px-2 py-4 rounded-lg shadow-lg mb-7">
         <h3 class="mb-2 text-2xl font-bold text-red-500">対応のOS</h3>
