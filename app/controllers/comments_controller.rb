@@ -12,11 +12,13 @@ class CommentsController < ApplicationController
   def create
     @comment = @keyboard.comments.build(comment_params)
     if @comment.save
-      flash.now.notice = 'コメントを投稿しました。'
+      # flash.now.notice = 'コメントを投稿しました。'
+      flash[:success] = 'コメントしました'
       redirect_to keyboard_path(@comment.keyboard)
     else
-      flash[:danter] = 'コメントできませんでした。'
-      redirect_to action: 'new'
+      flash[:danger] = 'コメントできませんでした'
+      redirect_to keyboard_path(@comment.keyboard)
+      # redirect_to action: 'new'
     end
   end
 
@@ -25,7 +27,7 @@ class CommentsController < ApplicationController
       redirect_to keyboard_path(@comment.keyboard)
     else
       # バリデーションエラーの際はedit.html.erbを返す
-      flash[:danter] = 'コメントを更新できませんでした。'
+      flash[:danter] = 'コメントを更新できませんでした'
       redirect_to action: 'edit'
     end
   end

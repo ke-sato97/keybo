@@ -15,7 +15,7 @@ RSpec.describe 'Comments', type: :system do
           visit keyboard_path(keyboard)
           fill_in 'コメントフォーム', with: 'test'
           click_button '送信'
-          # expect(page).to have_content "コメントを投稿しました。"
+          expect(page).to have_content "コメントしました"
         end
       end
 
@@ -24,7 +24,7 @@ RSpec.describe 'Comments', type: :system do
           visit keyboard_path(keyboard)
           fill_in 'コメントフォーム', with: nil
           click_button '送信'
-          # expect(page).to have_content "コメントできませんでした。"
+          expect(page).to have_content "コメントできませんでした"
         end
       end
     end
