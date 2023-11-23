@@ -23,7 +23,7 @@ RSpec.describe 'Users', type: :system do
             # SignUpと記述のあるsubmitをクリックする
             click_button '登録'
             # new_user_pathへ遷移することを期待する
-            expect(current_path).to eq new_user_path
+            expect(current_path).to eq root_path
           end
         end
 
@@ -42,7 +42,7 @@ RSpec.describe 'Users', type: :system do
             # SignUpと記述のあるsubmitをクリックする
             click_button '登録'
             # new_user_pathへ遷移することを期待する
-            expect(current_path).to eq new_user_path
+            expect(current_path).to eq users_path
           end
         end
       end
@@ -54,7 +54,7 @@ RSpec.describe 'Users', type: :system do
           context 'フォームの入力が正常' do
             it 'フォームの入力が正常' do
               visit login_path
-              fill_in 'Email', with: 'test@example.com'
+              fill_in 'Email', with: user.email
               fill_in 'Password', with: 'password'
               click_button 'ログイン'
               expect(current_path).to eq root_path

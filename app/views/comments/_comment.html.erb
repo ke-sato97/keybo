@@ -1,4 +1,4 @@
-<%= turbo_frame_tag comment do %>
+<%#= turbo_frame_tag comment do %>
   <div class="border rounded-lg shadow-lg border-slate-100">
     <div class="flex text-lg justify-left text-slate-500">
 
@@ -19,7 +19,7 @@
           <ul class="flex items-center space-x-2">
             <li class="list-inline-item">
               <%= link_to edit_keyboard_comment_path(comment.keyboard, comment) do %>
-                <i class="fa-solid fa-pen" style="color:slate;"></i>
+                <!-- <i class="fa-solid fa-pen" style="color:slate;"></i> -->
               <% end %>
             </li>
             <li class="list-inline-item">
@@ -37,4 +37,4 @@
         <%= simple_format(comment.body) %>
     </div>
   </div>
-<% end %>
+<%# end %>

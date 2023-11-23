@@ -69,14 +69,14 @@
     <h3 class="mb-2 text-2xl font-bold text-center text-red-500"><i class="fa-regular fa-fw fa-comments"></i>コメント<i class="fa-regular fa-fw fa-comment"></i></h3>
     <% if logged_in? %>
       <!-- コメントエリア -->
-      <%= turbo_frame_tag "comment_list" do %>
+      <%#= turbo_frame_tag "comment_list" do %>
         <%= render 'comments/comments', { comments: @comments } %>
-      <% end %>
+      <%# end %>
 
       <!-- コメントフォーム -->
-      <%= turbo_frame_tag "new_comment" do %>
+      <%#= turbo_frame_tag "new_comment" do %>
         <%= render 'comments/form', { keyboard: @keyboard, comment: @comment } %>
-      <% end %>
+      <%# end %>
 
     <% else %>
       <div class="flex justify-center text-slate-700">

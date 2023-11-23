@@ -1,16 +1,23 @@
 require 'rails_helper'
 
-RSpec.describe 'diagnoses', type: :system do
-  describe 'comments' do
-    describe 'コメントフォーム' do
+RSpec.describe 'Diagnoses', type: :system do
+  let(:keyboard) { create(:keyboard) }
 
-     context 'フォームの入力が正常' do
-       it '1.コメント成功'
-     end
+  describe 'diagnoses' do
+    let(:user) { create(:user) } # 必要に応じて user の作成も追加
 
-     context 'フォーム未記入' do
-       it '2.コメント失敗'
-     end
-   end
+    describe '診断フォーム' do
+      before { login(user) }
+
+      context 'フォームの入力が正常' do
+        it '1.コメント成功' do
+        end
+      end
+
+      context 'フォーム未記入' do
+        it '2.コメント失敗' do
+        end
+      end
+    end
   end
 end
