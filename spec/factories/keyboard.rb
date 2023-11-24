@@ -2,13 +2,13 @@ FactoryBot.define do
   factory :keyboard do
     name { 'name' }
     brand { 'brand' }
-    price { '5000' }
-    layout { 'layout' }
-    size { 'size' }
-    switch { 'switch' }
+    price { 12000 }
+    layout { 'JIS配列' }
+    size { 'フルサイズ' }
+    switch { 'メンブレン' }
     url { 'url' }
-    os { ['os1', 'os2'] }
+    os { ['windows', 'mac'] }
     caption { 'caption' }
-    connect { ['connect1', 'connect2'] }
+    connect { ['bluetooth', '有線'] }
   end
 end
