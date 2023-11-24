@@ -17,10 +17,10 @@ RSpec.describe 'Contacts', type: :system do
           fill_in 'メッセージ', with: 'test'
           click_button '入力内容確認'
 
-          # ここで確認画面に遷移していることを確認
+          # ここで確認画面に遷移している
           expect(current_path).to eq contacts_confirm_path
 
-          # ここで期待されるデータを表示しているかを確認
+          # フォームに入力されたデータが持ち越されているか
           expect(page).to have_content 'test'
           expect(page).to have_content 'test@email.com'
           expect(page).to have_content 'test'
