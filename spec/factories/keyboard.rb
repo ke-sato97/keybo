@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :keyboard do
     name { 'name' }
     brand { 'brand' }
-    price { 12000 }
+    price { 2000 }
     layout { 'JIS配列' }
     size { 'フルサイズ' }
     switch { 'メンブレン' }
