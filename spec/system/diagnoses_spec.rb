@@ -3,23 +3,23 @@ require 'rails_helper'
 RSpec.describe 'Diagnoses', type: :system do
   describe 'diagnoses' do
     let(:user) { create(:user) } # 必要に応じて user の作成も追加
-    let(:keyboard) { create(:keyboard) }
     # let(:diagnosis) { create(:diagnosis, user: user, keyboard: keyboard) }
 
     describe '診断フォーム成功' do
+      let(:keyboard) { create(:keyboard) }
       before do
         login(user)
-        # ラジオボタン
-        choose '0~5000円' # ラジオボタンを選択する
-        expect(page).to have_checked_field '0~5000円' # 選択されたことを確認する
       end
 
       context 'フォームの入力が正常' do
         it '1.必須項目のみ入力' do
+          # ラジオボタン
           visit new_diagnosis_path
+          choose '0~5000円' # ラジオボタンを選択する
+          expect(page).to have_checked_field '0~5000円' # 選択されたことを確認する
 
           click_button '診断する'
-          binding.pry
+          puts keyboard.inspect
           expect(current_path).to eq diagnosis_path(keyboard)
         end
       end
