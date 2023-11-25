@@ -3,7 +3,6 @@
 class BookmarksController < ApplicationController
   skip_before_action :verify_authenticity_token
   def index
-    # ページネーションを適用する前に、ユーザーの診断履歴を取得
     @keyboards = current_user.bookmarks.includes(:keyboard).page(params[:page])
     @bookmarks = @keyboards.order(created_at: :desc).map(&:keyboard)
   end

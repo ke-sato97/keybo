@@ -18,28 +18,37 @@ RSpec.describe 'Diagnoses', type: :system do
           expect(page).to have_checked_field '10001~15000円' # 選択されたことを確認する
 
           click_button '診断する'
-          binding.pry
           expect(current_path).to eq diagnosis_path(keyboard)
-        end
-
-        it '1.必須項目と任意項目入力' do
-          visit new_diagnosis_path
-          choose '0~5000円'
-          click_button '診断する'
         end
       end
 
       context 'フォーム未記入' do
-        it '2.診断失敗' do
+        it '診断失敗(１を選択していない)' do
           visit new_diagnosis_path
 
           # ラジオボタン
-          expect(page).to have_checked_field with: '選択しない', visible: false # デフォルトで選択しないがチェックされていることを検証
-          find('label[for=Mac]').click # Macをクリック（こちらも先程のテストから変更してます）
-          expect(page).to have_checked_field with: 'Mac', visible: false # Macがチェックされていることを検証
+          expect(page).to have_checked_field '選択しない' # デフォルトで選択しないがチェックされていることを検証
+          choose 'Mac'
+          expect(page).to have_checked_field 'Mac' # Macがチェックされていることを検証
 
           click_button '診断する'
           expect(current_path).to eq new_diagnosis_path
+          expect(page).to have_content "質問１は必須項目です"
+        end
+
+        it '診断失敗(診断結果が見つからない)' do
+          visit new_diagnosis_path
+
+          # ラジオボタン
+          choose '10001~15000円' # ラジオボタンを選択する
+          expect(page).to have_checked_field '10001~15000円' # 選択されたことを確認する
+          expect(page).to have_checked_field '選択しない' # デフォルトで選択しないがチェックされていることを検証
+          choose 'US配列'
+          expect(page).to have_checked_field 'US配列'
+
+          click_button '診断する'
+          expect(current_path).to eq new_diagnosis_path
+          expect(page).to have_content "選択された条件に合うものは見つかりませんでした"
         end
       end
     end

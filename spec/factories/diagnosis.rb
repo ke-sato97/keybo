@@ -4,15 +4,15 @@ FactoryBot.define do
     association :keyboard
 
     factory :selected_keyboard do
-      name { 'name' }
-      brand { 'brand' }
+      name { 'string' }
+      brand { 'string' }
       price { 12000 }
       layout { 'JIS配列' }
       size { 'フルサイズ' }
       switch { 'メンブレン' }
       url { 'url' }
       os { ['windows', 'mac'] }
-      caption { 'caption' }
+      caption { 'string' }
       connect { ['bluetooth', '有線'] }
     end
   end
