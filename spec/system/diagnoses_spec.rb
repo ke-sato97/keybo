@@ -20,8 +20,8 @@ RSpec.describe 'Diagnoses' do
           expect(page).to have_checked_field '0~5000円' # 選択されたことを確認する
 
           click_button '診断する'
-          puts keyboard.inspect
-          expect(page).to have_current_path diagnosis_path(keyboard), ignore_query: true
+          # puts keyboard.inspect
+          expect(page).to have_current_path diagnosis_path(keyboard)
         end
       end
     end
