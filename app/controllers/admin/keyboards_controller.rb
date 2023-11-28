@@ -3,6 +3,7 @@
 module Admin
   class KeyboardsController < Admin::BaseController
     before_action :set_keyboard, only: %i[edit update destroy]
+
     def index
       @keyboards = Keyboard.all
     end
@@ -39,7 +40,7 @@ module Admin
       return if @name.blank?
 
       # APIにリクエストを送信
-      results = RakutenWebService::Ichiba::Item.search(keyword: @name, hits: 15)
+      results = RakutenWebService::Ichiba::Item.search(keyword: @name, hits: 5)
 
       # レスポンスを処理
       results.each do |result|

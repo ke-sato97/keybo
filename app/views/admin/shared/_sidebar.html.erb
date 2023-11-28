@@ -1,4 +1,4 @@
-<div class="text-2xl font-semibold text-center text-orange-400 max-h-screen text-bold">
+<div class="max-h-screen text-2xl font-semibold text-center text-white hover:text-orange-400 text-bold">
   <%= link_to admin_keyboards_path do %>
     サイドバー
   <% end %>
@@ -7,6 +7,16 @@
   <li>
     <%= link_to admin_keyboards_path, class: "flex hover:bg-blue-700 text-white items-center p-2 rounded-lg" do %>
       キーボード一覧
+    <% end %>
+  </li>
+  <li>
+    <%= link_to "#", class: "flex hover:bg-blue-700 text-white items-center p-2 rounded-lg" do %>
+      ユーザー一覧
+    <% end %>
+  </li>
+  <li>
+    <%= link_to admin_keyboards_search_path, class: "flex hover:bg-blue-700 text-white items-center p-2 rounded-lg" do %>
+      データ取得
     <% end %>
   </li>
 </ul>
