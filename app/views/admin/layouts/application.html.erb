@@ -13,13 +13,25 @@
 
   <body>
     <% if logged_in? %>
-    <div class="bg-cyan-200">
-      <%= render 'admin/shared/header' %>
-    </div>
+      <div class="bg-cyan-200">
+        <%= render 'admin/shared/header' %>
+      </div>
+      <div class="bg-cyan-100">
+        <%= render 'shared/flash_message' %>
+
+        <div class="pt-6 pb-6 mx-auto max-w-screen-xl">
+          <div class="flex justify-center max-w-screen">
+
+            <div class="w-1/4 px-3 py-4 bg-white">
+              <%= render 'admin/shared/sidebar' %>
+            </div>
+
+            <div class="w-3/4 ml-4 bg-white">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-    <%= render 'shared/flash_message' %>
-    <div class="bg-cyan-100">
-      <%= yield %>
-    </div>
   </body>
 </html>
