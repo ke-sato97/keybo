@@ -1,52 +1,72 @@
-<div class="flex justify-center mb-7 image-gallery gap-4">
-  <% @keyboard.medium_image_urls.each do |image| %>
-    <%= image_tag image, class: "w-64 h-64 object-cover" %>
-  <% end %>
-</div>
-
-<%= form_with model: @keyboard, url: admin_keyboard_path(@keyboard), local: true do |f| %>
-  <div class="flex flex-col">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-
-    <%= f.label :price %>
-    <%= f.text_field :price %>
-
-    <%= f.label :os %>
-    <%= f.text_field :os %>
-
-    <%= f.label :connect %>
-    <%= f.text_field :connect %>
-
-    <%= f.label :size %>
-    <%= f.text_field :size %>
-
-    <%= f.label :layout %>
-    <%= f.text_field :layout %>
-
-    <%= f.label :switch %>
-    <%= f.text_field :switch %>
-  </div>
-
-  <div class="flex flex-wrap -mx-2">
-    <% Tag.all.each do |tag| %>
-      <div class="w-1/4 px-2">
-        <label class="block">
-          <%= check_box_tag 'keyboard[tag_ids][]', tag.id, @keyboard.tag_ids.include?(tag.id), class: 'mr-1' %>
-          <%= tag.name %>
-        </label>
-      </div>
+<div class="m-2">
+  <div class="flex justify-center mb-7 image-gallery gap-4">
+    <% @keyboard.medium_image_urls.each do |image| %>
+      <%= image_tag image, class: "w-64 h-64 object-cover" %>
     <% end %>
   </div>
 
-  <%= f.submit '更新', class: "m-2 text-lg border-2 rounded-lg flex item-center transition-colors duration-300 hover:bg-red-900 hover:text-white py-2 px-3 rounded" %>
-<% end %>
+  <%= form_with model: @keyboard, url: admin_keyboard_path(@keyboard), local: true do |f| %>
+    <div class="flex flex-col">
+      <%= f.label :name, "製品名", class: "text-lg" %>
+      <%= f.text_area :name, rows: 2, class: "mb-2" %>
 
-<% @tags.each do |tag| %>
-  <%= tag.name %>
-<% end %>
-<br>
-<p class="mt-4"><%= link_to '楽天市場に移動', @keyboard.url, method: :get, target: :_blank, rel: "noopener noreferrer", class: "transition-colors duration-500 border-2 border-red-500 rounded-lg text-red-500 shadow-lg mb-7 font-bold hover:bg-red-500 text-2xl hover:text-white text-center py-3 px-4 hover:border-transparent rounded" %></p>
-<p class="mt-4"><%= @keyboard.caption %></p>
-<br>
-<%= link_to 'DELETE', admin_keyboard_path(@keyboard), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "border-2 rounded-lg text-lg flex justify-center transition-colors duration-300 hover:bg-red-900 hover:text-white py-2 px-3 rounded" %>
+      <%= f.label :price, "値段", class: "text-lg" %>
+      <%= f.text_field :price, class: "mb-2" %>
+
+      <%= f.label :os, "対応のOS",  class: "text-lg" %>
+      <div class="flex flex-wrap -mx-2">
+        <% Keyboard.all_os.each do |os_option| %>
+          <div class="w-1/12 px-2">
+            <label class="block mb-2">
+              <%= f.check_box :os, { multiple: true }, os_option, nil %>
+              <%= os_option %>
+            </label>
+          </div>
+        <% end %>
+      </div>
+
+      <%= f.label :connect, "接続方法",  class: "text-lg" %>
+      <div class="flex flex-wrap -mx-2">
+        <% Keyboard.all_connect.each do |connect_option| %>
+          <div class="w-1/12 px-2">
+            <label class="block mb-2">
+              <%= f.check_box :connect, { multiple: true }, connect_option, nil %>
+              <%= connect_option %>
+            </label>
+          </div>
+        <% end %>
+      </div>
+
+      <%= f.label :size, "サイズ",  class: "text-lg" %>
+      <%= f.text_field :size, class: "mb-2" %>
+
+      <%= f.label :layout, "レイアウト",  class: "text-lg" %>
+      <%= f.text_field :layout, class: "mb-2" %>
+
+      <%= f.label :switch, "キースイッチ",  class: "text-lg" %>
+      <%= f.text_field :switch, class: "mb-2" %>
+    </div>
+
+    <div class="flex flex-wrap -mx-2">
+      <% Tag.all.each do |tag| %>
+        <div class="w-1/4 px-2">
+          <label class="block">
+            <%= check_box_tag 'keyboard[tag_ids][]', tag.id, @keyboard.tag_ids.include?(tag.id), class: 'mr-1' %>
+            <%= tag.name %>
+          </label>
+        </div>
+      <% end %>
+    </div>
+
+    <%= f.submit '更新', class: "text-lg border-2 text-center transition-colors hover:bg-red-600 text-white py-2 px-3 bg-red-500 rounded w-full" %>
+  <% end %>
+
+  <% @tags.each do |tag| %>
+    <%= tag.name %>
+  <% end %>
+  <br>
+  <p class="mt-4"><%= link_to @keyboard.url, method: :get, target: :_blank, rel: "noopener noreferrer", class: "transition-colors duration-500 border-2 border-red-500 rounded-lg text-red-500 shadow-lg mb-7 font-bold hover:bg-red-500 text-2xl hover:text-white text-center py-3 px-4 hover:border-transparent rounded" %></p>
+  <p class="mt-4"><%= @keyboard.caption %></p>
+  <br>
+  <%= link_to '削除', admin_keyboard_path(@keyboard), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "border-2 rounded text-lg flex justify-center transition-colors duration-300 hover:bg-red-900 bg-red-700 text-white py-2 px-3 rounded" %>
+</div>

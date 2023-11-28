@@ -25,4 +25,12 @@ class Keyboard < ApplicationRecord
   def self.diagnosis_ranks
     Keyboard.find(Diagnosis.group(:keyboard_id).order('count(keyboard_id) desc').limit(20).pluck(:keyboard_id))
   end
+
+  def self.all_os
+    pluck(:os).flatten.uniq
+  end
+
+  def self.all_connect
+    pluck(:connect).flatten.uniq
+  end
 end
