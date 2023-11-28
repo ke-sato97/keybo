@@ -9,38 +9,33 @@ RSpec.describe 'Profile', type: :system do
 
       context 'フォームの入力が正常' do
         it 'プロフィール確認画面' do
-          visit new_contact_path
+          visit profile_path
+          # フォームに入力されたデータが持ち越されているか
+          expect(page).to have_content user.name
+          expect(page).to have_content user.email
+          click_link 'プロフィールを変更'
+          expect(current_path).to eq edit_profile_path
+
+          expect(page).to have_content user.name
+          expect(page).to have_content user.email
+        end
+        it 'プロフィール編集画面' do
+          visit edit_profile_path
+          # フォームに入力されたデータが持ち越されているか
           fill_in '名前', with: 'test'
           fill_in 'メールアドレス', with: 'test@email.com'
-          fill_in '件名', with: 'test'
-          fill_in 'メッセージ', with: 'test'
-          click_button '入力内容確認'
-
-          # ここで確認画面に遷移している
-          expect(current_path).to eq contacts_confirm_path
-
-          # フォームに入力されたデータが持ち越されているか
-          expect(page).to have_content 'test'
-          expect(page).to have_content 'test@email.com'
-          expect(page).to have_content 'test'
-          expect(page).to have_content 'test'
-
-          # フォームの送信
-          click_button '送信'
-          expect(current_path).to eq contacts_done_path
+          click_button '変更'
+          expect(page).to have_content "プロフィールを更新しました"
         end
       end
 
       context 'フォーム未記入' do
-        it '2.お問い合わせ失敗' do
-          visit new_contact_path
+        it '編集失敗' do
+          visit edit_profile_path
           fill_in '名前', with: nil
           fill_in 'メールアドレス', with: 'test@email.com'
-          fill_in '件名', with: 'test'
-          fill_in 'メッセージ', with: 'test'
-          click_button '入力内容確認'
-          expect(current_path).to eq contacts_confirm_path
-          expect(page).to have_content "を入力してください"
+          click_button '変更'
+          expect(page).to have_content "プロフィールを更新できませんでした"
         end
       end
     end
