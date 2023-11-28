@@ -46,9 +46,7 @@
   <%= tag.name %>
 <% end %>
 <br>
-<div class="text-sm">
-  <p class="mt-4"><%= link_to '楽天市場に移動', @keyboard.url, method: :get, target: :_blank, rel: "noopener noreferrer", class: "transition-colors duration-500 border-2 border-red-500 rounded-lg text-red-500 shadow-lg mb-7 font-bold hover:bg-red-500 text-2xl hover:text-white text-center py-3 px-4 hover:border-transparent rounded" %></p>
-  <p class="mt-4"><%= @keyboard.caption %></p>
-</div>
+<p class="mt-4"><%= link_to '楽天市場に移動', @keyboard.url, method: :get, target: :_blank, rel: "noopener noreferrer", class: "transition-colors duration-500 border-2 border-red-500 rounded-lg text-red-500 shadow-lg mb-7 font-bold hover:bg-red-500 text-2xl hover:text-white text-center py-3 px-4 hover:border-transparent rounded" %></p>
+<p class="mt-4"><%= @keyboard.caption %></p>
 <br>
-<%= link_to 'DELETE', admin_keyboard_path(@keyboard), data: { turbo_method: :delete }, class: "border-2 rounded-lg text-lg flex justify-center transition-colors duration-300 hover:bg-red-900 hover:text-white py-2 px-3 rounded" %>
+<%= link_to 'DELETE', admin_keyboard_path(@keyboard), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "border-2 rounded-lg text-lg flex justify-center transition-colors duration-300 hover:bg-red-900 hover:text-white py-2 px-3 rounded" %>
