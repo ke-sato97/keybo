@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :keyboard_tag do
-    association :keyboard
-    association :tag
+    keyboard
+    tag
   end
 end

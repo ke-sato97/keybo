@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :bookmark do
-    association :user
-    association :keyboard
+    user
+    keyboard
   end
 end

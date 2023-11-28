@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Contacts', type: :system do
+RSpec.describe 'Contacts' do
   let(:user) { create(:user) }
   let(:contact) { create(:contact) }
 
@@ -18,7 +18,7 @@ RSpec.describe 'Contacts', type: :system do
           click_button '入力内容確認'
 
           # ここで確認画面に遷移している
-          expect(current_path).to eq contacts_confirm_path
+          expect(page).to have_current_path contacts_confirm_path, ignore_query: true
 
           # フォームに入力されたデータが持ち越されているか
           expect(page).to have_content 'test'
@@ -28,7 +28,7 @@ RSpec.describe 'Contacts', type: :system do
 
           # フォームの送信
           click_button '送信'
-          expect(current_path).to eq contacts_done_path
+          expect(page).to have_current_path contacts_done_path, ignore_query: true
         end
       end
 
@@ -40,8 +40,8 @@ RSpec.describe 'Contacts', type: :system do
           fill_in '件名', with: 'test'
           fill_in 'メッセージ', with: 'test'
           click_button '入力内容確認'
-          expect(current_path).to eq contacts_confirm_path
-          expect(page).to have_content "を入力してください"
+          expect(page).to have_current_path contacts_confirm_path, ignore_query: true
+          expect(page).to have_content 'を入力してください'
         end
       end
     end

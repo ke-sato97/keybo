@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    association :user
-    association :keyboard
+    user
+    keyboard
 
     sequence(:body) { |n| "Comment Body #{n}" }
   end

@@ -1,14 +1,14 @@
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 
-#追記
+# 追記
 require 'capybara/rspec'
 
 # カスタムのモジュールを読み込む
-require_relative './support/login_module'
+require_relative 'support/login_module'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -17,8 +17,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 # spec/support以下が読み込まれます
-Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
-
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   config.fixture_path = Rails.root.join('spec/fixtures')

@@ -14,12 +14,11 @@ class CommentsController < ApplicationController
     if @comment.save
       # flash.now.notice = 'コメントを投稿しました。'
       flash[:success] = 'コメントしました'
-      redirect_to keyboard_path(@comment.keyboard)
     else
       flash[:danger] = 'コメントできませんでした'
-      redirect_to keyboard_path(@comment.keyboard)
       # redirect_to action: 'new'
     end
+    redirect_to keyboard_path(@comment.keyboard)
   end
 
   def update

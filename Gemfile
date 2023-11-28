@@ -44,9 +44,9 @@ group :development, :test do
   gem 'letter_opener_web', '1.3.4'
   gem 'pry-rails'
 
-  gem "rspec-rails"
-  gem "factory_bot_rails", "~> 6.2", "< 6.3"
-  gem "faker"
+  gem 'factory_bot_rails', '~> 6.2', '< 6.3'
+  gem 'faker'
+  gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
