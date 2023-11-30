@@ -41,6 +41,15 @@ ja:
       fail: 'ログインに失敗しました'
     destroy:
       success: 'ログアウトしました'
+  profiles:
+    show:
+      title: 'マイページ'
+      name: '名前'
+      email: 'メールアドレス'
+      edit_profile: 'プロフィールを変更'
+    edit:
+      title: 'プロフィール編集'
+      submit: '変更'
   keyboards:
     index:
       title: '検索結果'
@@ -75,6 +84,11 @@ ja:
       q4: 'Q4: 配列はどちらの方が好みか教えてください'
       q5: 'Q5: どちらの特徴を重視するか教えてください'
       submit: '診断する'
+    create:
+      success: '条件に合うキーボードが見つかりました'
+      no_anser: '質問１は必須項目です'
+      no_result: '選択された条件に合うものは見つかりませんでした'
+      not_save: '診断結果を保存できませんでした'
     show:
       title: '診断結果'
       price: '価格'
@@ -89,9 +103,13 @@ ja:
       title: 'お気に入り一覧'
       no_result: 'お気に入りのキーボードがありません'
     create:
-      success: 'お気に入りしました'
+      success: 'お気に入り登録しました'
     destroy:
-      success: 'お気に入りを外しました'
+      success: 'お気に入りを解除しました'
+  comments:
+    create:
+      success: 'コメントしました'
+      fail: 'コメントできませんでした'
   profiles:
     show:
       title: 'プロフィール'

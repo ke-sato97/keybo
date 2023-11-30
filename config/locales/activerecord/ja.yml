@@ -9,15 +9,14 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード確認"
-        full_name: '氏名'
-        avatar: 'アバター'
+        image: '画像(5MB以下)'
         role: '権限'
       keyboard:
         title: 'タイトル'
         keyboard_image: 'サムネイル'
         user: '作成者'
       comment:
-        body: 'コメント'
+        body: 'コメントフォーム'
   attributes:
     id: 'ID'
 

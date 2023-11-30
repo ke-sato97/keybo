@@ -1,7 +1,7 @@
 <%#= turbo_frame_tag comment do %>
   <%= form_with model: [keyboard, comment] do |f| %>
     <br>
-    <%= f.text_area :body, class: "px-5 py-2 w-full bg-slate-100 rounded-lg", rows: 3, placeholder: "コメントフォーム" %>
+    <%= f.text_area :body, class: "px-5 py-2 w-full bg-slate-100 rounded-lg", rows: 3, placeholder: Comment.human_attribute_name(:body) %>
     <br>
     <div class="flex justify-end mt-1">
       <button type="submit" class="px-2 py-1 text-lg text-center text-red-500 border border-red-500 rounded rounded-lg shadow-lg hover:bg-red-500 hover:text-white hover:border-transparent">
