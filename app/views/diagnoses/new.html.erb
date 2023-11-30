@@ -1,15 +1,15 @@
 <div class='relative overflow-scroll top-wrapper'>
   <div class="absolute relative flex justify-center mx-auto mt-6 mb-6 bg-white rounded-lg shadow-lg max-w-screen-lg">
       <%= form_with model: @keyboard, url: diagnoses_path, data: { turbo: false }, local: true, method: :post do |f| %>
-        <h1 class="pt-6 pb-2 text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-violet-500">キーボード診断フォーム</h1>
+        <h1 class="pt-6 pb-2 text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-violet-500"><%= (t '.title') %></h1>
         <div class="p-4">
 
           <div class="flex flex-col space-y-6">
 
               <!-- Q1 -->
-              <h2 class="text-2xl text-center text-red-600">必須項目</h2>
+              <h2 class="text-2xl text-center text-red-600"><%= (t '.required') %></h2>
               <div class="p-4 rounded-lg bg-slate-100">
-                <p class="mb-2 text-xl text-red-500">Q1: 希望する予算を教えてください</p>
+                <p class="mb-2 text-xl text-red-500"><%= (t '.q1') %></p>
 
                 <div class="mb-2 mr-2 text-lg">
                   <%= f.radio_button :price, '0-5000', id: '0-5000' %>
@@ -43,9 +43,9 @@
               </div>
 
               <!-- Q2 -->
-              <h2 class="text-2xl text-center text-blue-600 ">任意項目</h2>
+              <h2 class="text-2xl text-center text-blue-600 "><%= (t '.optional') %></h2>
               <div class="p-4 rounded-lg bg-slate-100">
-                <p class="mb-2 text-xl text-blue-600">Q2: 使用しているPCを教えてください</p>
+                <p class="mb-2 text-xl text-blue-600"><%= (t '.q2') %></p>
 
                 <div class="mb-2 mr-2 text-lg">
                   <%= f.radio_button :os, 'mac', id: 'mac' %>
@@ -66,7 +66,7 @@
 
               <!-- Q3 -->
               <div class="p-4 rounded-lg bg-slate-100">
-                <p class="mb-2 text-xl text-blue-600">Q3:見積書作成のような頻繁に数字入力を行う作業はありますか？</p>
+                <p class="mb-2 text-xl text-blue-600"><%= (t '.q3') %></p>
 
                 <div class="mb-2 mr-2 text-lg">
                   <%= f.radio_button :size, 'フルサイズ', id: 'full_size' %>
@@ -87,7 +87,7 @@
 
               <!-- Q4 -->
               <div class="p-4 rounded-lg bg-slate-100">
-                <p class="mb-2 text-xl text-blue-600">Q4: 配列はどちらの方が好みか教えてください</p>
+                <p class="mb-2 text-xl text-blue-600"><%= (t '.q4') %></p>
 
                 <div class="mb-2 mr-2 text-lg">
                   <%= f.radio_button :layout, 'US配列', id: 'us_array' %>
@@ -108,7 +108,7 @@
 
               <!-- Q5 -->
               <div class="p-4 rounded-lg bg-slate-100">
-                <p class="mb-2 text-xl text-blue-600">Q5: どちらの特徴を重視するか教えてください</p>
+                <p class="mb-2 text-xl text-blue-600"><%= (t '.q5') %></p>
 
                 <div class="mb-2 mr-2 text-lg">
                   <%= f.radio_button :connect, '有線', id: 'wired' %>
@@ -127,7 +127,7 @@
                 </div>
               </div>
 
-            <button type="submit" class="justify-center px-4 py-1 mt-4 text-xl font-semibold border-2 rounded hover:bg-slate-500 text-slate-700 hover:text-white border-slate-500">診断する</button>
+            <button type="submit" class="justify-center px-4 py-1 mt-4 text-xl font-semibold border-2 rounded hover:bg-slate-500 text-slate-700 hover:text-white border-slate-500"><%= (t '.submit') %></button>
           </div>
         <% end %>
         </div>
