@@ -116,7 +116,8 @@ ja:
       fail: 'プロフィールを更新できませんでした'
   contacts:
     new:
-      title: ''
+      title: 'お問い合わせ'
+      submit: '入力内容確認'
     confirm:
       title: '入力内容確認'
       name: '名前　:'
@@ -126,6 +127,8 @@ ja:
       send: '送信'
       back: '入力画面に戻る'
     done:
+      thanks: 'ありがとうございます。問い合わせ内容を送信しました'
+      top: 'トップページ'
   password_resets:
     new:
       title: 'パスワードリセット申請'
