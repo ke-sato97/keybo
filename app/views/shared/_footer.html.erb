@@ -2,15 +2,15 @@
   <div class="container bottom-0 w-full px-3 py-4 mx-auto">
     <div class="flex items-center justify-center">
       <%= link_to new_contact_path, class: "mx-2 text-md text-slate-700 transition-colors duration-300 hover:text-red-700", "aria-label" => "Teams" do %>
-        お問い合わせフォーム
+        <%= (t 'defaults.contact_form') %>
       <% end %>
 
       <%= link_to "#", class: "mx-2 text-md text-slate-700 transition-colors duration-300 hover:text-red-700", "aria-label" => "Privacy" do %>
-        プライバシーポリシー
+        <%= (t 'defaults.privacy_policy') %>
       <% end %>
 
       <%= link_to "#", class: "mx-2 text-md text-slate-700 transition-colors duration-300 hover:text-red-700", "aria-label" => "Cookies" do %>
-        利用規約
+        <%= (t 'defaults.terms_of_service') %>
       <% end %>
     </div>
   </div>
