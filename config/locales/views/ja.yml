@@ -39,6 +39,9 @@ ja:
     create:
       success: 'ログインしました'
       fail: 'ログインに失敗しました'
+    guest_login:
+      success: 'ゲストとしてログインしました'
+      fail: 'すでにログインしています'
     destroy:
       success: 'ログアウトしました'
   keyboards:
@@ -52,16 +55,35 @@ ja:
     bookmarks:
       title: 'ブックマーク一覧'
       no_result: 'ブックマーク中のキーボードがありません'
+  diagnoses:
+    create:
+      success: 'おすすめのキーボードが見つかりました'
+      no_anser: '質問１は必須項目です'
+      no_result: '選択された条件に合うものは見つかりませんでした'
+      not_save: '診断結果の保存に失敗しました'
+    not_authenticated:
+      fail: 'ログインしてください'
+  comments:
+    create:
+      success: 'コメントしました'
+      fail: 'コメントできませんでした'
+    update:
+      success: 'コメントを更新しました'
+      fail: 'コメントを更新できませんでした'
   bookmarks:
     create:
-      success: 'ブックマークしました'
+      success: 'お気に入り登録しました'
     destroy:
-      success: 'ブックマークを外しました'
+      success: 'お気に入りを解除しました'
   profiles:
     show:
       title: 'プロフィール'
     edit:
       title: 'プロフィール編集'
+    update:
+      success: 'プロフィールを更新しました'
+      image_delete: '画像が削除されました'
+      fail: 'プロフィールを更新できませんでした'
   password_resets:
     new:
       title: 'パスワードリセット申請'

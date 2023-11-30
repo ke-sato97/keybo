@@ -26,7 +26,7 @@ class DiagnosesController < ApplicationController
     name = params[:name]
 
     if [price].any?(&:blank?)
-      flash[:danger] = '質問１は必須項目です'
+      flash[:danger] = t('.no_anser')
       redirect_to action: 'new'
       return
     end
@@ -36,14 +36,14 @@ class DiagnosesController < ApplicationController
     if @selected_keyboard
       @diagnosis = current_user.diagnoses.build(keyboard: @selected_keyboard)
       if @diagnosis.save
-        redirect_to diagnosis_path(@selected_keyboard), success: 'おすすめのキーボードが見つかりました'
+        redirect_to diagnosis_path(@selected_keyboard), success: t('.success')
       else
-        flash.now[:danger] = '診断結果の保存に失敗しました'
+        flash.now[:danger] = t('.not_save')
         redirect_to action: 'new'
       end
     else
       @diagnosis = Diagnosis.new
-      flash[:danger] = '選択された条件に合うものは見つかりませんでした'
+      flash[:danger] = t('.no_result')
       redirect_to action: 'new'
     end
   end
@@ -80,6 +80,6 @@ class DiagnosesController < ApplicationController
   end
 
   def not_authenticated
-    redirect_to login_path, alert: 'ログインしてください'
+    redirect_to login_path, alert: t('.fail')
   end
 end
