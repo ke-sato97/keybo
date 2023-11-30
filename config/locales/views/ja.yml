@@ -47,8 +47,20 @@ ja:
       no_result: 'キーボードが見つかりませんでした'
     show:
       title: 'キーボード詳細'
-    edit:
-      title: 'キーボード編集'
+      rakuten: '楽天市場に移動'
+      price: '価格'
+      yen: '円'
+      os: '対応のOS'
+      connect: '接続方法'
+      switch: 'スイッチ'
+      caption: '詳細情報'
+      comment: 'コメント'
+      before_login_comment: 'ログインするとコメント機能が有効になります'
+    ranks:
+      title: 'ランキング'
+      bookmark: 'お気に入り登録数'
+      comment: 'コメント数'
+      diagnosis: '診断結果表示回数'
   diagnoses:
     index:
       title: '過去の診断結果'
