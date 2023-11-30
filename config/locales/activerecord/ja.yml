@@ -18,6 +18,7 @@ ja:
         user: '作成者'
       comment:
         body: 'コメントフォーム'
+        send: '送信'
       contact:
         name: '名前'
         email: 'メールアドレス'
