@@ -1,4 +1,3 @@
-
 # app/services/keyboard_search_service.rb
 class KeyboardSearchService
   def initialize(keyword)

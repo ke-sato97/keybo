@@ -11,12 +11,12 @@ RSpec.describe 'Profile' do
         it 'プロフィール確認画面' do
           visit profile_path
           # フォームに入力されたデータが持ち越されているか
-          expect(page).to have_content "name"
+          expect(page).to have_content 'name'
           expect(page).to have_content user.email
           click_link 'プロフィールを変更'
           expect(page).to have_current_path edit_profile_path, ignore_query: true
 
-          expect(page).to have_content "name"
+          expect(page).to have_content 'name'
           expect(page).to have_content user.email
         end
 

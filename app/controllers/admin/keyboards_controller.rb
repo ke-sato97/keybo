@@ -48,6 +48,5 @@ module Admin
     def set_keyboard
       @keyboard = Keyboard.find(params[:id])
     end
-
   end
 end

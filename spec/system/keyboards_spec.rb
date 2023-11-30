@@ -5,7 +5,6 @@ RSpec.describe 'Keyboards' do
   let(:keybaord) { create(:keybaord) }
 
   describe 'keyboards' do
-
     describe '失敗' do
       describe '一覧画面' do
         before { login(user) }

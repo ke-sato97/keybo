@@ -40,17 +40,17 @@ class KeyboardUpdater
     layout = create_layout_from_name_and_caption(name) || create_layout_from_name_and_caption(caption)
     connect = create_connect_from_name_and_caption(name) || create_connect_from_name_and_caption(caption)
     {
-      medium_image_urls: medium_image_urls,
-      name: name,
-      brand: brand,
-      price: price,
-      url: url,
-      caption: caption,
-      size: size,
-      os: os,
-      layout: layout,
-      switch: switch,
-      connect: connect
+      medium_image_urls:,
+      name:,
+      brand:,
+      price:,
+      url:,
+      caption:,
+      size:,
+      os:,
+      layout:,
+      switch:,
+      connect:
     }
   end
 
