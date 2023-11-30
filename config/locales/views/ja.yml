@@ -72,7 +72,7 @@ ja:
       diagnosis: '診断結果表示回数'
   diagnoses:
     index:
-      title: '過去の診断結果'
+      title: '診断結果一覧'
       no_result: '診断結果はありません'
     new:
       title: 'キーボード診断'

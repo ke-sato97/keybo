@@ -1,3 +1,4 @@
+<% content_for(:title, t('.title')) %>
 <div class='relative overflow-scroll top-wrapper'>
   <div class="absolute relative flex justify-center mx-auto mt-6 mb-6 bg-white rounded-lg shadow-lg max-w-screen-lg">
       <%= form_with model: @keyboard, url: diagnoses_path, data: { turbo: false }, local: true, method: :post do |f| %>
