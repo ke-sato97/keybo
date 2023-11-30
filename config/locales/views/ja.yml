@@ -5,10 +5,12 @@ ja:
     logout: 'ログアウト'
     top: 'トップページ'
     ranking: 'ランキング'
+    diagnosis: '診断'
     history: '診断履歴'
-    bookmark: 'ブックマーク'
+    bookmark: 'お気に入り'
     maypage: 'マイページ'
     search_word: '検索ワード'
+    how_to: '使用方法'
     show: '詳細'
     edit: '編集'
     delete: '削除'
@@ -39,9 +41,6 @@ ja:
     create:
       success: 'ログインしました'
       fail: 'ログインに失敗しました'
-    guest_login:
-      success: 'ゲストとしてログインしました'
-      fail: 'すでにログインしています'
     destroy:
       success: 'ログアウトしました'
   keyboards:
@@ -55,35 +54,16 @@ ja:
     bookmarks:
       title: 'ブックマーク一覧'
       no_result: 'ブックマーク中のキーボードがありません'
-  diagnoses:
-    create:
-      success: 'おすすめのキーボードが見つかりました'
-      no_anser: '質問１は必須項目です'
-      no_result: '選択された条件に合うものは見つかりませんでした'
-      not_save: '診断結果の保存に失敗しました'
-    not_authenticated:
-      fail: 'ログインしてください'
-  comments:
-    create:
-      success: 'コメントしました'
-      fail: 'コメントできませんでした'
-    update:
-      success: 'コメントを更新しました'
-      fail: 'コメントを更新できませんでした'
   bookmarks:
     create:
-      success: 'お気に入り登録しました'
+      success: 'ブックマークしました'
     destroy:
-      success: 'お気に入りを解除しました'
+      success: 'ブックマークを外しました'
   profiles:
     show:
       title: 'プロフィール'
     edit:
       title: 'プロフィール編集'
-    update:
-      success: 'プロフィールを更新しました'
-      image_delete: '画像が削除されました'
-      fail: 'プロフィールを更新できませんでした'
   password_resets:
     new:
       title: 'パスワードリセット申請'
