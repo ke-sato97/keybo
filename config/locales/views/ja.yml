@@ -114,6 +114,18 @@ ja:
       success: 'プロフィールを更新しました'
       image_delete: '画像を削除しました'
       fail: 'プロフィールを更新できませんでした'
+  contacts:
+    new:
+      title: ''
+    confirm:
+      title: '入力内容確認'
+      name: '名前　:'
+      email: 'メールアドレス　:'
+      subject: '件名　:'
+      message: 'メッセージ　:'
+      send: '送信'
+      back: '入力画面に戻る'
+    done:
   password_resets:
     new:
       title: 'パスワードリセット申請'

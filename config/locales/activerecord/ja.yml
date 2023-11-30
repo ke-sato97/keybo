@@ -18,6 +18,11 @@ ja:
         user: '作成者'
       comment:
         body: 'コメントフォーム'
+      contact:
+        name: '名前'
+        email: 'メールアドレス'
+        subject: '件名'
+        message: 'メッセージ'
   attributes:
     id: 'ID'
 
