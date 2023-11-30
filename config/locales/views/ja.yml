@@ -29,13 +29,16 @@ ja:
       not_authorized: '権限がありません'
   top_page:
     top:
+      title: 'トップページ'
       login: 'ログイン画面'
       diagnosis_keyobard: 'キーボード診断'
       how_to: '使用方法'
       guest: 'ゲストログイン'
+    how_to_use:
+      title: '使用方法'
   users:
     new:
-      title: '登録'
+      title: '会員登録'
       to_login_page: 'ログインページへ'
     create:
       success: 'ユーザー登録が完了しました'
