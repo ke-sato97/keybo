@@ -18,8 +18,6 @@ ja:
     unspecified: '指定なし'
     message:
       require_login: 'ログインしてください'
-      created: "%{item}を作成しました"
-      not_created: "%{item}を作成できませんでした"
       no_result: 'キーボードがありません'
       updated: "%{item}を更新しました"
       not_updated: '%{item}を更新できませんでした'
@@ -45,20 +43,24 @@ ja:
       success: 'ログアウトしました'
   keyboards:
     index:
-      title: 'キーボード一覧'
-      no_result: 'キーボードがありません'
+      title: '検索結果'
+      no_result: 'キーボードが見つかりませんでした'
     show:
       title: 'キーボード詳細'
     edit:
       title: 'キーボード編集'
-    bookmarks:
-      title: 'ブックマーク一覧'
-      no_result: 'ブックマーク中のキーボードがありません'
+  diagnoses:
+    index:
+      title: '過去の診断結果'
+      no_result: '診断結果はありません'
   bookmarks:
+    index:
+      title: 'お気に入り一覧'
+      no_result: 'お気に入りのキーボードがありません'
     create:
-      success: 'ブックマークしました'
+      success: 'お気に入りしました'
     destroy:
-      success: 'ブックマークを外しました'
+      success: 'お気に入りを外しました'
   profiles:
     show:
       title: 'プロフィール'

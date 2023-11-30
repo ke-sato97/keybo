@@ -1,4 +1,4 @@
-<h1 class="pt-6 text-4xl font-bold text-center text-slate-700">過去の診断結果</h1>
+<h1 class="pt-6 text-4xl font-bold text-center text-slate-700"><%= (t '.title') %></h1>
 <div class="pt-4 pb-8 pl-3 pr-3">
   <!-- ページネーション -->
   <div class="flex justify-center">
@@ -13,7 +13,7 @@
     </div>
   <% else %>
     <div class="flex flex-col h-screen">
-      <p class="mt-4 text-xl">診断結果はありません</p>
+      <p class="mt-4 text-xl"><%= (t '.no_result') %></p>
     </div>
   <% end %>
   <!-- ページネーション -->
