@@ -41,15 +41,6 @@ ja:
       fail: 'ログインに失敗しました'
     destroy:
       success: 'ログアウトしました'
-  profiles:
-    show:
-      title: 'マイページ'
-      name: '名前'
-      email: 'メールアドレス'
-      edit_profile: 'プロフィールを変更'
-    edit:
-      title: 'プロフィール編集'
-      submit: '変更'
   keyboards:
     index:
       title: '検索結果'
@@ -112,9 +103,17 @@ ja:
       fail: 'コメントできませんでした'
   profiles:
     show:
-      title: 'プロフィール'
+      title: 'マイページ'
+      name: '名前'
+      email: 'メールアドレス'
+      edit_profile: 'プロフィールを変更'
     edit:
       title: 'プロフィール編集'
+      submit: '変更'
+    update:
+      success: 'プロフィールを更新しました'
+      image_delete: '画像を削除しました'
+      fail: 'プロフィールを更新できませんでした'
   password_resets:
     new:
       title: 'パスワードリセット申請'

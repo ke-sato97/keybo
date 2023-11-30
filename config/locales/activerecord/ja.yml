@@ -11,6 +11,7 @@ ja:
         password_confirmation: "パスワード確認"
         image: '画像(5MB以下)'
         role: '権限'
+        edit: '変更'
       keyboard:
         title: 'タイトル'
         keyboard_image: 'サムネイル'
