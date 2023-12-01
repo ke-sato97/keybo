@@ -1,5 +1,5 @@
-<%#= turbo_frame_tag comment do %>
-  <%= form_with model: [keyboard, comment] do |f| %>
+<%= turbo_frame_tag comment do %>
+  <%= form_with model: [keyboard, comment], html: { data: { turbo_frame: "comment_list" } } do |f| %>
     <br>
     <%= f.text_area :body, class: "px-5 py-2 w-full bg-slate-100 rounded-lg", rows: 3, placeholder: Comment.human_attribute_name(:body) %>
     <br>
@@ -9,4 +9,4 @@
       </button>
     </div>
   <% end %>
-<%# end %>
+<% end %>
