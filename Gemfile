@@ -83,3 +83,4 @@ gem 'rakuten_web_service'
 gem 'sentry-rails', '~> 5.10'
 gem 'sentry-ruby', '~> 5.10'
 gem 'sorcery'
+gem "ransack"

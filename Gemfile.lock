@@ -291,6 +291,10 @@ GEM
     rake (13.0.6)
     rakuten_web_service (1.13.2)
       json (~> 2.3)
+    ransack (4.1.1)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     rdoc (6.5.0)
       psych (>= 4.0.0)
     redis (4.8.1)
@@ -435,6 +439,7 @@ DEPENDENCIES
   rails (~> 7.0.6)
   rails-i18n (~> 7.0.0)
   rakuten_web_service
+  ransack
   redis (~> 4.0)
   rspec-rails
   rubocop

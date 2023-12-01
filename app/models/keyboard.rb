@@ -26,6 +26,10 @@ class Keyboard < ApplicationRecord
     Keyboard.find(Diagnosis.group(:keyboard_id).order('count(keyboard_id) desc').limit(20).pluck(:keyboard_id))
   end
 
+  def self.all_medium_image_urls
+    pluck(:medium_image_urls).flatten.uniq
+  end
+
   def self.all_os
     pluck(:os).flatten.uniq
   end
