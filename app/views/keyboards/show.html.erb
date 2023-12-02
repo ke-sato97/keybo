@@ -71,6 +71,7 @@
     <% if logged_in? %>
       <!-- コメントエリア -->
       <%= render 'comments/comments', { comments: @comments } %>
+      <%= turbo_frame_tag "new_comment" %>
 
       <!-- コメントフォーム -->
       <%= render 'comments/form', { keyboard: @keyboard, comment: @comment } %>

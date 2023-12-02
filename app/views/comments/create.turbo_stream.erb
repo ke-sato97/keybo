@@ -1,4 +1,5 @@
-<%= turbo_stream.append "comment_list", @comment %>
+<%# turbo_stream.アクション名, ターゲットのid %>
+<%= turbo_stream.append, @comment %>
 
 <%= turbo_stream.update "new_comment", partial: 'comments/form', locals: { keyboard: @keyboard, comment: Comment.new } %>
 

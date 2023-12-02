@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     @comment = @keyboard.comments.build(comment_params)
     if @comment.save
       # flash.now.notice = 'コメントを投稿しました。'
-      flash[:success] = t('.success')
+      # flash[:success] = t('.success')
     else
       flash[:danger] = t('.fail')
     end
@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    # redirect_to keyboard_path(@comment.keyboard)
+    redirect_to keyboard_path(@comment.keyboard)
   end
 
   private

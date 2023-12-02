@@ -24,8 +24,8 @@
             </li>
             <li class="list-inline-item">
               <%= link_to polymorphic_path([comment.keyboard, comment]),
-                          data: { turbo: false, confirm: "コメントを削除してもよろしいですか？" } do %>
-                <i class="fa-solid fa-trash" style="color:slate;"></i>
+                          data: { turbo_method: :delete, turbo_confirm: "コメントを削除してもよろしいですか？" } do %>
+                <!-- <i class="fa-solid fa-trash" style="color:slate;"></i> -->
               <% end %>
             </li>
           </ul>
