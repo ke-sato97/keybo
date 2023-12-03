@@ -10,16 +10,16 @@ module Admin
     def create
       @user = login(params[:email], params[:password])
       if @user
-        redirect_to admin_keyboards_search_path, success: '管理者としてログインしました'
+        redirect_to admin_keyboards_search_path, success: t('.success')
       else
-        flash.now[:danger] = '管理者のログインに失敗しました'
+        flash.now[:danger] = t('.fail')
         redirect_to action: 'new'
       end
     end
 
     def destroy
       logout
-      redirect_to admin_login_path, success: 'ログアウトしました'
+      redirect_to admin_login_path, success: t('.success')
     end
   end
 end
