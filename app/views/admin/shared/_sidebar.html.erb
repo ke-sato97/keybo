@@ -1,22 +1,22 @@
 <div class="max-h-screen text-2xl font-semibold text-center text-white hover:text-orange-400 text-bold">
   <%= link_to admin_keyboards_path do %>
-    サイドバー
+    <%= current_user.name %>
   <% end %>
 </div>
 <ul class="py-5 text-lg font-medium space-y-2">
   <li>
     <%= link_to admin_keyboards_path, class: "flex hover:bg-blue-700 text-white items-center p-2 rounded-lg" do %>
-      キーボード一覧
+      <%= (t 'defaults.keyboards') %>
     <% end %>
   </li>
   <li>
     <%= link_to "#", class: "flex hover:bg-blue-700 text-white items-center p-2 rounded-lg" do %>
-      ユーザー一覧
+      <%= (t 'defaults.users') %>
     <% end %>
   </li>
   <li>
     <%= link_to admin_keyboards_search_path, class: "flex hover:bg-blue-700 text-white items-center p-2 rounded-lg" do %>
-      データ取得
+      <%= (t 'defaults.api') %>
     <% end %>
   </li>
 </ul>

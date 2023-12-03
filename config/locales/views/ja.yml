@@ -19,6 +19,10 @@ ja:
     terms_of_service: '利用規約'
     password_reset: 'パスワードリセット'
     unspecified: '指定なし'
+    keyboards: 'キーボード一覧'
+    keyboard_index: '全てのキーボード'
+    users: 'ユーザー一覧'
+    api: 'データ取得'
     message:
       require_login: 'ログインしてください'
       no_result: 'キーボードがありません'
