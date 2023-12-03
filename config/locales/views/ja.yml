@@ -172,10 +172,29 @@ ja:
     keyboards:
       index:
         title: 'キーボード一覧'
+        id: 'ID'
+        keyboard: 'キーボード'
+        connect: '接続方法'
+        brand: 'ショップ名'
+        price: '価格'
+        os: 'OS'
+        size: 'サイズ'
+        layout: '配列'
+        switch: 'スイッチ'
+        caption: '詳細情報'
       edit:
         title: 'キーボード編集'
+        image: '画像'
+        submit: '更新'
+        delete: '削除'
+        delete_message: '本当に削除しますか？'
       show:
         title: 'キーボード詳細'
+      update:
+        success: 'キーボード情報を更新しました'
+        fail: '更新に失敗しました'
+      destroy:
+        success: 'キーボード情報を削除しました'
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"

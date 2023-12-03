@@ -14,8 +14,10 @@ ja:
         edit: '変更'
       keyboard:
         title: 'タイトル'
-        keyboard_image: 'サムネイル'
-        user: '作成者'
+        image: '画像'
+        name: '製品名'
+        price: '価格'
+        os: '対応のos'
       comment:
         body: 'コメントフォーム'
         send: '送信'

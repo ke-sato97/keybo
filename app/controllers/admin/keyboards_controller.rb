@@ -22,16 +22,16 @@ module Admin
             @keyboard.tags << tag
           end
         end
-        redirect_to admin_keyboards_path, success: 'キーボード情報を更新しました'
+        redirect_to admin_keyboards_path, success: t('.success')
       else
-        flash[:danger] = '更新に失敗しました'
+        flash[:danger] = t('.fail')
         redirect_to action: 'edit'
       end
     end
 
     def destroy
       @keyboard.destroy
-      redirect_to admin_keyboards_path, status: :see_other, success: 'キーボード情報を削除しました'
+      redirect_to admin_keyboards_path, status: :see_other, success: t('.success')
     end
 
     def search
