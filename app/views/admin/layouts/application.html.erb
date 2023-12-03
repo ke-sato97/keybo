@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Admin</title>
+    <title><%= page_title(yield(:title), admin: true) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbolinks-visit-control" content="reload">
     <%= csrf_meta_tags %>
