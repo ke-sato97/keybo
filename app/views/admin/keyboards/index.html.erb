@@ -4,19 +4,19 @@
       <div class="m-4">
         <%= button_to keyboard_path(keyboard), method: :get, class: "flex border border-slate-200 shadow-lg rounded-lg justify-left w-full px-4" do %>
           <div class="p-6 border border-black">
-            <p class='border border-black'>
+            <div class='border border-black'>
               <%= keyboard.name %>
-            </p>
-            <p class='border border-black'>
+            </div>
+            <div class='border border-black'>
               <%= keyboard.layout %>
-            </p>
-            <p class='border border-black'>
+            </div>
+            <div class='border border-black'>
               <%= keyboard.size %>
-            </p>
-            <p class='border border-black'>
+            </div>
+            <div class='border border-black'>
               <%= keyboard.switch %>
-            </p>
-            <p class="mt-6 text-lg text-red-500 border border-black">¥ <%= keyboard.price.to_s(:delimited) %></p>
+            </div>
+            <div class="mt-6 text-lg text-red-500 border border-black">¥ <%= keyboard.price.to_s(:delimited) %></div>
           </div>
         <% end %>
       </div>
