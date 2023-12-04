@@ -2,21 +2,25 @@
   <% @keyboards.each do |keyboard| %>
 
       <div class="m-4">
-        <%= button_to keyboard_path(keyboard), method: :get, class: "flex border border-slate-200 shadow-lg rounded-lg justify-left w-full px-4" do %>
-          <div class="p-6 border border-black">
-            <div class='border border-black'>
+        <%= button_to edit_admin_keyboard_path(keyboard), method: :get, class: "flex h-3/5 border border-slate-200 shadow-lg rounded-lg justify-left w-full px-4" do %>
+            <div class='flex border border-black justify-left'>
+              <%= image_tag keyboard.medium_image_urls.first, size: "150" %>
+            </div>
+          <div class="flex h-full p-2 border border-black w-96 justify-left">
+            <div class='flex border border-black justify-left'>
               <%= keyboard.name %>
             </div>
-            <div class='border border-black'>
+          </div>
+          <div class="flex w-1/2 p-6 border border-black justify-left">
+            <div class='flex border border-black justify-left'>
               <%= keyboard.layout %>
             </div>
-            <div class='border border-black'>
+            <div class='flex border border-black justify-left'>
               <%= keyboard.size %>
             </div>
-            <div class='border border-black'>
+            <div class='flex border border-black justify-left'>
               <%= keyboard.switch %>
             </div>
-            <div class="mt-6 text-lg text-red-500 border border-black">¥ <%= keyboard.price.to_s(:delimited) %></div>
           </div>
         <% end %>
       </div>
