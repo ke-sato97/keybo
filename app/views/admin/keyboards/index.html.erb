@@ -1,33 +1,25 @@
 <div class="w-full">
-  <h1 class="text-4xl font-bold text-center"><%= (t '.title') %></h1>
-  <table>
-    <thead>
-      <tr class="border border-black">
-        <th class="p-2 border border-black"><%= (t '.id') %></th>
-        <th class="p-2 border border-black"><%= (t '.keyboard') %></th>
-        <th class="p-2 border border-black"><%= (t '.connect') %></th>
-        <th class="p-2 border border-black"><%= (t '.price') %></th>
-        <th class="p-2 border border-black"><%= (t '.os') %></th>
-        <th class="p-2 border border-black"><%= (t '.size') %></th>
-        <th class="p-2 border border-black"><%= (t '.layout') %></th>
-        <th class="p-2 border border-black"><%= (t '.switch') %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @keyboards.each do |keyboard| %>
-        <tr class="border border-black">
-          <div class="grid grid-cols-3 gap-4">
-            <td class="p-2 border border-black"><%= keyboard.id %></td>
-            <td class="p-2 border border-black"><%= link_to keyboard.name, edit_admin_keyboard_path(keyboard), class: "underline text-blue-500" %></td>
-            <td class="p-2 border border-black"><%= keyboard.connect %></td>
-            <td class="p-2 border border-black"><%= keyboard.price %></td>
-            <td class="p-2 border border-black"><%= keyboard.os %></td>
-            <td class="p-2 border border-black"><%= keyboard.size %></td>
-            <td class="p-2 border border-black"><%= keyboard.layout %></td>
-            <td class="p-2 border border-black"><%= keyboard.switch %></td>
+  <% @keyboards.each do |keyboard| %>
+
+      <div class="m-4">
+        <%= button_to keyboard_path(keyboard), method: :get, class: "flex border border-slate-200 shadow-lg rounded-lg justify-left w-full px-4" do %>
+          <div class="p-6 border border-black">
+            <p class='border border-black'>
+              <%= keyboard.name %>
+            </p>
+            <p class='border border-black'>
+              <%= keyboard.layout %>
+            </p>
+            <p class='border border-black'>
+              <%= keyboard.size %>
+            </p>
+            <p class='border border-black'>
+              <%= keyboard.switch %>
+            </p>
+            <p class="mt-6 text-lg text-red-500 border border-black">¥ <%= keyboard.price.to_s(:delimited) %></p>
           </div>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+        <% end %>
+      </div>
+
+  <% end %>
 </div>
