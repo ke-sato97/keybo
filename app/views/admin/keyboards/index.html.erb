@@ -2,23 +2,17 @@
   <% @keyboards.each do |keyboard| %>
 
       <div class="m-4">
-        <%= button_to edit_admin_keyboard_path(keyboard), method: :get, class: "flex h-3/5 border border-slate-200 shadow-lg rounded-lg justify-left w-full px-4" do %>
-            <div class='flex border border-black justify-left'>
-              <%= image_tag keyboard.medium_image_urls.first, size: "150" %>
-            </div>
-          <div class="flex h-full p-2 border border-black w-96 justify-left">
-            <div class='flex border border-black justify-left'>
+        <%= button_to edit_admin_keyboard_path(keyboard), method: :get, class: "flex items-center h-fit border border-slate-200 shadow-lg rounded-lg justify-left w-full" do %>
+          <div class='flex w-5 h-5 m-2 justify-left'>
+            <%= image_tag keyboard.medium_image_urls.first %>
+          </div>
+          <div class="flex flex-col w-1/2 p-2 items-left justify-left">
+            <div class='flex mb-2 borderitems-left'>
               <%= keyboard.name %>
             </div>
-          </div>
-          <div class="flex w-1/2 p-6 border border-black justify-left">
-            <div class='flex border border-black justify-left'>
+            <div class='flex mb-2 borderitems-left'>
               <%= keyboard.layout %>
-            </div>
-            <div class='flex border border-black justify-left'>
               <%= keyboard.size %>
-            </div>
-            <div class='flex border border-black justify-left'>
               <%= keyboard.switch %>
             </div>
           </div>
