@@ -13,11 +13,10 @@ module Admin
     def edit; end
 
     def update
-      binding.pry
       if @user.update(user_params)
-        redirect_to @user, success: "ユーザー情報を更新しました"
+        redirect_to admin_users_path, success: "ユーザー情報を更新しました"
       else
-        redirect_to :edit, status: :unprocessable_entity
+        redirect_to :edit
       end
     end
 

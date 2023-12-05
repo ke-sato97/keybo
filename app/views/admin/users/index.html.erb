@@ -1,7 +1,7 @@
 <div class="w-full">
   <% @users.each do |user| %>
 
-    <%#= turbo_frame_tag user do %>
+    <%= turbo_frame_tag user do %>
       <div class="m-4">
         <div class="flex items-center w-full h-24 border rounded-lg shadow-lg h-fit border-slate-200 justify-left">
           <div class='flex w-1/6 m-2 justify-left'>
@@ -25,7 +25,7 @@
           </div>
         </div>
       </div>
-    <%# end %>
+    <% end %>
 
   <% end %>
 </div>
