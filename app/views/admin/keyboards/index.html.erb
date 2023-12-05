@@ -6,14 +6,20 @@
           <div class='flex w-5 h-5 m-2 justify-left'>
             <%= image_tag keyboard.medium_image_urls.first %>
           </div>
-          <div class="flex flex-col w-1/2 p-2 items-left justify-left">
-            <div class='flex mb-2 borderitems-left'>
+          <div class="flex flex-col p-2">
+            <div class='flex mb-2 border items-left'>
               <%= keyboard.name %>
             </div>
-            <div class='flex mb-2 borderitems-left'>
-              <%= keyboard.layout %>
-              <%= keyboard.size %>
-              <%= keyboard.switch %>
+            <div class='flex mb-2 border items-left'>
+              <div class='flex mb-2 border items-left'>
+                <%= keyboard.layout %>
+              </div>
+              <div class='flex mb-2 border items-left'>
+                <%= keyboard.size %>
+              </div>
+              <div class='flex mb-2 border items-left'>
+                <%= keyboard.switch %>
+              </div>
             </div>
           </div>
         <% end %>
