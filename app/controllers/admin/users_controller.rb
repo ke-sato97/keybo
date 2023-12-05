@@ -1,6 +1,6 @@
 module Admin
   class Admin::UsersController < Admin::BaseController
-    before_action :set_user, only: %i[show edit update destory]
+    before_action :set_user, only: %i[show edit update destroy]
     def index
       @users = User.all
     end
@@ -13,9 +13,9 @@ module Admin
     def edit
     end
 
-    def destory
-      @user.destory
-      redirect_to admin_users_path, success: 'ユーザーを削除しました'
+    def destroy
+      @user.destroy
+      redirect_to admin_users_path, status: :see_other, success: 'ユーザーを削除しました'
     end
 
     private
