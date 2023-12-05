@@ -19,7 +19,7 @@ module Admin
 
     def destroy
       logout
-      redirect_to admin_login_path, success: t('.success')
+      redirect_to root_path, success: t('.success')
     end
   end
 end

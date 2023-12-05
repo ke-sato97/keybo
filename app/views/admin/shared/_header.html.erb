@@ -1,7 +1,7 @@
 <header>
   <nav class="px-4 py-2 lg:px-6">
     <div class="flex justify-end max-w-full">
-      <%= button_to (t 'defaults.logout'), admin_logout_path, data: { turbo_method: :delete }, class: "bg-transparent hover:bg-blue-900 text-blue-500 hover:text-white py-2 px-4 hover:border-transparent rounded" %>
+      <%= link_to (t 'defaults.logout'), admin_logout_path, data: { turbo_method: :delete }, class: "bg-transparent hover:bg-blue-900 text-blue-500 hover:text-white py-2 px-4 hover:border-transparent rounded" %>
     </div>
   </nav>
 </header>

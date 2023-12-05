@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     delete 'logout', to: 'user_sessions#destroy'
 
     resources :keyboards, only: %i[index show edit update destroy]
+    resources :users
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
