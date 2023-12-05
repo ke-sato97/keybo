@@ -1,0 +1,21 @@
+<%#= turbo_frame_tag user do %>
+  <div class="m-4">
+    <div class="flex items-center w-full h-24 border rounded-lg shadow-lg h-fit border-slate-200 justify-left">
+    <%= form_with model: user,  url: admin_user_path(user), local: true do |f| %>
+      <div class='flex w-1/6 m-2 justify-left'>
+      </div>
+      <div class="flex flex-col w-2/3">
+        <div class='flex mb-2 items-left'>
+          <%= f.text_field :name, placeholder: '名前' %>
+        </div>
+        <div class='flex items-center mb-2'>
+          <%= f.email_field :email, placeholder: 'メールアドレス' %>
+        </div>
+      </div>
+      <div class="flex w-1/6">
+        <%= f.submit "編集", class:'px-3 py-2 shadow-lg text-white rounded bg-green-500 hover:bg-green-600' %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+<%# end %>

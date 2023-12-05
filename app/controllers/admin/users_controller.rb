@@ -10,7 +10,15 @@ module Admin
 
     def show; end
 
-    def edit
+    def edit; end
+
+    def update
+      binding.pry
+      if @user.update(user_params)
+        redirect_to @user, success: "ユーザー情報を更新しました"
+      else
+        redirect_to :edit, status: :unprocessable_entity
+      end
     end
 
     def destroy
@@ -19,6 +27,10 @@ module Admin
     end
 
     private
+
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirm)
+    end
 
     def set_user
       @user = User.find(params[:id])
