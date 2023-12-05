@@ -80,6 +80,6 @@ class DiagnosesController < ApplicationController
   end
 
   def not_authenticated
-    redirect_to login_path, alert: t('.fail')
+    redirect_to root_path, danger: t('.fail')
   end
 end

@@ -9,8 +9,8 @@ module Admin
     private
 
     def not_authenticated
-      flash[:warning] = t('defaults.message.require_login')
-      redirect_to admin_login_path
+      flash[:danger] = t('defaults.message.require_login')
+      redirect_to root_path
     end
 
     def check_admin

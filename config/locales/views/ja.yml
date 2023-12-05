@@ -105,6 +105,8 @@ ja:
       switch: 'スイッチ'
       again: 'もう一度診断'
       caption: '詳細情報を確認'
+    not_authenticated:
+      fail: 'ログインしてください'
   bookmarks:
     index:
       title: 'お気に入り一覧'
