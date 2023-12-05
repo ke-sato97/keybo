@@ -2,7 +2,7 @@
   <% @keyboards.each do |keyboard| %>
 
       <div class="m-4">
-        <%= button_to edit_admin_keyboard_path(keyboard), method: :get, class: "flex items-center h-fit border border-slate-200 shadow-lg rounded-lg justify-left w-full" do %>
+        <%= button_to edit_admin_keyboard_path(keyboard), method: :get, class: "flex items-center h-fit border border-slate-200 shadow-lg rounded-lg justify-left hover:text-black hover:bg-slate-200 bg-white w-full" do %>
           <div class='flex m-2 justify-left'>
             <%= image_tag keyboard.medium_image_urls.first, size: '100' %>
           </div>

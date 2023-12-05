@@ -1,5 +1,5 @@
 <div class="m-4">
-  <div class="flex items-center w-full h-24 border rounded-lg shadow-lg h-fit border-slate-200 justify-left">
+  <div class="flex items-center w-full h-24 bg-white border rounded-lg shadow-lg h-fit border-slate-200 justify-left">
     <div class='flex m-2 justify-left'>
       <% if @user.image.attached? %>
         <%= image_tag @user.image.variant(resize: '100') %>
@@ -14,6 +14,9 @@
       <div class='flex items-center mb-2'>
         <%= @user.email %>
       </div>
+    </div>
+    <div class="flex items-center">
+      <%= @user.role %>
     </div>
   </div>
 </div>

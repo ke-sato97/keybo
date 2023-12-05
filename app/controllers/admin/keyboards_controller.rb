@@ -22,7 +22,8 @@ module Admin
             @keyboard.tags << tag
           end
         end
-        redirect_to admin_keyboards_path, success: t('.success')
+        flash[:success] = t('.success')
+        redirect_to admin_keyboards_path
       else
         flash[:danger] = t('.fail')
         redirect_to action: 'edit'
