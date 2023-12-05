@@ -13,14 +13,13 @@
 
   <body>
     <% if logged_in? %>
-      <%= render 'admin/shared/header' %>
       <%= render 'shared/flash_message' %>
       <div class="flex justify-center max-w-screen">
-        <div class="w-1/6 px-3 py-4 bg-black">
+        <div class="relative w-1/6 px-3 py-4 bg-black">
           <%= render 'admin/shared/sidebar' %>
         </div>
-
         <div class="w-5/6 p-2">
+          <%= render 'admin/shared/header' %>
           <%= yield %>
         </div>
       </div>

@@ -1,4 +1,4 @@
-<div class="max-h-screen text-2xl font-semibold text-center text-white hover:text-orange-400 text-bold">
+<div class="max-h-screen text-2xl font-semibold text-center text-white shadow-lg hover:text-orange-400 text-bold">
   <%= link_to admin_keyboards_path do %>
     <%= current_user.name %>
   <% end %>
@@ -17,6 +17,11 @@
   <li>
     <%= link_to admin_keyboards_search_path, class: "flex hover:bg-blue-700 text-white items-center p-2 rounded-lg" do %>
       <%= (t 'defaults.api') %>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to keyboards_path, class: "flex hover:bg-blue-700 text-white items-center p-2 rounded-lg" do %>
+      <%= t('defaults.keyboard_index') %>
     <% end %>
   </li>
 </ul>
