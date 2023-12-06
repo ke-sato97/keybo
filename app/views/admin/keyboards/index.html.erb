@@ -1,29 +1,35 @@
 <div class="w-full">
-  <% @keyboards.each do |keyboard| %>
-
-      <div class="m-4">
-        <%= button_to edit_admin_keyboard_path(keyboard), method: :get, class: "flex items-center h-fit border border-slate-200 shadow-lg rounded-lg justify-left hover:text-black hover:bg-slate-200 bg-white w-full" do %>
-          <div class='flex m-2 justify-left'>
-            <%= image_tag keyboard.medium_image_urls.first, size: '100' %>
+  <h1 class="mb-2 text-4xl font-bold text-center"><%= (t '.title') %></h1>
+  <table>
+    <thead>
+      <tr class="bg-white border border-black">
+        <th class="p-2 border border-black">ID</th>
+        <th class="p-2 border border-black">アイテム</th>
+        <th class="p-2 border border-black">接続方法</th>
+        <th class="p-2 border border-black">ショップ名</th>
+        <th class="p-2 border border-black">金額</th>
+        <th class="p-2 border border-black">OS</th>
+        <th class="p-2 border border-black">サイズ</th>
+        <th class="p-2 border border-black">配列</th>
+        <th class="p-2 border border-black">キースイッチ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @keyboards.each do |keyboard| %>
+        <tr class="bg-white border border-black">
+          <div class="grid grid-cols-3 gap-4">
+            <td class="p-2 border border-black"><%= keyboard.id %></td>
+            <td class="p-2 border border-black"><%= link_to keyboard.name, edit_admin_keyboard_path(keyboard), class: "underline text-blue-500" %></td>
+            <td class="p-2 border border-black"><%= keyboard.connect %></td>
+            <td class="p-2 border border-black"><%= keyboard.brand %></td>
+            <td class="p-2 border border-black"><%= keyboard.price %></td>
+            <td class="p-2 border border-black"><%= keyboard.os %></td>
+            <td class="p-2 border border-black"><%= keyboard.size %></td>
+            <td class="p-2 border border-black"><%= keyboard.layout %></td>
+            <td class="p-2 border border-black"><%= keyboard.switch %></td>
           </div>
-          <div class="flex flex-col p-2">
-            <div class='flex mb-2 border items-left'>
-              <%= keyboard.name %>
-            </div>
-            <div class='flex mb-2 border items-left'>
-              <div class='flex mb-2 border items-left'>
-                <%= keyboard.layout %>
-              </div>
-              <div class='flex mb-2 border items-left'>
-                <%= keyboard.size %>
-              </div>
-              <div class='flex mb-2 border items-left'>
-                <%= keyboard.switch %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-
-  <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
