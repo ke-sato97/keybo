@@ -6,7 +6,7 @@
         <%= link_to t('.rakuten'), @keyboard.url, method: :get, target: :_blank, rel: "noopener noreferrer", class: "transition-colors duration-500 border-2 border-red-500 rounded-lg text-red-500 shadow-lg mb-7 font-bold hover:bg-red-500 text-2xl hover:text-white text-center py-3 px-4 hover:border-transparent rounded" %>
       <div class="w-2/3 px-2 py-4 border rounded-lg shadow-lg border-slate-100 mb-7">
         <% @tags.each do |tag| %>
-          <span><%= link_to tag.name, keyboards_path(tag_id: tag.id), class: "px-2 py-2 text-sm text-white rounded-lg bg-slate-500 hover:bg-slate-600" %></span>
+          <span><%= link_to tag.name, keyboards_path(tag_id: tag.id), class: "px-2 py-2 text-sm text-white rounded-lg bg-slate-500 hover:bg-slate-600", style: "white-space: nowrap;" %></span>
         <% end %>
       </div>
         <div class="flex justify-center w-20 py-3 border rounded-lg shadow-lg border-slate-100 mb-7">

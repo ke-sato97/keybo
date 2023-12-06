@@ -17,7 +17,7 @@ document.addEventListener("turbo:load", function() {
   if (keyboardSearch) {
     keyboardSearch.addEventListener("input", function() {
       const searchTerm = keyboardSearch.value; // 入力をそのまま使用
-      if (searchTerm.length >= 3) {
+      if (searchTerm.length >= 1) {
         fetch(`/keyboards?search=${encodeURIComponent(searchTerm)}`, { headers: { accept: "application/json" } })
           .then(response => response.json())
           .then(data => {
