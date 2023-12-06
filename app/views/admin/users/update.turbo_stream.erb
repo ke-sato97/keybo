@@ -1,5 +1,5 @@
-<%= turbo_stream.update "user" do %>
-  <% binding.pry %>
-  <%= render 'admin/users/user', user: @user %>
+<%#= turbo_stream.replace @user %>
+<%#= turbo_stream.update "flash", partial: "shared/flash_message" %>
+<%= turbo_stream.replace @user do %>
+  <%= render partial: 'admin/users/user', locals: { user: @user } %>
 <% end %>
-<%= turbo_stream.update "flash", partial: "shared/flash_message" %>

@@ -11,8 +11,8 @@ module Admin
 
     def update
       if @user.update(user_params)
-        # redirect_to admin_users_path, success: "ユーザー情報を更新しました"
-        flash.now.notice = "ユーザー情報を更新しました"
+        redirect_to admin_users_path, success: "ユーザー情報を更新しました"
+        # flash.now.notice = "ユーザー情報を更新しました"
       else
         redirect_to :edit
       end
