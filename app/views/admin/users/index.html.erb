@@ -1,31 +1,5 @@
 <div class="w-full">
-  <% @users.each do |user| %>
-
-    <%= turbo_frame_tag user do %>
-      <div class="m-4">
-        <div class="flex items-center w-full h-24 bg-white border rounded-lg shadow-lg h-fit border-slate-200 justify-left">
-          <div class='flex w-1/6 m-2 justify-left'>
-            <% if user.image.attached? %>
-              <%= image_tag user.image.variant(resize: '100') %>
-            <% else %>
-              <%= image_tag 'noimage.png', size: '80' %>
-            <% end %>
-          </div>
-          <div class="flex flex-col w-2/3">
-            <div class='flex mb-2 items-left'>
-              <%= user.name %>
-            </div>
-            <div class='flex items-center mb-2'>
-              <%= user.email %>
-            </div>
-          </div>
-          <div class="flex w-1/6">
-            <%= link_to '編集', edit_admin_user_path(user), class: "px-3 py-2 shadow-lg text-green-500 hover:text-white rounded border border-green-500 hover:bg-green-500" %>
-            <%= link_to '削除', admin_user_path(user), data: { turbo_method: :delete, turbo_confirm: "#{ user.name }さんを削除します" }, class: "px-3 py-2 ml-1 shadow-lg text-red-500 hover:text-white rounded border border-red-500 hover:bg-red-500" %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-
+  <% @users.each do |users| %>
+    <%= render 'admin/users/user', user: users %>
   <% end %>
 </div>

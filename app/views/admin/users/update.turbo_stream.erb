@@ -1,0 +1,5 @@
+<%= turbo_stream.update "user" do %>
+  <% binding.pry %>
+  <%= render 'admin/users/user', user: @user %>
+<% end %>
+<%= turbo_stream.update "flash", partial: "shared/flash_message" %>
