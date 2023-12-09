@@ -13,7 +13,7 @@ class UserSessionsController < ApplicationController
   end
 
   def guest_login
-    redirect_to root_path, alert: t.('.fail') if current_user # ログインしてる場合はユーザーを作成しない
+    redirect_to root_path, alert: t.call('.fail') if current_user # ログインしてる場合はユーザーを作成しない
 
     random_value = SecureRandom.hex
     user = User.create!(name: 'ゲスト', email: "test_#{random_value}@example.com", password: random_value.to_s,

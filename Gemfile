@@ -80,7 +80,7 @@ gem 'mini_magick', '~> 4.8'
 gem 'pg'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'rakuten_web_service'
+gem 'ransack'
 gem 'sentry-rails', '~> 5.10'
 gem 'sentry-ruby', '~> 5.10'
 gem 'sorcery'
-gem "ransack"
