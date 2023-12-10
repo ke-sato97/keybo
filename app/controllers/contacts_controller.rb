@@ -9,9 +9,8 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     return unless @contact.invalid?
 
-    flash.now[:alert] = @contact.errors.full_messages.join(', ')
     @contact = Contact.new
-    render :new
+    redirect_to action: 'new'
   end
 
   def back
@@ -25,9 +24,8 @@ class ContactsController < ApplicationController
       ContactMailer.send_mail(@contact).deliver_now
       redirect_to done_contacts_path
     else
-      flash[:alert] = @contact.errors.full_messages.join(', ')
       @contact = Contact.new
-      render :new
+      redirect_to action: 'new'
     end
   end
 
