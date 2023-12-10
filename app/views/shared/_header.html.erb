@@ -9,16 +9,17 @@
       <div class="flex items-center justify-center flex-grow"> <!-- 中央揃え -->
         <ul class="flex flex-col lg:flex-row lg:space-x-8">
           <li>
-            <%= button_to (t 'defaults.diagnosis'), new_diagnosis_path, method: :get, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded", "aria-current" => "page" %>
+            <%= nav_button t('defaults.diagnosis'), new_diagnosis_path, method: :get %>
           </li>
           <li>
-            <%= button_to (t 'defaults.history'), diagnoses_path, method: :get, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded", "aria-current" => "page" %>
+            <%= nav_button t('defaults.history'), diagnoses_path, method: :get %>
           </li>
           <li>
-            <%= button_to (t 'defaults.bookmark'), bookmarks_path, method: :get, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded", "aria-current" => "page" %>
+            <%= nav_button t('defaults.bookmark'), bookmarks_path, method: :get %>
+          </li>
           </li>
           <li>
-            <%= button_to (t 'defaults.ranking'), keyboards_ranks_path, method: :get, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded", "aria-current" => "page" %>
+            <%= nav_button t('defaults.ranking'), keyboards_ranks_path, method: :get %>
           </li>
           <li>
             <%= render 'shared/my_page_button', "aria-current" => "page" %>

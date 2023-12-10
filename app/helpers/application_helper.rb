@@ -13,14 +13,15 @@ module ApplicationHelper
 
   def nav_button(text, path, options = {})
     options[:class] ||= ""
-    options[:class] += " transition-colors duration-300 rounded py-2 px-4 hover:bg-slate-500 text-slate-700 hover:text-white"
+    options[:class] += " transition-colors duration-500"
 
     if current_page?(path)
-      options[:class] += " bg-slate-500 text-white"
+      options[:class] += " text-slate-700 text-slate-700 border-b-2 py-2 px-3 border-slate-500"
     else
-      options[:class] += " bg-transparent hover:bg-slate-500 text-slate-700 hover:text-white"
+      options[:class] += " rounded py-2 px-3 bg-transparent hover:bg-slate-500 text-slate-700 hover:text-white"
     end
 
+    # button_toメソッドの呼び出し
     button_to(text, path, options)
   end
 end
