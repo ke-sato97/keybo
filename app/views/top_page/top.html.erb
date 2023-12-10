@@ -2,11 +2,11 @@
 <div class='overflow-scroll top-wrapper'>
   <div class="flex flex-col items-center justify-center h-[calc(100vh-150px)]">
     <% if logged_in? %>
-      <%= button_to t('.diagnosis_keyobard'), new_diagnosis_path, method: :get, class: "transition-colors duration-500 w-80 bg-transparent hover:bg-slate-500 bg-white shadow-lg text-slate-700 font-semibold hover:text-white text-3xl py-8 px-10 rounded-lg mb-8" %>
+      <%= button_to t('.diagnosis_keyobard'), new_diagnosis_path, method: :get, class: "transition-colors duration-700 border-2 w-80 bg-transparent hover:bg-slate-500 bg-white shadow-lg text-slate-700 font-semibold hover:text-white text-3xl py-8 px-10 rounded-lg mb-8" %>
     <% else %>
-        <%= button_to t('.login'), login_path, method: :get, class: "transition-colors duration-300 mb-10 w-80 bg-transparent hover:bg-slate-500 bg-white shadow-lg text-slate-700 font-semibold hover:text-white py-6 px-10 text-4xl rounded-lg" %>
-        <%= button_to t('.guest'), guest_login_path, method: :post, class: "transition-colors duration-300 mb-10 w-80 bg-transparent hover:bg-slate-500 bg-white shadow-lg text-slate-700 font-semibold hover:text-white py-6 px-10 text-3xl rounded-lg" %>
-        <%= button_to t('.how_to'), how_to_use_path, method: :get, class: "transition-colors duration-300 bg-transparent w-80 hover:bg-slate-500 bg-white shadow-lg text-slate-700 font-semibold hover:text-white py-6 px-10 text-4xl rounded-lg mb-8" %>
+        <%= button_to t('.login'), login_path, method: :get, class: "transition-colors duration-300 mb-10 w-80 bg-transparent border-2 hover:bg-slate-500 bg-white shadow-lg text-slate-700 font-semibold hover:text-white py-6 px-10 text-4xl rounded-lg" %>
+        <%= button_to t('.guest'), guest_login_path, method: :post, class: "transition-colors duration-300 mb-10 w-80 bg-transparent border-2 hover:bg-slate-500 bg-white shadow-lg text-slate-700 font-semibold hover:text-white py-6 px-10 text-3xl rounded-lg" %>
+        <%= button_to t('.how_to'), how_to_use_path, method: :get, class: "transition-colors duration-300 bg-transparent w-80 hover:bg-slate-500 border-2 bg-white shadow-lg text-slate-700 font-semibold hover:text-white py-6 px-10 text-4xl rounded-lg mb-8" %>
     <% end %>
   </div>
 </div>

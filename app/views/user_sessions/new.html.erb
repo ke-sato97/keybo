@@ -9,16 +9,16 @@
               <%= t('.title') %>
             </div>
             <div class="mb-4">
-              <%= f.label :email, User.human_attribute_name(:email), class: "block text-gray-700 text-sm font-normal mb-2" %>
-              <%= f.email_field :email, class: "shadow appearance-none border rounded w-full max-w-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: "Email", required: true, autofocus: true %>
+              <%= f.label :email, User.human_attribute_name(:email), class: "block text-gray-700 font-normal mb-2" %>
+              <%= f.email_field :email, class: "shadow appearance-none border rounded w-full max-w-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", placeholder: "例: keybo@example.com", required: true, autofocus: true %>
             </div>
             <div class="mb-6">
-              <%= f.label :password, User.human_attribute_name(:password), class: "block text-gray-700 text-sm font-normal mb-2" %>
-              <%= f.password_field :password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-0 leading-tight focus:outline-none focus:shadow-outline", placeholder: "Password", required: true, autocomplete: "current-password" %>
+              <%= f.label :password, User.human_attribute_name(:password), class: "block text-gray-700 font-normal mb-2" %>
+              <%= f.password_field :password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-0 leading-tight focus:outline-none focus:shadow-outline", placeholder: User.human_attribute_name(:password), required: true, autocomplete: "current-password" %>
             </div>
             <div class="flex flex-col items-center justify-center">
-              <%= f.submit t('.title'), class:"inline-block px-4 py-2 mt-0 text-white rounded shadow-lg bg-slate-500 hover:bg-gray-600 focus:bg-gray-700" %>
-              <%= link_to t('.password_forget'), new_password_reset_path, class: "inline-block mt-2 text-sm font-normal text-blue-500 align-baseline hover:text-blue-800" %>
+              <%= f.submit t('.title'), class:"inline-block px-4 py-2 mb-2 text-white rounded shadow-lg bg-slate-500 hover:bg-gray-600 focus:bg-gray-700" %>
+              <%= link_to t('.password_forget'), new_password_reset_path, class: "inline-block mt-2 font-normal text-blue-500 align-baseline hover:text-blue-800" %>
             </div>
           </div>
         <% end %>
