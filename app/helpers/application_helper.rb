@@ -24,4 +24,26 @@ module ApplicationHelper
     # button_toメソッドの呼び出し
     button_to(text, path, options)
   end
+
+  def default_meta_tags
+    {
+      site: 'キー坊',
+      title: 'おすすめのキーボードを診断するアプリ',
+      reverse: true,
+      charset: 'utf-8',
+      description: 'キー坊を使うことで「キーボードの選び方がわからない」という問題を解決できます',
+      keywords: 'キーボード,パソコン周辺機器,ガジェット',
+      canonical: request.original_url,
+      separator: '|',
+      og: {
+        site_name: :site,
+        title: :title,
+        description: :description,
+        type: 'website',
+        url: request.original_url,
+        image: image_url('sample5.jpg'), # 配置するパスやファイル名によって変更すること
+        local: 'ja-JP'
+      },
+    }
+  end
 end
