@@ -27,8 +27,6 @@ module ApplicationHelper
 
   def default_meta_tags
     {
-      site: 'キー坊',
-      title: 'おすすめのキーボードを診断するアプリ',
       reverse: true,
       charset: 'utf-8',
       description: 'キー坊を使うことで「キーボードの選び方がわからない」という問題を解決できます',
