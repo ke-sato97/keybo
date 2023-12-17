@@ -52,4 +52,8 @@ class User < ApplicationRecord
 
     errors.add(:image, 'は 5MB 以下のファイルを選択してください')
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["access_count_to_reset_password_page", "created_at", "crypted_password", "email", "id", "name", "reset_password_email_sent_at", "reset_password_token", "reset_password_token_expires_at", "role", "salt", "updated_at"]
+  end
 end

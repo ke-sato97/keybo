@@ -1,5 +1,13 @@
 <div class="w-full">
   <h1 class="mb-2 text-4xl font-bold text-center"><%= (t '.title') %></h1>
+  <div class="flex items-center justify-center mb-2 ">
+    <%= search_form_for @search, url: admin_users_path, data: { turbo: false } do |f| %>
+      <div class="flex border border-red-400 rounded">
+        <%= f.search_field :name_cont, class: "px-4 py-2 w-80" %>
+        <button type="submit" class="px-4 py-2 font-bold text-white bg-red-500 hover:bg-red-700"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
+      </div>
+    <% end %>
+  </div>
   <div id="uses">
     <%= render @users %>
   </div>
