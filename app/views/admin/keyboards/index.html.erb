@@ -11,15 +11,15 @@
   <table>
     <thead>
       <tr class="bg-white border border-black">
-        <th class="p-2 border border-black">ID</th>
+        <th class="p-2 border border-black"><%= sort_link(@search, :id) %></th>
         <th class="p-2 border border-black">アイテム</th>
-        <th class="p-2 border border-black">接続方法</th>
-        <th class="p-2 border border-black">ショップ名</th>
-        <th class="p-2 border border-black">金額</th>
-        <th class="p-2 border border-black">OS</th>
-        <th class="p-2 border border-black">サイズ</th>
-        <th class="p-2 border border-black">配列</th>
-        <th class="p-2 border border-black">キースイッチ</th>
+        <th class="p-2 border border-black"><%= sort_link(@search, :connect) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@search, :brand) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@search, :price) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@search, :os) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@search, :size) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@search, :layout) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@search, :switch) %></th>
       </tr>
     </thead>
     <tbody>
