@@ -5,7 +5,8 @@ module Admin
     before_action :set_keyboard, only: %i[edit update destroy]
 
     def index
-      @keyboards = Keyboard.all
+      @search = Keyboard.ransack(params[:q])
+      @keyboards = @search.result(distinct: true)
     end
 
     def edit
