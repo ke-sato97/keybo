@@ -2,8 +2,8 @@ module Admin
   class Admin::UsersController < Admin::BaseController
     before_action :set_user, only: %i[show edit update destroy]
     def index
-      @search = User.ransack(params[:q])
-      @users = @search.result(distinct: true)
+      @q = User.ransack(params[:q])
+      @users = @q.result(distinct: true)
     end
 
     def show; end

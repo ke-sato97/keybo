@@ -1,7 +1,7 @@
 <div class="w-full">
   <h1 class="mb-2 text-4xl font-bold text-center"><%= (t '.title') %></h1>
   <div class="flex items-center justify-center mb-2 ">
-    <%= search_form_for @search, url: admin_keyboards_path, data: { turbo: false } do |f| %>
+    <%= search_form_for @q, url: admin_keyboards_path, data: { turbo: false } do |f| %>
       <div class="flex border border-red-400 rounded">
         <%= f.search_field :name_cont, class: "px-4 py-2 w-80" %>
         <button type="submit" class="px-4 py-2 font-bold text-white bg-red-500 hover:bg-red-700"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
@@ -11,15 +11,15 @@
   <table>
     <thead>
       <tr class="bg-white border border-black">
-        <th class="p-2 border border-black"><%= sort_link(@search, :id) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@q, :id) %></th>
         <th class="p-2 border border-black">アイテム</th>
-        <th class="p-2 border border-black"><%= sort_link(@search, :connect) %></th>
-        <th class="p-2 border border-black"><%= sort_link(@search, :brand) %></th>
-        <th class="p-2 border border-black"><%= sort_link(@search, :price) %></th>
-        <th class="p-2 border border-black"><%= sort_link(@search, :os) %></th>
-        <th class="p-2 border border-black"><%= sort_link(@search, :size) %></th>
-        <th class="p-2 border border-black"><%= sort_link(@search, :layout) %></th>
-        <th class="p-2 border border-black"><%= sort_link(@search, :switch) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@q, :connect) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@q, :brand) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@q, :price) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@q, :os) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@q, :size) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@q, :layout) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@q, :switch) %></th>
       </tr>
     </thead>
     <tbody>
