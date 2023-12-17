@@ -29,7 +29,7 @@ module ApplicationHelper
     {
       reverse: true,
       charset: 'utf-8',
-      description: 'キー坊を使うことで「キーボードの選び方がわからない」という問題を解決できます',
+      description: '「新しいキーボードが欲しいけどの選び方がわからない」と思った方は一度使ってみてください。',
       keywords: 'キーボード,パソコン周辺機器,ガジェット',
       canonical: request.original_url,
       separator: '|',
