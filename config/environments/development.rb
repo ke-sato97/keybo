@@ -31,6 +31,7 @@ Rails.application.configure do
   config.assets.quiet = true
   config.action_mailer.default_url_options = Settings.default_url_options.to_h
   config.action_mailer.delivery_method = :smtp
+  config.consider_all_requests_local = false
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     domain: 'gmail.com',
