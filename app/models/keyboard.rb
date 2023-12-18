@@ -38,7 +38,8 @@ class Keyboard < ApplicationRecord
     pluck(:connect).flatten.uniq
   end
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["brand", "caption", "connect", "created_at", "id", "layout", "medium_image_urls", "name", "os", "price", "size", "switch", "updated_at", "url"]
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[brand caption connect created_at id layout medium_image_urls name os price size switch
+       updated_at url]
   end
 end
