@@ -11,15 +11,15 @@
   <table>
     <thead>
       <tr class="bg-white border border-black">
-        <th class="p-2 border border-black"><%= sort_link(@q, :id) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@q, :id, { class: "hover:underline" }) %></th>
         <th class="p-2 border border-black">アイテム</th>
-        <th class="p-2 border border-black"><%= sort_link(@q, :connect) %></th>
-        <th class="p-2 border border-black"><%= sort_link(@q, :brand) %></th>
-        <th class="p-2 border border-black"><%= sort_link(@q, :price) %></th>
-        <th class="p-2 border border-black"><%= sort_link(@q, :os) %></th>
-        <th class="p-2 border border-black"><%= sort_link(@q, :size) %></th>
-        <th class="p-2 border border-black"><%= sort_link(@q, :layout) %></th>
-        <th class="p-2 border border-black"><%= sort_link(@q, :switch) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@q, :connect, { class: "hover:underline" }) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@q, :brand, { class: "hover:underline" }) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@q, :price, { class: "hover:underline" }) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@q, :os, { class: "hover:underline" }) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@q, :size, { class: "hover:underline" }) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@q, :layout, { class: "hover:underline" }) %></th>
+        <th class="p-2 border border-black"><%= sort_link(@q, :switch, { class: "hover:underline" }) %></th>
       </tr>
     </thead>
     <tbody>
@@ -27,7 +27,7 @@
         <tr class="bg-white border border-black">
           <div class="grid grid-cols-3 gap-4">
             <td class="p-2 border border-black"><%= keyboard.id %></td>
-            <td class="p-2 border border-black"><%= link_to keyboard.name, edit_admin_keyboard_path(keyboard), class: "underline text-blue-500" %></td>
+            <td class="p-2 border border-black"><%= link_to keyboard.name, edit_admin_keyboard_path(keyboard), class: "underline text-blue-500 hover:text-blue-700" %></td>
             <td class="p-2 border border-black"><%= keyboard.connect %></td>
             <td class="p-2 border border-black"><%= keyboard.brand %></td>
             <td class="p-2 border border-black"><%= keyboard.price %></td>
