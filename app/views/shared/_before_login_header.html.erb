@@ -1,32 +1,34 @@
 <header>
   <nav class="px-4 py-2 lg:px-5">
-    <div class="flex flex-wrap items-center justify-between invisible max-w-full xl:visible">
+    <div class="hidden xl:inline">
+      <div class="flex flex-wrap items-center justify-between max-w-full">
 
-      <div class="flex items-center ml-40">
-        <%= render 'shared/search_form' %>
-      </div>
-
-      <div class="flex items-center justify-center flex-grow"> <!-- 中央揃え -->
-        <ul class="flex flex-col lg:flex-row lg:space-x-8">
-          <li>
-            <%= nav_button t('defaults.top'), root_path, method: :get %>
-          </li>
-          <li>
-            <%= nav_button t('defaults.how_to'), how_to_use_path, method: :get %>
-          </li>
-          <li>
-            <%= nav_button t('defaults.ranking'), keyboards_ranks_path, method: :get %>
-          </li>
-        </ul>
-      </div>
-
-      <div class="flex items-center justify-end mr-40">
-        <div class="mr-2">
-          <%= nav_button t('defaults.login'), login_path, method: :get %>
+        <div class="flex items-center ml-40">
+          <%= render 'shared/search_form' %>
         </div>
-        <%= nav_button t('defaults.register'), new_user_path, method: :get %>
-      </div>
 
+        <div class="flex items-center justify-center flex-grow"> <!-- 中央揃え -->
+          <ul class="flex flex-col lg:flex-row lg:space-x-8">
+            <li>
+              <%= nav_button t('defaults.top'), root_path, method: :get %>
+            </li>
+            <li>
+              <%= nav_button t('defaults.how_to'), how_to_use_path, method: :get %>
+            </li>
+            <li>
+              <%= nav_button t('defaults.ranking'), keyboards_ranks_path, method: :get %>
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex items-center justify-end mr-40">
+          <div class="mr-2">
+            <%= nav_button t('defaults.login'), login_path, method: :get %>
+          </div>
+          <%= nav_button t('defaults.register'), new_user_path, method: :get %>
+        </div>
+
+      </div>
     </div>
 
     <div class="flex flex-wrap items-center justify-between max-w-full xl:hidden"> <!-- xl: 以上の場合に表示 -->
