@@ -1,36 +1,46 @@
 <header>
   <nav class="px-4 py-2 lg:px-6">
-    <div class="flex flex-wrap items-center justify-between max-w-full">
+    <div class="hidden xl:inline">
+      <div class="flex flex-wrap items-center justify-between max-w-full">
 
-      <div class="flex items-center ml-40"> <!-- フォームを左寄せ -->
+        <div class="flex items-center ml-20"> <!-- フォームを左寄せ -->
+          <%= render 'shared/search_form' %>
+        </div>
+
+        <div class="flex items-center justify-center flex-grow"> <!-- 中央揃え -->
+          <ul class="flex flex-col lg:flex-row lg:space-x-8">
+            <li>
+              <%= nav_button t('defaults.diagnosis'), new_diagnosis_path, method: :get %>
+            </li>
+            <li>
+              <%= nav_button t('defaults.history'), diagnoses_path, method: :get %>
+            </li>
+            <li>
+              <%= nav_button t('defaults.bookmark'), bookmarks_path, method: :get %>
+            </li>
+            <li>
+              <%= nav_button t('defaults.ranking'), keyboards_ranks_path, method: :get %>
+            </li>
+            <li>
+              <%= render 'shared/my_page_button', "aria-current" => "page" %>
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex items-center justify-end mr-20"> <!-- 右寄せ -->
+          <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete }, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded" %>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-between max-w-full xl:hidden"> <!-- xl: 以上の場合に表示 -->
+      <div class="flex items-center"> <!-- フォームを左寄せ (xl: 以上の場合に表示) -->
         <%= render 'shared/search_form' %>
       </div>
-
-      <div class="flex items-center justify-center flex-grow"> <!-- 中央揃え -->
-        <ul class="flex flex-col lg:flex-row lg:space-x-8">
-          <li>
-            <%= nav_button t('defaults.diagnosis'), new_diagnosis_path, method: :get %>
-          </li>
-          <li>
-            <%= nav_button t('defaults.history'), diagnoses_path, method: :get %>
-          </li>
-          <li>
-            <%= nav_button t('defaults.bookmark'), bookmarks_path, method: :get %>
-          </li>
-          </li>
-          <li>
-            <%= nav_button t('defaults.ranking'), keyboards_ranks_path, method: :get %>
-          </li>
-          <li>
-            <%= render 'shared/my_page_button', "aria-current" => "page" %>
-          </li>
-        </ul>
+      <div class="flex items-center pr-2">
+        <%= render 'shared/login_bar' %>
       </div>
-
-      <div class="flex items-center justify-end mr-40"> <!-- 右寄せ -->
-        <%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete }, class: "transition-colors duration-300 hover:bg-slate-500 text-slate-700 hover:text-white py-2 px-3 rounded" %>
-      </div>
-
     </div>
   </nav>
 </header>
