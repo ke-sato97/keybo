@@ -23,6 +23,7 @@ class KeyboardsController < ApplicationController
     @comment = Comment.new
     @comments = @keyboard.comments.includes(:user).order(created_at: :asc)
     @tags = @keyboard.tags
+    @recommended_keyboards = RecommendationService.new.recommend_keyboards(@keyboard)
   end
 
   def bookmarks
