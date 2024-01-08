@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'contacts/confirm'
   get 'contacts/done'
   get 'keyboards/ranks'
+  get 'keyboards/search'
 
   resources :keyboards do
     resources :comments
@@ -46,6 +47,6 @@ Rails.application.routes.draw do
   end
 
   # 最後に書く
-  get '*not_found', to: 'application#routing_error'
-  post '*not_found', to: 'application#routing_error'
+  # get '*not_found', to: 'application#routing_error'
+  # post '*not_found', to: 'application#routing_error'
 end

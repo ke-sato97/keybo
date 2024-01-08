@@ -34,4 +34,10 @@ class KeyboardsController < ApplicationController
     @comment_ranks = Keyboard.comment_ranks
     @diagnosis_ranks = Keyboard.diagnosis_ranks
   end
+
+  def search
+    # ページネーションを適用する前に、ユーザーの診断履歴を取得
+    @search_query = params[:query]
+    @found_keyboards = Keyboard.where("size LIKE :query OR layout LIKE :query OR switch LIKE :query", query: "%#{@search_query}%").includes(:tags).page(params[:page])
+  end
 end

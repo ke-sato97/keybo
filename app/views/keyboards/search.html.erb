@@ -1,0 +1,22 @@
+<h2>Search Results for "<%= @search_query %>"</h2>
+
+<div class="flex justify-center">
+  <%= paginate @found_keyboards %>
+</div>
+
+<% if @found_keyboards.any? %>
+  <div class="flex justify-center">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 4xl:grid-cols-6">
+      <%= render 'keyboards/keyboard', keyboards: @found_keyboards %>
+    </div>
+  </div>
+<% else %>
+  <div class="flex flex-col h-screen">
+    <p class="mt-4 text-xl"><%= (t '.no_result') %></p>
+  </div>
+<% end %>
+
+<!-- ページネーション -->
+<div class="flex justify-center">
+  <%= paginate @found_keyboards %>
+</div>
