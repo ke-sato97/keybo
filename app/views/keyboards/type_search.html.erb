@@ -1,0 +1,24 @@
+<% content_for(:title, t('.title')) %>
+<h1 class="pt-6 text-4xl font-bold text-center text-slate-700"><%= t('.title') %> "<%= @search_query %>"</h1>
+<div class="pt-4 pb-8 pl-3 pr-3">
+  <!-- ページネーション -->
+  <div class="flex justify-center">
+    <%= paginate @found_keyboards %>
+  </div>
+  <!-- 掲示板 -->
+  <% if @found_keyboards.any? %>
+    <div class="flex justify-center">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 4xl:grid-cols-6">
+        <%= render 'keyboards/keyboard', keyboards: @found_keyboards %>
+      </div>
+    </div>
+  <% else %>
+    <div class="flex flex-col h-screen">
+      <p class="mt-4 text-xl"><%= (t '.no_result') %></p>
+    </div>
+  <% end %>
+  <!-- ページネーション -->
+  <div class="flex justify-center">
+    <%= paginate @found_keyboards %>
+  </div>
+</div>

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'contacts/confirm'
   get 'contacts/done'
   get 'keyboards/ranks'
+  get 'keyboards/type_search'
 
   resources :keyboards do
     resources :comments

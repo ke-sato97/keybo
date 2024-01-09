@@ -23,6 +23,7 @@ class KeyboardsController < ApplicationController
     @comment = Comment.new
     @comments = @keyboard.comments.includes(:user).order(created_at: :asc)
     @tags = @keyboard.tags
+    @recommended_keyboards = RecommendationService.item_based_recommendation(@keyboard.id)
   end
 
   def bookmarks
@@ -33,5 +34,15 @@ class KeyboardsController < ApplicationController
     @bookmark_ranks = Keyboard.bookmark_ranks
     @comment_ranks = Keyboard.comment_ranks
     @diagnosis_ranks = Keyboard.diagnosis_ranks
+  end
+
+  def type_search
+    # ページネーションを適用する前に、ユーザーの診断履歴を取得
+    @search_query = params[:query]
+    @found_keyboards = Keyboard.none
+
+    if @search_query.present?
+      @found_keyboards = Keyboard.where("size LIKE :query OR layout LIKE :query OR switch LIKE :query", query: "%#{@search_query}%").includes(:tags).page(params[:page])
+    end
   end
 end
