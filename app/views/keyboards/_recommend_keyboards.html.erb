@@ -1,0 +1,18 @@
+<% keyboards.each do |keyboard| %>
+  <div class="m-4">
+    <%= link_to keyboard_path(keyboard) do %>
+      <div class="relative w-64 text-gray-700 bg-white shadow-lg hover:bg-slate-100 rounded-xl bg-clip-border">
+        <div class="relative flex items-center justify-center h-48 mx-2 mt-2 overflow-hidden bg-white shadow-lg text-slate-700 rounded-xl bg-clip-border">
+          <%= image_tag keyboard.medium_image_urls.first, size: '180' %>
+        </div>
+        <div class="w-64 h-32 p-3 text-center">
+          <div class="block font-sans text-xs antialiased font-semibold leading-snug tracking-normal">
+            <%= keyboard.name %>
+            <br>
+            <br>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
