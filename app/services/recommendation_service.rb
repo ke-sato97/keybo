@@ -1,83 +1,26 @@
-# app/services/recommendation_service.rb
+# services/recommendation_service.rb
 
 class RecommendationService
-  def recommend_keyboards(keyboard)
-    # ユーザーが診断したキーボードとのCosine Similarityを計算し、類似度が高い順にソートする
-    similar_keyboards = Keyboard.all.sort_by do |other_keyboard|
-      cosine_similarity(keyboard, other_keyboard)
+  def self.item_based_recommendation(keyboard_id)
+    target_keyboard = Keyboard.find(keyboard_id)
+    all_keyboards = Keyboard.where.not(id: keyboard_id)
+
+    # タグの類似度を計算し、類似度が高い順にソート
+    similar_keyboards = all_keyboards.sort_by do |other_keyboard|
+      calculate_jaccard_similarity(target_keyboard.tags, other_keyboard.tags)
     end.reverse
 
-    # 推薦するキーボードを返す
-    similar_keyboards[1..5] # 類似度が高い上位5つを返す（自分自身を含めない）
+    # レコメンドされるキーボードのIDの配列を返す
+    similar_keyboards[1..5]
   end
 
   private
 
-  def cosine_similarity(keyboard1, keyboard2)
-    # 特徴ベクトルの作成
-    vector1 = keyboard_vector(keyboard1)
-    vector2 = keyboard_vector(keyboard2)
+  def self.calculate_jaccard_similarity(tags1, tags2)
+    intersection = (tags1 & tags2).count.to_f
+    union = (tags1 | tags2).count.to_f
 
-    # Cosine Similarityの計算
-    dot_product = vector1.zip(vector2).sum { |a, b| a * b }
-    magnitude1 = Math.sqrt(vector1.sum { |a| a**2 })
-    magnitude2 = Math.sqrt(vector2.sum { |a| a**2 })
-
-    dot_product / (magnitude1 * magnitude2)
-  end
-
-  def keyboard_vector(keyboard)
-    # 特徴ベクトルの初期化
-    vector = []
-
-    # layoutの数値化
-    vector << layout_to_number(keyboard.layout)
-
-    # sizeの数値化
-    vector << size_to_number(keyboard.size)
-
-    # switchの数値化
-    vector << switch_to_number(keyboard.switch)
-
-    vector
-  end
-
-  def layout_to_number(layout)
-    # layoutに対して数値を割り当てるロジックを実装
-    # 例えば、JIS配列を1、US配列を2とするなど
-    case layout
-    when 'JIS配列'
-      1
-    when 'US配列'
-      2
-    else
-      0
-    end
-  end
-
-  def size_to_number(size)
-    # sizeに対して数値を割り当てるロジックを実装
-    # 例えば、フルサイズを1、テンキーレスを2とするなど
-    case size
-    when 'フルサイズ'
-      1
-    when 'テンキーレス'
-      2
-    else
-      0
-    end
-  end
-
-  def switch_to_number(switch)
-    # switchに対して数値を割り当てるロジックを実装
-    # 例えば、メカニカルを1、メンブレンを2とするなど
-    case switch
-    when 'メカニカル'
-      1
-    when 'メンブレン'
-      2
-    else
-      0
-    end
+    # Jaccard 係数を計算して返す
+    union.zero? ? 0.0 : (intersection / union)
   end
 end
