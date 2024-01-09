@@ -2,8 +2,8 @@
 
 class RecommendationService
   def self.item_based_recommendation(keyboard_id)
-    target_keyboard = Keyboard.find(keyboard_id)
-    all_keyboards = Keyboard.where.not(id: keyboard_id)
+    target_keyboard = Keyboard.includes(:tags).find(keyboard_id)
+    all_keyboards = Keyboard.where.not(id: keyboard_id).includes(:tags)
 
     # タグの類似度を計算し、類似度が高い順にソート
     similar_keyboards = all_keyboards.sort_by do |other_keyboard|
@@ -11,7 +11,7 @@ class RecommendationService
     end.reverse
 
     # レコメンドされるキーボードのIDの配列を返す
-    similar_keyboards[1..5]
+    similar_keyboards[1..5]# .map(&:id)
   end
 
   private
