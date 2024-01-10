@@ -17,18 +17,6 @@ class KeyboardsController < ApplicationController
     else
       head :no_content
     end
-
-    # オートコンプリート用の処理
-    @keyboards = if params[:search].present?
-                   Keyboard.where('name ILIKE ?', "%#{params[:search]}%")
-                 else
-                   []
-                 end
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @keyboards.pluck(:name) }
-    end
   end
 
   def show
