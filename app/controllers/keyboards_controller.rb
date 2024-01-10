@@ -4,6 +4,7 @@ class KeyboardsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
+    # 検索用の処理
     if params[:tag_id].present?
       tag = Tag.find(params[:tag_id])
       @keyboards = tag.keyboards.includes(:tags).page(params[:page])
@@ -15,6 +16,18 @@ class KeyboardsController < ApplicationController
       @keyboards = Keyboard.includes(:tags).all.page(params[:page])
     else
       head :no_content
+    end
+
+    # オートコンプリート用の処理
+    @keyboards = if params[:search].present?
+                   Keyboard.where('name ILIKE ?', "%#{params[:search]}%")
+                 else
+                   []
+                 end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @keyboards.pluck(:name) }
     end
   end
 
