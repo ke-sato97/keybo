@@ -4,9 +4,9 @@ import "controllers"
 
 import "@fortawesome/fontawesome-free"
 
-// import "./autocomplete";
-// import "./dropdown";
-// import "./ranks.js";
+import "./autocomplete"
+import "./dropdown"
+import "./ranks.js"
 
 
 // autocomplete.js
