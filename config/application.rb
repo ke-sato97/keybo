@@ -18,6 +18,13 @@ module Portfolio
     config.generators do |g|
       g.test_framework :rspec
     end
+    # ジェネレータコマンドの設定
+    config.generators do |g|
+      g.skip_routes true
+      g.assets false
+      g.helper false
+      g.test_framework false
+    end
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

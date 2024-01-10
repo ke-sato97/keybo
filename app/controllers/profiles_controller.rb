@@ -21,28 +21,28 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # def image_processing
-  #   return unless request.patch?
+  def image_processing
+    return unless request.patch?
 
-  #   @user = User.find(current_user.id)
+    @user = User.find(current_user.id)
 
-  #   # フォームから送信されたデータを取得
-  #   user_params = params[:user]
+    # フォームから送信されたデータを取得
+    user_params = params[:user]
 
-  #   if user_params
-  #     if user_params[:image]
-  #       # 画像を更新
-  #       @user.image.attach(user_params[:image])
-  #       flash[:success] = '画像が更新されました'
-  #     elsif user_params[:remove_image]
-  #       # 画像を削除
-  #       @user.image.purge
-  #       flash[:success] = '画像が削除されました'
-  #     end
-  #   end
+    if user_params
+      if user_params[:image]
+        # 画像を更新
+        @user.image.attach(user_params[:image])
+        flash[:success] = '画像が更新されました'
+      elsif user_params[:remove_image]
+        # 画像を削除
+        @user.image.purge
+        flash[:success] = '画像が削除されました'
+      end
+    end
 
-  #   redirect_to profile_path
-  # end
+    redirect_to profile_path
+  end
 
   private
 

@@ -4,6 +4,7 @@ class KeyboardsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
+    # 検索用の処理
     if params[:tag_id].present?
       tag = Tag.find(params[:tag_id])
       @keyboards = tag.keyboards.includes(:tags).page(params[:page])

@@ -1,6 +1,7 @@
 ActiveRecord::Schema[7.0].define(version: 2023_11_03_021417) do
   enable_extension "plpgsql"
 
+  # モデルをblobsに接続するポリモーフィックjoinテーブルです。モデルのクラス名が変更された場合は、このテーブルでマイグレーションを実行して、背後のrecord_typeをモデルの新しいクラス名に更新する必要があります。
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -11,6 +12,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_021417) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
+  # アップロードされたファイルに関するデータ（ファイル名、Content-Typeなど）を保存します。
   create_table "active_storage_blobs", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
@@ -23,6 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_021417) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  # バリアントトラッキングが有効な場合は、生成された各バリアントに関するレコードを保存します。
   create_table "active_storage_variant_records", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
