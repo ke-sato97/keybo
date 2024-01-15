@@ -1,15 +1,15 @@
 <footer class="bg-white">
   <div class="container bottom-0 w-full px-3 py-4 mx-auto">
     <div class="flex items-center justify-center mt-2 mb-2">
-      <%= link_to new_contact_path, class: "mx-2 text-md text-slate-700 transition-colors duration-300 hover:text-red-700", "aria-label" => "Teams" do %>
+      <%= link_to new_contact_path, class: "mx-2 text-md text-slate-700 hover:underline hover:text-red-500", "aria-label" => "Teams" do %>
         <%= (t 'defaults.contact_form') %>
       <% end %>
 
-      <%= link_to "#", class: "mx-2 text-md text-slate-700 transition-colors duration-300 hover:text-red-700", "aria-label" => "Privacy" do %>
+      <%= link_to "#", class: "mx-2 text-md text-slate-700 hover:underline hover:text-red-500", "aria-label" => "Privacy" do %>
         <%= (t 'defaults.privacy_policy') %>
       <% end %>
 
-      <%= link_to "#", class: "mx-2 text-md text-slate-700 transition-colors duration-300 hover:text-red-700", "aria-label" => "Cookies" do %>
+      <%= link_to "#", class: "mx-2 text-md text-slate-700 hover:underline hover:text-red-500", "aria-label" => "Cookies" do %>
         <%= (t 'defaults.terms_of_service') %>
       <% end %>
     </div>
