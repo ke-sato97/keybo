@@ -38,6 +38,9 @@
       <div class="flex items-center"> <!-- フォームを左寄せ -->
         <%= render 'shared/search_form' %>
       </div>
+      <div class="flex items-center xs:hidden"> <!-- フォームを左寄せ (xl: 以上の場合に表示) -->
+        <%#= render 'shared/responsive_search_form' %>
+      </div>
       <div class="flex items-center pr-2">
         <%= render 'shared/login_bar' %>
       </div>
