@@ -1,9 +1,9 @@
 <%= form_with url: keyboards_path, method: :get, remote: true do |f| %>
   <div class="flex items-center justify-center ">
     <div class="flex border rounded border-slate-400">
-      <%= f.text_field :search, id: "keyboard_search",class: "px-4 py-2 w-80", autocomplete: 'off', placeholder: "キーボードを検索する" %>
+      <%= f.text_field :search, id: "keyboard_search",class: "px-4 py-2 w-64", autocomplete: 'off', placeholder: "キーボードを検索する" %>
       <button type="submit" class="px-4 py-2 text-white bg-slate-500 hover:bg-slate-600"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
-      <div id="keyboard_results" class="absolute z-10 mt-10 text-sm bg-white border w-80 border-slate-300 divide-y divide-slate-300"></div>
+      <div id="keyboard_results" class="absolute z-10 w-64 mt-10 text-xs bg-white border border-slate-300 divide-y divide-slate-300"></div>
     </div>
   </div>
 <% end %>

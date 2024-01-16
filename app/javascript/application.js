@@ -43,27 +43,27 @@ document.addEventListener("turbo:load", function() {
 
 
 // search_form.js 複数反応する(class="search_form" に反応)
-document.addEventListener("turbo:load", function () {
-  // ドロップダウンボタンとドロップダウンメニューの要素を取得
-  const search_buttons = document.querySelectorAll(".search_form");
-  const search_dropdowns = document.querySelectorAll(".search_dropdown");
-
-  // 各ボタンに対してイベントリスナーを設定
-  search_buttons.forEach(function (search_button, search_index) {
-    const search_dropdown = search_dropdowns[search_index];
-
-    if (!search_button) { return false; }
-
-    // ボタンがクリックされた時の処理
-    search_button.addEventListener("click", function () {
-      if (search_dropdown.style.display === "none") {
-        search_dropdown.style.display = "block";
-      } else {
-        search_dropdown.style.display = "none";
-      }
-    });
-  });
-});
+// document.addEventListener("turbo:load", function () {
+//   // ドロップダウンボタンとドロップダウンメニューの要素を取得
+//   const search_buttons = document.querySelectorAll(".search_form");
+//   const search_dropdowns = document.querySelectorAll(".search_dropdown");
+//
+//   // 各ボタンに対してイベントリスナーを設定
+//   search_buttons.forEach(function (search_button, search_index) {
+//     const search_dropdown = search_dropdowns[search_index];
+//
+//     if (!search_button) { return false; }
+//
+//     // ボタンがクリックされた時の処理
+//     search_button.addEventListener("click", function () {
+//       if (search_dropdown.style.display === "none") {
+//         search_dropdown.style.display = "block";
+//       } else {
+//         search_dropdown.style.display = "none";
+//       }
+//     });
+//   });
+// });
 
 
 // dropdown.js 複数反応する(class="dropdown_button" に反応)
