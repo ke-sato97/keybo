@@ -11,10 +11,8 @@ class RecommendationService
     end.reverse
 
     # レコメンドされるキーボードのIDの配列を返す
-    similar_keyboards[1..5]# .map(&:id)
+    similar_keyboards[1..5] # .map(&:id)
   end
-
-  private
 
   def self.calculate_jaccard_similarity(tags1, tags2)
     intersection = (tags1 & tags2).count.to_f
