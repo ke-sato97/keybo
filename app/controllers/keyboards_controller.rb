@@ -42,7 +42,7 @@ class KeyboardsController < ApplicationController
     @search_query = params[:query]
     @found_keyboards = Keyboard.none
 
-    return unless @search_query.present?
+    return if @search_query.blank?
 
     @found_keyboards = Keyboard.where('size LIKE :query OR layout LIKE :query OR switch LIKE :query',
                                       query: "%#{@search_query}%").includes(:tags).page(params[:page])
