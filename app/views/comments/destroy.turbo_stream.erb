@@ -1,4 +1,1 @@
-<%# turbo_stream.<アクション名>, <ターゲットのid> %>
-<%= turbo_stream.remove, @comment do %>
-  <%= render 'comments/comments', { comments: @comments } %>
-<% end %>
+<%= turbo_stream.remove @comment %>

@@ -1,4 +1,4 @@
-<%= turbo_frame_tag comment do %>
+<%= turbo_frame_tag @comment do %>
   <div class="border rounded-lg shadow-lg border-slate-100">
     <div class="flex text-lg justify-left text-slate-500">
 
@@ -25,7 +25,7 @@
             <li class="list-inline-item">
               <%= link_to polymorphic_path([comment.keyboard, comment]),
                           data: { turbo_method: :delete, turbo_confirm: "コメントを削除してもよろしいですか？" } do %>
-                <!-- <i class="fa-solid fa-trash" style="color:slate;"></i> -->
+                <i class="fa-solid fa-trash" style="color:slate;"></i>
               <% end %>
             </li>
           </ul>

@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to keyboard_path(@comment.keyboard)
+    # redirect_to keyboard_path(@comment.keyboard)
   end
 
   private
