@@ -4,10 +4,7 @@ class CommentsController < ApplicationController
   before_action :find_keyboard, only: %i[create edit]
   before_action :set_comment, only: %i[show edit update destroy]
 
-  def show; end
   def new; end
-
-  def edit; end
 
   def create
     @comment = @keyboard.comments.build(comment_params)
@@ -19,6 +16,10 @@ class CommentsController < ApplicationController
     end
     redirect_to keyboard_path(@comment.keyboard)
   end
+
+  def show; end
+
+  def edit; end
 
   def update
     if @comment.update(comment_params)
